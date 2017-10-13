@@ -1,0 +1,388 @@
+<html>
+    <head>
+        <link rel = "stylesheet" type="text/css" href="tma2_stylesheet.css" />
+        <script src="tma2.js"></script>
+        <script type="text/javascript">
+            window.onload = function () {
+                pageStartup();
+            }
+        </script>
+        <title>TMA1 - Main Page</title>
+    </head>
+    <body>
+        <div class="linksBar">
+            <ul>
+                <li>
+                    <a href="part1/resume.xml">Resume</a>
+                </li>
+                <li>
+                    <a href="part2/WelcomeToLearnTheWeb.html">Learn The Web</a>
+                </li>
+                <li>
+                    <a href="part3/photoSlideshow.html">Photo Slideshow</a>
+                </li>
+                <li>
+                    <a href="part4/UtilityTools.html">Utility Tools</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="aside mainScreen">
+            <button id="defaultOpen" class="active tablinks">Assignment #2</button>
+            <button class="tablinks">SiteMark Documentation</button>
+            <button class="tablinks">________ Documentation</button>
+        </div>
+
+        <div class="main-content mainScreen">
+            <div class="titleDiv">
+                <span class="title1">Assignment #2 (TMA1)</span>
+                <span class="title2">COMP 466 - Advanced Technologies for Web-Based Systems</span>
+                <span class="title3">Daniel Tran - 3339325</span>
+                <span class="title3">Start Date: October 12, 2017</span>
+                <span class="title3">End Date: TBA</span>
+                <span class="title3">Estimated Hours: 900 minutes</span>
+            </div>
+            <div class="titleDiv" hidden>
+                <span class="title1">SiteMark Documentation</span>
+                <span class="title2">Original Description and Requirements (Part 1 - 20 marks)</span>
+                <p class="title4">
+                    For this project, you will be using MySQL and PHP to develop a web application that provides 
+                    an online bookmarking service to users on the Internet. The requirements are as follows:
+                </p>
+                <ol class="title4">
+                    <li>
+                        The web application should have a good thoughtful interface, with menus and navigation 
+                        buttons as needed.
+                    </li>
+                    <li>
+                        It should have a name or logo shown across all the pages.
+                    </li>
+                    <li>
+                        It should begin with a welcome or greeting message and a list of ten most popular 
+                        websites that people have bookmarked.
+                    </li>
+                    <li>
+                        Once signed in, a list of bookmarks should be displayed, and the user can browse any web 
+                        site in the list in a new browser tab or window by clicking the URL.
+                    </li>
+                    <li>
+                        The user will also be able to add new websites to the list and edit and delete any of 
+                        the existing ones in the list;
+                    </li>
+                    <li>
+                        When adding or editing, user input needs to be validated using JavaScript, to make sure 
+                        the URLs are correct and active.
+                    </li>
+                </ol>
+                <p class="title4">
+                    Save Part 1 files in the directory TMA2/part1.
+                </p>
+                
+                <hr />
+                
+                <span class="title2">Interpretation of Description and Requirements</span>
+                <p class="title4">
+                    
+                </p>
+
+                <hr />
+
+                <span class="title2">Analysis and Design of the Web Application</span>
+                <p class="title4">
+                    
+                </p>
+
+                <hr />
+
+                <span class="title2">Documentation of Implementation</span>                
+                <p class="title4">
+                    
+                </p>
+                
+                <hr />
+
+                <span class="title2">Setup, Run, and Use Guide</span>
+                <p class="title4">
+                    
+                </p>
+
+                <hr />
+
+                <span class="title2">Resources</span>
+                <p class="title4">
+                    
+                </p>
+                <ul class="title4">
+                    <li>
+                        <a href=https://stackoverflow.com/questions/36730769/nesting-multiple-xslt-templates-with-recursion>
+                            Recursive XML reading in XSLT
+                        </a>
+                    </li>
+                    <li>
+                        <a href=http://www.utilities-online.info/xsdvalidation/#.Wd2GNltSxQK>
+                            XML and XSD Validator
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="titleDiv" hidden>
+                <span class="title1">__________ Documentation</span>
+                <span class="title2">Original Description and Requirements (Part 2 - 70 marks)</span>
+                <p class="title4">
+                    In this part of the assignment, you are required to develop a small-scale online learning management 
+                    system that can be used to deliver online courses to learners.
+                </p>
+                <p class="title4">
+                    To that end, you will have to think about what these online courses are, how they can they be developed 
+                    and how they should be stored on the web server, how they can be retrieved from the server, how they 
+                    should be delivered to a web browser, and then rendered/presented properly on the web browser.
+                </p>
+                <p class="title4">
+                    The development of online courses is the collaboration of efforts of subject matter experts (SMEs) and 
+                    experts in computing and web technology. It is very common that those SMEs do not know much about 
+                    computing, and don’t know how to use HTML and other web technologies needed to present an attractive 
+                    course, but they should be quite comfortable with languages and terms used in education. So, the 
+                    first technical step you need to take is to design a SME-friendly language for marking up educational 
+                    materials, EML in our term (just another XML like you created for marking up your resume), for the 
+                    SMEs to use. The EML you design may be a comprehensive one for marking up the contents for an entire 
+                    course, or several languages in small scale for different components of a course. For example, you may 
+                    have an EML for a lesson/lecture delivered in just a teaching/learning session, an EML for marking up 
+                    quizzes, and an EML for marking up assignments, etc. You may look at some existing languages by 
+                    searching for educational markup language in Google or other search engine.
+                </p>
+                <p class="title4">
+                    After SMEs (for this assignment, you will be the SME) have written the course contents in your EML(s), 
+                    the documents must be stored on the server before they can be delivered to the learners on the web. You 
+                    may think that you can save each of the documents written in your EML as a file, like the resume file 
+                    you wrote for assignment 1, but this is not practical. Files may work when there is just one or only a 
+                    few learning documents, butwhen there are many, as happens in practical situations, the documents become 
+                    unmanageable. That's why we need a database.
+                </p>
+                <p class="title4">
+                    The next technical step is to design the database table or tables. Over the years, I have seen different 
+                    designs from students in the course. The most simple and straightforward one is to have a single table. 
+                    In the table each row contains information for a lesson or quiz, including the actual content written in 
+                    your EML. To make the learning contents retrievable and manageable, you will need fields to identify the 
+                    course and the unit the lesson or quiz belongs to. You may also keep the details of the courses and units 
+                    in the same table for the purpose of this assignment project, though you wouldn't do that in practice 
+                    because it is really inefficient; in a real world situation is to have separate tables to store information 
+                    about courses and units.
+                </p>
+                <p class="title4">
+                    To deliver the course contents (lessons and quizzes in our context), you will need to navigate through the 
+                    database to find the right lesson or quiz that the learner has requested, and them retrieve the actual 
+                    content in EML. For the content to be properly rendered or presented on learner's browser, you need to 
+                    translate the content in your EML to HTML. We call this process parsing. Instead of using XSLT as you 
+                    did for the first assignment, parsing EML to HTML needs to be done with PHP. So, the last important technical 
+                    step for this project is to write a parser in PHP.
+                </p>
+                <p class="title4">
+                    When doing this project, or any project for the assignments, you must take a system approach. That's why 
+                    students are expected to have completed comp361 or a similar course on system analysis and design before 
+                    taking this course.
+                </p>
+                <p class="title4">
+                    The distribution of marks is as follows:
+                </p>
+                <ol class="title4">
+                    <li>
+                        <b>System analysis and design – 10 marks.</b>
+                        <br />
+                        Your analysis and design need to be presented in the assignment report. The details should include, but 
+                        not be limited to, analysis of requirements, data flow, functional modules of learning management, the 
+                        relationships of these modules, and system layout within browser’s window.
+                    </li>
+                    <li>
+                        <b>Educational Markup language – 10 marks.</b>
+                        <br />
+                        Your educational markup language should be presented in the assignment report by showing all the tags and 
+                        explanation of their intended purpose with examples.
+                    </li>
+                    <li>
+                        <b>Database design – 10 marks.</b>
+                        <br />
+                        Database is used to store information about courses, units, lessons, quizzes, learners, and other learning 
+                        object such as images, audio and video files, as well as actual learning contents written in your educational 
+                        markup language. When designing database tables, you have to think about how that information and those actual 
+                        data will be kept on the server.
+                    </li>
+                    <li>
+                        <b>Parser – 10 marks.</b>
+                        <br />
+                        On the server side, the parser written in PHP parses the learning contents written in your EML taken from 
+                        database into HTML documents that can be rendered by web browsers. Don’t be afraid of writing a parser for 
+                        this purpose! It can be as simple as using some PHP regular expression functions to do pattern matching 
+                        and string replacement.
+                    </li>
+                    <li>
+                        <b>Learning Contents – 10 marks.</b>
+                        <br />
+                        Since you have written three tutorials or lessons for part 2 of your first assignment, you may take the 
+                        contents from there, and rewrite them in your EML. You must have enough contents in your system, to make 
+                        it a real web-based system.
+                    </li>
+                    <li>
+                        <b>Quizzes – 10 marks.</b>
+                        <br />
+                        There should be an online quiz for each teaching lesson.
+                    </li>
+                    <li>
+                        <b>Implementation – 10 marks.</b>
+                        <br />
+                        The system should be implemented and deployed on a web server, and accessible for your tutor to 
+                        evaluate. The implementation includes the overall look-and-feel of the learning management system, 
+                        essential components of such a web-based system, and the functionalities of online learning management.
+                    </li>
+                </ol>
+                <p class="title4">
+                    Save all files related to Part 2 in the directory TMA2/part2.
+                </p>
+                <p class="title4">
+                    You must test your web applications developed for the assignment on your own server before you submit them 
+                    and make the websites hosting the assignments and applications accessible for your tutor to evaluate. For 
+                    your personal protection you should not put your student ID in any of the documents if hosted on an 
+                    unprotected web site. After your tutor has finished the evaluation, you must remove all the assignment-related 
+                    documents from the web site.
+                </p>
+                <p class="title4">
+                    You must submit all the files under TMA2 in a zip package through Moodle.
+                </p>
+                <hr />
+                
+                <span class="title2">Interpretation of Description and Requirements</span>
+                <p class="title4">
+                    My interpretation of the requirements is that a web application is created to teach 
+                    users about the basics of the technologies discussed in Units 1 through 3, using the
+                    knowledge gained from these units (HTML, CSS, JavaScript, XML, and Ajax). I understand the
+                    "banner to show off your work" as a bar on the webpage that will show the rest of the
+                    applications in the network of web applications, including this web application. As well,
+                    the banner should contain buttons or some sort of access to different sections of the tutorial 
+                    information, as well as the quizzes. The welcome page to greet the users just displays what the
+                    web application is about, and leads the user to the tutorials web application. Next, it looks
+                    like what is expected from the application is that there are different sections that cover 
+                    different units in the text, where there are at least 3 tutorials, covering some of the material
+                    from Units 1, 2, and 3. As well, there should be a minimum of five page-structured elements and
+                    six input types. These should be taught in the tutorials. As well, each tutorial should have a
+                    quiz at the end of the quiz. The quiz should also be accessible on through navigation buttons,
+                    so the same quiz should be accessible through either the end of the quiz or through the 
+                    navigation menu. As well, the quiz system should be able to output the number of correct answers,
+                    as well as the percentage correct. It doesn't talk about things such as showing the correct answer
+                    and incorrect answer if the user selected the wrong answer, or randomizing the questions or
+                    multiple choice questions, although these are definitely good enhancements for the future. Finally,
+                    the quiz system should be created so questions could be easily added, removed, or edited, which
+                    tells me that they want the place containing the information of the questions/answers to be
+                    separate from the code. As well, all of the styling should be external for ease of CSS reuse and
+                    having a consistent UI.
+                </p>
+
+                <hr />
+
+                <span class="title2">Analysis and Design of the Web Application</span>
+                <p class="title4">
+                    The analysis of this web application is that the code should be able to display different sections
+                    of information for different units. The &quot;banner&quot; will be split into two sections, where
+                    one banner that spans the top of the page will provide links to the other applications in the network.
+                    There will be a vertical section of the banner that spans the left side of the screen, which will
+                    display navigation buttons related to the specific web application. In this case, the web application
+                    is Learn The Web. Thus, there will be buttons on the side banner to navigate to different
+                    units and to access different quizzes. The welcome page of the application will be the page that is
+                    accessed first whenever a user tries to navigate to the Learn The Web application. This page will
+                    contain some general information about the application including the purpose and what the users should 
+                    be getting out of the application. This web page allow the users to access the application, which will 
+                    be done using a button. Since there are tutorial sections and quiz sections, and that the quizzes should 
+                    be accessible through the quizzes, then the same quiz should be accessed through a button on the navigation 
+                    menu and from the bottom of the quiz. The button at the bottom of the quiz should link to the same spot 
+                    as the navigation button. As well, it seems that the quiz system should be easily modified, which seems 
+                    most easily done through containing all of the tutorial information and quiz information in XML. The different 
+                    units will be contained in XML tags, which will then be converted into the appropriate HTML elements through 
+                    the use of JavaScript. This is designed to make both the tutorials and quizzes easy to modify.
+                </p>
+
+                <hr />
+
+                <span class="title2">Documentation of Implementation</span>                
+                <p class="title4">
+                    For the implementation, the top banner was implemented as a div containing an unordered list, where the 
+                    aesthetics was modified through an external CSS stylesheet. The list contains links (&lt;a&gt; tags) 
+                    containing a reference to the other web applications. The side navigation menu and buttons are contained 
+                    in a div, taking up 20% of the screen. First, the XML data is read from a file, which is structured for 
+                    tutorial data as follows: 
+                </p>
+                <ul class="title4">
+                    <li>&lt;units&gt; tag contains all of the other tags and information.</li>
+                    <li>
+                        &lt;tutorial name=&quot;&quot;&gt; tag contains a single unit, where the &quot;name&quot; attribute is the name of 
+                        the name of the button on the navigation menu.
+                    </li>
+                    <li>
+                        &lt;section title=&quot;&quot;&gt; tag contains multiple subsectionssections for the tutorial. The &quot;title&quot; 
+                        attribute is displayed at the top of the each tutorial unit and quiz as a &lt;h1&gt; element.
+                    </li>
+                    <li>
+                        &lt;subsection title=&quot;&quot;&gt; tag is contained within a section tag and contains a subsection 
+                        of the unit, such as a particular part of the unit. The &quot;title&quot; attribute contains the name of the subsection 
+                        as a &lt;h2&gt; element.
+                    </li>
+                    <li>
+                        &lt;paragraph&gt; tag is contained within a subsection tag, where multiple paragraph tags can appear within 
+                        one subsection text information or html elements that will be displayed in a &lt;p&gt; paragraph element in HTML.
+                    </li>
+                    <li>
+                        &lt;image src=&quot;&quot;&gt; tag is used to render an image in HTML. The &quot;src&quot; attribute is used to provide the  
+                        path to the image file, and the text within the &lt;image&gt;&lt;/&gt; tags is the backup text if the image 
+                        fails to render.
+                    </li>
+                </ul>
+                <p class="title4">
+                    For the quiz data, it follows a similar format, and is contained within the same XML file as the Tutorial data. 
+                    The quiz information is also under the &lt;units&gt; tag. The rest of the tags are contained within it as follows:  
+                </p>
+                <ul class="title4">
+                    <li>
+                        &lt;quiz name=&quot;&quot;&gt; tag contains a quiz for a unit, where the &quot;name&quot; attribute is the name of 
+                        the name of the button on the navigation menu.
+                    </li>
+                    <li>
+                        &lt;section title=&quot;&quot;&gt; tag contains multiple questions for the tutorial. The &quot;title&quot; attribute
+                        is displayed at the top of the each tutorial unit and quiz as a &lt;h1&gt; element.
+                    </li>
+                    <li>
+                        &lt;question title=&quot;&quot;&gt; tag is contained within a section tag and contains a single question  
+                        for the unit. The &quot;title&quot; attribute contains the text for the question, created as an &lt;h3&gt; element.
+                    </li>
+                    <li>
+                        &lt;answer name=&quot;&quot; correct=&quot;&quot;&gt; tag is contained within a question tag, where multiple answer tags 
+                        can appear within one question tag. These represent the possible answers to the question. The &quot;name&quot; attribute 
+                        defines the group of radio buttons for the question. The &quot;correct&quot; attribute defines if that answer is correct 
+                        or not. A &#42; inside the &quot;correct&quot; attribute denotes the correct answer
+                    </li>
+                </ul>
+                <p class="title4">
+                    The navigation menu and information work by showing and hiding specific information on the main-content div depending on 
+                    what button is pressed in the aside div. Pressing a button on the navigation menu will remove the information in the 
+                    main-content div, read the stored XML information (from reading the XML file once and storing the data into a variable) 
+                    and displaying the appropriate information from the selected information. There is JavaScript code that is used to recursively 
+                    parse the XML tags and create the appropriate HTML elements, as defined in the above XML structure. For linking the button 
+                    at the bottom of the quiz to the navigation button to access the same quiz, the button is dynamically created when the data 
+                    is loaded into the main-content div. If the button is pressed, the tabs in the navigation menu will change to the appropriate 
+                    quiz tab that follows the chapter. Then, the JavaScript program will detect that the user is now on a quiz page and it will 
+                    clear the main-content div, load the quiz information, and dynamically add a button to submit the quiz. When the submit button 
+                    is pressed, the program will check the position of the answers that the user selected, compare it with the answers in the XML 
+                    file, and return the results of how much the user got correct and their percent correct.
+                </p>
+
+                <hr />
+
+                <span class="title2">Setup, Run, and Use Guide</span>
+                <p class="title4">
+                    The setup required for this application requires that the WelcomeToLearnTheWeb.html, LearnTheWeb.html, LearnTheWeb.js, 
+                    and Units.xml files exist in the part2 folder. As well, ensure that there are .png images within the part2 folder, as they are 
+                    used to display some images throughout the tutorial. To run the program, simply access the WelcomeToLearnTheWeb.html file directly 
+                    or through the network of web applications. Proceed into the application and read the material in each unit. When the user 
+                    has read the information, they can choose to take the quiz at the bottom of the unit, or move on and access the quiz at anytime 
+                    on the side navigation menu or at the bottom of the quiz. In the quiz, answer each question and press submit to see the final score.
+                </p>
+            </div>
+        </div>
+    </body>
+</html>
