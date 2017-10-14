@@ -18,9 +18,9 @@ body {
     font-family: Courier New, Courier, monospace;
 }
 
-.login {
+.loginTitle {
     text-align: center;
-    margin-top: 150px;
+    margin: 0;
 }
 
 .title2 {
