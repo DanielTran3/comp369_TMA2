@@ -33,6 +33,7 @@
             <button id="defaultOpen" class="active tablinks">Assignment #2</button>
             <button class="tablinks">SiteMark Documentation</button>
             <button class="tablinks">________ Documentation</button>
+            <button class="tablinks">Notes for the Instructor</button>
         </div>
 
         <div class="main-content mainScreen">
@@ -116,7 +117,7 @@
                 </p>
                 <ul class="title4">
                     <li>
-                        <a href=https://stackoverflow.com/questions/36730769/nesting-multiple-xslt-templates-with-recursion>
+                        <a href="https://www.w3schools.com/sql/sql_unique.asp">
                             Recursive XML reading in XSLT
                         </a>
                     </li>
@@ -385,6 +386,32 @@
                     on the side navigation menu or at the bottom of the quiz. In the quiz, answer each question and press submit to see the final score.
                 </p>
             </div>
+        </div>
+        <div class="titleDiv" hidden>
+            <span class="title1">Note for the Instructor</span>
+            <p class="title4">
+                mysql -h localhost -u root
+                USE mysql;
+                create user 'iw3htp'@'localhost' identified by 'password';
+                grant select, insert, update, delete, create, drop, references,
+                execute on *.* to 'iw3htp'@'localhost';
+                mysql -h localhost -u iw3htp -p
+
+                ---
+
+                CREATE DATABASE users;
+                USE users;
+
+                CREATE TABLE credentials (
+                    username VARCHAR(30) NOT NULL , 
+                    password VARCHAR(30) NOT NULL,
+                    PRIMARY KEY(username));
+                CREATE TABLE bookmarks (
+                    username VARCHAR(30) NOT NULL , 
+                    url VARCHAR(30) NOT NULL,
+                    FOREIGN KEY (username) REFERENCES credentials(username),
+                    UNIQUE (username, url));
+            </p>
         </div>
     </body>
 </html>

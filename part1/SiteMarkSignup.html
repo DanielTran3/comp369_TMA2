@@ -13,19 +13,21 @@
         <title>SiteMark Signup</title>
     </head>
     <body>
-        <div class="containerDiv">
-            <h1 class="title1 loginTitle">SiteMark Signup</h1>    
-            <div class="innerDiv" style="margin-top: 50px;">
-                <label class="floatLeftLabel">Username</label>
-                <input type="text" class="floatRightInput largeInputBox"></input>
+        <form method="post" action="Signup.php">
+            <div class="containerDiv">
+                <h1 class="title1 loginTitle">SiteMark Signup</h1>    
+                <div class="innerDiv" style="margin-top: 50px;">
+                    <label class="floatLeftLabel">Username</label>
+                    <input type="text" name="signupUsername" class="floatRightInput largeInputBox"></input>
+                </div>
+                <div class="innerDiv">
+                    <label class="floatLeftLabel">Password</label>
+                    <input type="password" name="signupPassword" class="floatRightInput largeInputBox"></input>
+                </div>
+                <div class="innerDiv">
+                    <button type="submit" class="whiteButton">Signup</input>
+                </div>
             </div>
-            <div class="innerDiv">
-                <label class="floatLeftLabel">Password</label>
-                <input type="text" class="floatRightInput largeInputBox"></input>
-            </div>
-            <div class="innerDiv">
-                <button type="submit" class="whiteButton">Signup</input>
-            </div>
-        </div>
+        </form>
     </body>
 </html>

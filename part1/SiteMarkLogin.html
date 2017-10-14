@@ -13,19 +13,21 @@
         <title>SiteMark Login</title>
     </head>
     <body>
-        <div class="containerDiv">
-            <h1 class="title1 loginTitle">SiteMark Login</h1>
-            <div class="innerDiv" style="margin-top: 50px;">
-                <label class="floatLeftLabel">Username</label>
-                <input type="text" class="floatRightInput largeInputBox"></input>
-            </div>
-            <div class="innerDiv">
-                <label class="floatLeftLabel">Password</label>
-                <input type="text" class="floatRightInput largeInputBox"></input>
-            </div>
-            <div class="innerDiv">
-                <button type="submit" class="whiteButton">Login</input>
-            </div>
+        <form method="post" action="login.php">
+            <div class="containerDiv">
+                <h1 class="title1 loginTitle">SiteMark Login</h1>
+                <div class="innerDiv" style="margin-top: 50px;">
+                    <label class="floatLeftLabel">Username</label>
+                    <input type="text" class="floatRightInput largeInputBox"></input>
+                </div>
+                <div class="innerDiv">
+                    <label class="floatLeftLabel">Password</label>
+                    <input type="text" class="floatRightInput largeInputBox"></input>
+                </div>
+                <div class="innerDiv">
+                        <button type="submit" class="whiteButton">Login</input>
+                </div>
+            </form>
         </div>
     </body>
 </html>
