@@ -15,14 +15,15 @@
                   }
 
                   // open Products database
-                  if ( !mysql_select_db( "products", $database ) )
-                  die( "Could not open products database </body></html>" );
+                  if (!mysql_select_db( "users", $database)) {
+                        die("Could not open products database </body></html>");
+                  }
 
                   // query Products database
-                  if ( !( $result = mysql_query( $query, $database ) ) ) 
+                  if (!($result = mysql_query( $query, $database))) 
                   {
-                  print( "<p>Could not execute query!</p>" );
-                  die( mysql_error() . "</body></html>" );
+                        print( "<p>Could not execute query!</p>" );
+                        die( mysql_error() . "</body></html>" );
                   } // end if
 
                   mysql_close( $database );
