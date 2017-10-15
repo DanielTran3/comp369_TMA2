@@ -192,6 +192,20 @@ div.aside > button:hover {
     float: left;
     line-height: 35px;
 }
-.floatRightInput {
+
+.floatRight {
     float: right;
+}
+
+.floatLeft {
+    float: left;
+}
+
+#bookmarkDiv {
+    width: 100%;
+    border: 1px solid black;
+}
+
+.errorTextBox {
+    border: 1px solid red;
 }

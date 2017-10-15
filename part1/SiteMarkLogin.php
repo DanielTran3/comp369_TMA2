@@ -13,21 +13,28 @@
         <title>SiteMark Login</title>
     </head>
     <body>
+        <?php
+            echo $_COOKIE["user"];
+            echo $_COOKIE["pass"];
+            if (isset($_COOKIE["user"]) && isset($_COOKIE["pass"])) {
+                header("Location:SiteMark.php");
+            }
+        ?>
         <form method="post" action="login.php">
             <div class="containerDiv">
                 <h1 class="title1 loginTitle">SiteMark Login</h1>
                 <div class="innerDiv" style="margin-top: 50px;">
                     <label class="floatLeftLabel">Username</label>
-                    <input type="text" class="floatRightInput largeInputBox"></input>
+                    <input type="text" name="loginUsername" class="floatRight largeInputBox"></input>
                 </div>
                 <div class="innerDiv">
                     <label class="floatLeftLabel">Password</label>
-                    <input type="text" class="floatRightInput largeInputBox"></input>
+                    <input type="password" name="loginPassword" class="floatRight largeInputBox"></input>
                 </div>
                 <div class="innerDiv">
-                        <button type="submit" class="whiteButton">Login</input>
+                    <button type="submit" class="whiteButton">Login</input>
                 </div>
-            </form>
-        </div>
+            </div>
+        </form>
     </body>
 </html>
