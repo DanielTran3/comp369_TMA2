@@ -1,3 +1,5 @@
+var selectedBookmark;
+
 function initListeners() {
     var addButton = document.getElementById("addBookmarkButton");
     var editButton = document.getElementById("editBookmarkButton");
@@ -15,7 +17,7 @@ function initListeners() {
 }
 
 function AddBookmark() {
-    
+
     // var bookmarkDiv = document.getElementById("bookmarkDiv");
     // var newBookmarkDiv = document.createElement("div");
     // newBookmarkDiv.id = "newBookmarkDiv";
@@ -86,4 +88,12 @@ function EditBookmark() {
 
 function DeleteBookmark() {
 
+}
+
+function SelectBookmark(bookmark) {
+    var prevSelectedBookmark = document.getElementsByClassName("selectedBookmark");
+    for (var i = 0; i < prevSelectedBookmark.length; i++) {
+        prevSelectedBookmark[i].className -= " selectedBookmark";
+    }
+    bookmark.className += " selectedBookmark";
 }

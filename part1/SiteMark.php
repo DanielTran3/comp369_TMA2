@@ -8,6 +8,9 @@
         <script type="text/javascript">
             window.onload = function () {
                 initListeners();
+                $('.bookmarkListElement').click(function(){
+                    SelectBookmark(this);
+                });
             }
         </script>
         <title>SiteMark</title>
@@ -20,7 +23,7 @@
                 header("Location:SiteMarkLogin.php");
             }
 
-            $query = "SELECT url FROM bookmarks WHERE username='$_COOKIE[user]'";
+            $query = "SELECT url, name FROM bookmarks WHERE username='$_COOKIE[user]'";
 
             // Connect to MySQL
             if (!($database = mysql_connect("localhost", "iw3htp", "password"))) {
@@ -44,16 +47,23 @@
         <div id="bookmarkDiv">
             <ol>
                 <?php
-                    while($row = mysql_fetch_row($result)) {
-                        foreach($row as $key => $value) {
-                            print("<li>$value</li>");
-                        }
+                    while($row = mysql_fetch_assoc($result)) {
+                        $urlVal = $row["url"];
+                        $nameVal = $row["name"];
+                        print("<li class='bookmarkListElement'><a href='$urlVal'>$nameVal</a></li>");
                     }
                 ?>
             </ol>
         </div>
-        <input id="newBookmarkTextBox" type="text" class="largeInputBox" style="margin-top:50px;"></input>
         <form method="post" action="AddBookmark.php">    
+            <div class="innerDiv" style="width: 350px;">
+                <span class="floatLeft">Bookmark Name: </span>
+                <input id="newBookmarkNameTextBox" name="newBookmarkName" type="text" class="largeInputBox floatRight"></input>        
+            </div>
+            <div class="innerDiv" style="width: 350px;">
+                <span class="floatLeft">URL: </span>
+                <input id="newBookmarkTextBox" name="newBookmarkURL" type="text" class="largeInputBox floatRight"></input>
+            </div>
             <button id="addBookmarkButton" type="submit" class="whiteButton" style="margin-top:0px;">Add Bookmark</button>
         </form>
         <form method="post" action="editBookmark.php">

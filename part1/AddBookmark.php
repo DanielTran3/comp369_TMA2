@@ -5,8 +5,10 @@
         <link rel = "stylesheet" type="text/css" href="../shared/tma2_stylesheet.css" />
         <body>
             <?php
-                $user = $_POST["signupUsername"];
-                $query = "INSERT INTO bookmarks (username, url, hits) VALUES ('$_COOKIE['user']', '$pass', '0')";
+                $url = $_POST["newBookmarkURL"];
+                $name = $_POST["newBookmarkName"];
+                $user = $_COOKIE["user"];
+                $query = "INSERT INTO bookmarks (username, url, name, hits) VALUES ('$user', '$url', '$name', '0')";
 
                 // Connect to MySQL
                 if (!($database = mysql_connect("localhost", "iw3htp", "password"))) {
@@ -24,14 +26,6 @@
                     print( "<p>Could not execute query!</p>" );
                     die( mysql_error() . "</body></html>" );
                 } // end if
-
-                if (mysql_num_rows($result) == 0) {
-                    print("<span class='title4' style='margin-top: 100px'>Invalid Username and/or Password</span>");
-                    print("<form method='post' action='SiteMarkLogin.php'>");
-                    print("<button class='whiteButton' type='submit' style='margin-top:0px;'>Try Again</button>");
-                    print("</form>");
-                    die("</body></html>");                    
-                }
                 mysql_close( $database );
                 header("Location:SiteMark.php");
             ?>

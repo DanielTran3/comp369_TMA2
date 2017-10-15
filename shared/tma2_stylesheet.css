@@ -209,3 +209,16 @@ div.aside > button:hover {
 .errorTextBox {
     border: 1px solid red;
 }
+
+li:hover {
+    background-color: lightgray;
+    -o-transition: background-color 0.25s linear; /* opera */
+    -ms-transition: background-color 0.25s linear; /* IE 10 */
+    -moz-transition: background-color 0.25s linear; /* Firefox */
+    -webkit-transition: background-color 0.25s linear; /*safari and chrome */
+    transition: background-color 0.25s linear; /* vendorless fallback */
+}
+
+.selectedBookmark {
+    background-color: slategray;
+}
