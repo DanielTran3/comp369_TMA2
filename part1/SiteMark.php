@@ -50,7 +50,7 @@
                     while($row = mysql_fetch_assoc($result)) {
                         $urlVal = $row["url"];
                         $nameVal = $row["name"];
-                        print("<li class='bookmarkListElement'><a href='$urlVal'>$nameVal</a></li>");
+                        print("<li class='bookmarkListElement'><p href='$urlVal' class='blueText' onclick='OpenURL(this);'>$nameVal</p></li>");
                     }
                 ?>
             </ol>
@@ -66,10 +66,16 @@
             </div>
             <button id="addBookmarkButton" type="submit" class="whiteButton" style="margin-top:0px;">Add Bookmark</button>
         </form>
-        <form method="post" action="editBookmark.php">
+        <form method="post" action="EditBookmark.php">
+            <input type="hidden" name="oldBookmarkName"></input>
+            <input type="hidden" name="oldBookmarkURL"></input>
+            <input type="hidden" name="editedBookmarkName" value="testtttt"></input>
+            <input type="hidden" name="editedBookmarkURL"></input>
             <button id="editBookmarkButton" type="submit" class="whiteButton" style="margin-top:0px;">Edit Bookmark</button>            
         </form>
-        <form method="post" action="deleteBookmark.php">
+        <form method="post" action="DeleteBookmark.php">
+            <input type="hidden" name="bookmarkNameToDelete"></input>
+            <input type="hidden" name="bookmarkURLToDelete"></input>            
             <button id="deleteBookmarkButton" type="submit" class="whiteButton" style="margin-top:0px;">Delete Bookmark</button>        
         </form>
     </body>

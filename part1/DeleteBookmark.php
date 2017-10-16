@@ -9,10 +9,11 @@
                     header("Location:SiteMarkLogin.php");
                 }
 
-                $url = $_POST["newBookmarkURL"];
-                $name = $_POST["newBookmarkName"];
                 $user = $_COOKIE["user"];
-                $query = "INSERT INTO bookmarks (username, url, name, hits) VALUES ('$user', '$url', '$name', '0')";
+                $bookmarkName = $_POST["bookmarkNameToDelete"];
+                $bookmarkURL = $_POST["bookmarkURLToDelete"];
+
+                $query = "DELETE FROM bookmarks WHERE username = '$user' AND url = '$bookmarkURL' AND name = '$bookmarkName'";
 
                 // Connect to MySQL
                 if (!($database = mysql_connect("localhost", "iw3htp", "password"))) {

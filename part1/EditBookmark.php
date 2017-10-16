@@ -9,10 +9,18 @@
                     header("Location:SiteMarkLogin.php");
                 }
 
-                $url = $_POST["newBookmarkURL"];
-                $name = $_POST["newBookmarkName"];
+                $url = $_POST["editedBookmarkURL"];
+                $name = $_POST["editedBookmarkName"];
+                $oldURL = $_POST["oldBookmarkURL"];
+                $oldName = $_POST["oldBookmarkName"];
                 $user = $_COOKIE["user"];
-                $query = "INSERT INTO bookmarks (username, url, name, hits) VALUES ('$user', '$url', '$name', '0')";
+
+                print( "<p>editedURL: $url</p>" );
+                print( "<p>editedName: $name</p>" );
+                print( "<p>oldURL: $oldURL</p>" );
+                print( "<p>oldName: $oldName</p>" );
+
+                $query = "UPDATE bookmarks SET url = '$url', name = '$name' WHERE username = '$user' AND url = '$oldURL' AND name = '$oldName'";
 
                 // Connect to MySQL
                 if (!($database = mysql_connect("localhost", "iw3htp", "password"))) {
@@ -31,7 +39,7 @@
                     die( mysql_error() . "</body></html>" );
                 } // end if
                 mysql_close( $database );
-                header("Location:SiteMark.php");
+                // header("Location:SiteMark.php");
             ?>
         </body>
     </head>

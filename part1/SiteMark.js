@@ -8,10 +8,10 @@ function initListeners() {
     addButton.addEventListener("click", function() {
         AddBookmark();
     });
-    addButton.addEventListener("click", function() {
+    editButton.addEventListener("click", function() {
         EditBookmark();
     });
-    addButton.addEventListener("click", function() {
+    deleteButton.addEventListener("click", function() {
         DeleteBookmark();
     });
 }
@@ -83,7 +83,16 @@ function StoreBookmark(urlString) {
 }
 
 function EditBookmark() {
+    var oldBookmarkName = document.getElementsByName("oldBookmarkName")[0];
+    var oldBookmarkURL = document.getElementsByName("oldBookmarkURL")[0];
+    // oldBookmarkName.value = bookmark.children[0].innerHTML;
+    // oldBookmarkURL.value = bookmark.children[0].attributes[0].nodeValue;
 
+
+    var editedBookmarkName = document.getElementsByName("editedBookmarkName")[0];
+    var editedBookmarkURL = document.getElementsByName("editedBookmarkURL")[0];
+    editedBookmarkName.value = document.getElementById("newBookmarkNameTextBox").value;
+    editedBookmarkURL.value = document.getElementById("newBookmarkTextBox").value;
 }
 
 function DeleteBookmark() {
@@ -96,4 +105,22 @@ function SelectBookmark(bookmark) {
         prevSelectedBookmark[i].className -= " selectedBookmark";
     }
     bookmark.className += " selectedBookmark";
+
+    var oldBookmarkName = document.getElementsByName("oldBookmarkName")[0];
+    var oldBookmarkURL = document.getElementsByName("oldBookmarkURL")[0];
+
+    var bookmarkNameToDelete = document.getElementsByName("bookmarkNameToDelete")[0];
+    var bookmarkURLToDelete = document.getElementsByName("bookmarkURLToDelete")[0];
+
+    oldBookmarkName.value = bookmark.children[0].innerHTML;
+    oldBookmarkURL.value = bookmark.children[0].attributes[0].nodeValue;
+
+    bookmarkNameToDelete.value = bookmark.children[0].innerHTML;
+    bookmarkURLToDelete.value = bookmark.children[0].attributes[0].nodeValue;
+}
+
+function OpenURL(url) {
+    var urlString = url.attributes[0].nodeValue;
+    var newTab = window.open(urlString, '_blank');
+    newTab.focus();
 }

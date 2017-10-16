@@ -222,3 +222,9 @@ li:hover {
 .selectedBookmark {
     background-color: slategray;
 }
+
+.blueText {
+    color: blue;
+    cursor: pointer;
+    display: inline-block;
+}
