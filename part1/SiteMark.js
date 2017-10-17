@@ -117,6 +117,12 @@ function SelectBookmark(bookmark) {
 
     bookmarkNameToDelete.value = bookmark.children[0].innerHTML;
     bookmarkURLToDelete.value = bookmark.children[0].attributes[0].nodeValue;
+
+    var newBookmarkNameTextBox = document.getElementById("newBookmarkNameTextBox");
+    var newBookmarkTextBox = document.getElementById("newBookmarkTextBox");
+
+    newBookmarkNameTextBox.value = bookmark.children[0].innerHTML;
+    newBookmarkTextBox.value = bookmark.children[0].attributes[0].nodeValue;
 }
 
 function OpenURL(url) {

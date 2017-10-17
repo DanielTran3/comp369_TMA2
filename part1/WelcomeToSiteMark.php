@@ -44,7 +44,7 @@
                             }
                             $urlVal = $row["url"];
                             $nameVal = $row["name"];
-                            print("<li class='bookmarkListElement'><a href='$urlVal'>$nameVal</a></li>");
+                            print("<li class='bookmarkListElement'><a href='http://$urlVal'>$nameVal</a></li>");
                             $numBookmarks++;
                         }
                     ?>

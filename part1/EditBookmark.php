@@ -15,11 +15,6 @@
                 $oldName = $_POST["oldBookmarkName"];
                 $user = $_COOKIE["user"];
 
-                print( "<p>editedURL: $url</p>" );
-                print( "<p>editedName: $name</p>" );
-                print( "<p>oldURL: $oldURL</p>" );
-                print( "<p>oldName: $oldName</p>" );
-
                 $query = "UPDATE bookmarks SET url = '$url', name = '$name' WHERE username = '$user' AND url = '$oldURL' AND name = '$oldName'";
 
                 // Connect to MySQL
@@ -39,7 +34,7 @@
                     die( mysql_error() . "</body></html>" );
                 } // end if
                 mysql_close( $database );
-                // header("Location:SiteMark.php");
+                header("Location:SiteMark.php");
             ?>
         </body>
     </head>
