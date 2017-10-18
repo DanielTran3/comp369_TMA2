@@ -68,15 +68,57 @@ function VerifyURL() {
     var expression = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,4}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g;
     var regex = new RegExp(expression);
     
-    var errorText = document.getElementById("invalidURL");
+    var invalidURL = document.getElementById("invalidURL");
+    var inactiveURL = document.getElementById("inactiveURL");
     if (urlString.match(regex)) {
-        errorText.hidden = true;
-        newBookmarkTextBox.style.borderColor = "black";        
-        return true;
+        var request = new XMLHttpRequest();  
+        // Add CORS to allow cross-origin requests and allow requests from localhost to http
+        // request.open('GET', "http://cors-anywhere.herokuapp.com/" + urlString, false);
+        // request.send();        
+        // request.onreadystatechange = function(){
+        //     if (request.readyState === 4){
+        //         if (request.status === 404) {  
+        //             alert("FAILED " + urlString);                
+        //             // page does not exist
+        //             invalidURL.hidden = true;
+        //             inactiveURL.hidden = false;
+        //             return false;
+        //         }
+        //         else {
+        //             alert("WORKED " + urlString);
+        //             // page exists
+        //             invalidURL.hidden = true;
+        //             inactiveURL.hidden = true;
+        //             newBookmarkTextBox.style.borderColor = "black";
+        //             return true;
+        //         }
+        //     }
+        // };
+
+        $.ajax({
+            type: 'HEAD',
+            url: "http://cors-anywhere.herokuapp.com/" + urlString,
+            success: function() {
+                alert("WORKED" + urlString);
+                // page exists
+                invalidURL.hidden = true;
+                inactiveURL.hidden = true;
+                newBookmarkTextBox.style.borderColor = "black";
+                return true;
+            },
+            error: function() {
+                alert("FAILED " + urlString);                
+                // page does not exist
+                invalidURL.hidden = true;
+                inactiveURL.hidden = false;
+                return false;
+            }
+        });
     }
 
     else {
-        errorText.hidden = false;        
+        inactiveURL.hidden = true;
+        invalidURL.hidden = false;        
         newBookmarkTextBox.style.borderColor = "red";
         return false;
     }

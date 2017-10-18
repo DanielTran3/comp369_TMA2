@@ -68,6 +68,7 @@
                 <br />
                 <br />
                 <span id="invalidURL" class="errorText" style="margin-top:10px" hidden>Please input a URL with correct formatting. <br /> (ex. http://www.google.ca)</span>
+                <span id="inactiveURL" class="errorText" style="margin-top:10px" hidden>Please input an active URL with correct formatting. <br /> (ex. http://www.google.ca)</span>
             </div>
             <button id="addBookmarkButton" type="submit" class="whiteButton" style="margin-top:0px;">Add Bookmark</button>
         </form>
