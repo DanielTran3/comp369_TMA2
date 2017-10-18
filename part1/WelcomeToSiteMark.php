@@ -39,7 +39,7 @@
                     <?php
                         $numBookmarks = 0;
                         while($row = mysql_fetch_assoc($result)) {
-                            if ($numBookmarks > 10) {
+                            if ($numBookmarks > 9) {
                                 break;
                             }
                             $urlVal = $row["url"];

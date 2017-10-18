@@ -5,7 +5,7 @@ function initListeners() {
     var editButton = document.getElementById("editBookmarkButton");
     var deleteButton = document.getElementById("deleteBookmarkButton");
 
-    addButton.addEventListener("click", function() {
+    addButton.addEventListener("click", function(e) {
         AddBookmark();
     });
     editButton.addEventListener("click", function() {
@@ -17,53 +17,8 @@ function initListeners() {
 }
 
 function AddBookmark() {
-
-    // var bookmarkDiv = document.getElementById("bookmarkDiv");
-    // var newBookmarkDiv = document.createElement("div");
-    // newBookmarkDiv.id = "newBookmarkDiv";
-    // newBookmarkDiv.classList.add("innerDiv";
-    
-    // var newBookmarkTextBox = document.createElement("input");
-    // newBookmarkTextBox.id = "newBookmarkTextBox";
-    // newBookmarkTextBox.type = "text";
-    // newBookmarkTextBox.name = "newBookmark";
-    // newBookmarkTextBox.classList.add("floatLeft";
-    // newBookmarkTextBox.classList.add(" largeInputBox";
-
-    // var newBookmarkButton = document.createElement("button");
-    // newBookmarkButton.id = "newBookmarkButton";
-    // newBookmarkButton.classList.add("whiteButton";
-    // newBookmarkButton.style.marginTop = "0px";
-    // newBookmarkButton.innerHTML = "Add";
-    // newBookmarkButton.addEventListener("click", function() {
-    //     StoreBookmark(newBookmarkTextBox.value);
-    // });
-
-    // newBookmarkDiv.appendChild(newBookmarkTextBox);
-    // newBookmarkDiv.appendChild(newBookmarkButton);
-    // bookmarkDiv.appendChild(newBookmarkDiv);
-}
-
-function EditBookmark() {
-    var oldBookmarkName = document.getElementsByName("oldBookmarkName")[0];
-    var oldBookmarkURL = document.getElementsByName("oldBookmarkURL")[0];
-    // oldBookmarkName.value = bookmark.children[0].innerHTML;
-    // oldBookmarkURL.value = bookmark.children[0].attributes[0].nodeValue;
-
-
-    var editedBookmarkName = document.getElementsByName("editedBookmarkName")[0];
-    var editedBookmarkURL = document.getElementsByName("editedBookmarkURL")[0];
-    editedBookmarkName.value = document.getElementById("newBookmarkNameTextBox").value;
-    editedBookmarkURL.value = document.getElementById("newBookmarkTextBox").value;
-}
-
-function DeleteBookmark() {
-
-}
-
-function VerifyURL() {
-    var mainDiv = document.getElementById("mainDiv");
     var newBookmarkTextBox = document.getElementById("newBookmarkTextBox");
+    var newBookmarkNameTextBox = document.getElementById("newBookmarkNameTextBox").value;
     var urlString = newBookmarkTextBox.value;    
     var expression = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,4}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g;
     var regex = new RegExp(expression);
@@ -72,46 +27,27 @@ function VerifyURL() {
     var inactiveURL = document.getElementById("inactiveURL");
     if (urlString.match(regex)) {
         var request = new XMLHttpRequest();  
-        // Add CORS to allow cross-origin requests and allow requests from localhost to http
-        // request.open('GET', "http://cors-anywhere.herokuapp.com/" + urlString, false);
-        // request.send();        
-        // request.onreadystatechange = function(){
-        //     if (request.readyState === 4){
-        //         if (request.status === 404) {  
-        //             alert("FAILED " + urlString);                
-        //             // page does not exist
-        //             invalidURL.hidden = true;
-        //             inactiveURL.hidden = false;
-        //             return false;
-        //         }
-        //         else {
-        //             alert("WORKED " + urlString);
-        //             // page exists
-        //             invalidURL.hidden = true;
-        //             inactiveURL.hidden = true;
-        //             newBookmarkTextBox.style.borderColor = "black";
-        //             return true;
-        //         }
-        //     }
-        // };
-
-        $.ajax({
-            type: 'HEAD',
-            url: "http://cors-anywhere.herokuapp.com/" + urlString,
-            success: function() {
-                alert("WORKED" + urlString);
-                // page exists
+        urlExists(urlString, function(exists) {
+            if (exists) {
                 invalidURL.hidden = true;
                 inactiveURL.hidden = true;
                 newBookmarkTextBox.style.borderColor = "black";
-                return true;
-            },
-            error: function() {
-                alert("FAILED " + urlString);                
-                // page does not exist
+                $.ajax({
+                    type: "POST",
+                    url: 'AddBookmark.php',
+                    data: { newBookmarkURL: urlString, newBookmarkName: newBookmarkNameTextBox },
+                    complete: function (response) {
+                        // alert("Bookmark Added");
+                        location.reload();
+                    },
+                    error: function() {
+                        alert("Error Adding Bookmark");
+                    }
+                });
+            }
+            else {
                 invalidURL.hidden = true;
                 inactiveURL.hidden = false;
-                return false;
             }
         });
     }
@@ -120,8 +56,123 @@ function VerifyURL() {
         inactiveURL.hidden = true;
         invalidURL.hidden = false;        
         newBookmarkTextBox.style.borderColor = "red";
-        return false;
     }
+}
+
+function EditBookmark() {
+    var _oldBookmarkName = document.getElementsByName("oldBookmarkName")[0];
+    var _oldBookmarkURL = document.getElementsByName("oldBookmarkURL")[0];
+    // oldBookmarkName.value = bookmark.children[0].innerHTML;
+    // oldBookmarkURL.value = bookmark.children[0].attributes[0].nodeValue;
+
+
+    var _editedBookmarkName = document.getElementsByName("editedBookmarkName")[0];
+    var _editedBookmarkURL = document.getElementsByName("editedBookmarkURL")[0];
+    _editedBookmarkName.value = document.getElementById("newBookmarkNameTextBox").value;
+    _editedBookmarkURL.value = document.getElementById("newBookmarkTextBox").value;
+
+    var newBookmarkTextBox = document.getElementById("newBookmarkTextBox");
+    var newBookmarkNameTextBox = document.getElementById("newBookmarkNameTextBox").value;
+    var urlString = _editedBookmarkURL.value;    
+    var expression = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,4}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g;
+    var regex = new RegExp(expression);
+    
+    var invalidURL = document.getElementById("invalidURL");
+    var inactiveURL = document.getElementById("inactiveURL");
+    if (urlString.match(regex)) {
+        var request = new XMLHttpRequest();  
+        urlExists(urlString, function(exists) {
+            if (exists) {
+                invalidURL.hidden = true;
+                inactiveURL.hidden = true;
+                newBookmarkTextBox.style.borderColor = "black";
+                $.ajax({
+                    type: "POST",
+                    url: 'EditBookmark.php',
+                    data: { editedBookmarkURL: _editedBookmarkURL, editedBookmarkName: _editedBookmarkName,
+                            oldBookmarkURL: _oldBookmarkURL, oldBookmarkName: _oldBookmarkName },
+                    complete: function (response) {
+                        alert("Bookmark Added");
+                        location.reload();
+                    },
+                    error: function() {
+                        alert("Error Adding Bookmark");
+                    }
+                });
+            }
+            else {
+                invalidURL.hidden = true;
+                inactiveURL.hidden = false;
+            }
+        });
+    }
+
+    else {
+        inactiveURL.hidden = true;
+        invalidURL.hidden = false;        
+        newBookmarkTextBox.style.borderColor = "red";
+    }
+}
+
+function DeleteBookmark() {
+
+}
+
+function VerifyURL() {
+    var newBookmarkTextBox = document.getElementById("newBookmarkTextBox");
+    var newBookmarkNameTextBox = document.getElementById("newBookmarkNameTextBox").value;
+    var urlString = newBookmarkTextBox.value;    
+    var expression = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,4}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g;
+    var regex = new RegExp(expression);
+    
+    var invalidURL = document.getElementById("invalidURL");
+    var inactiveURL = document.getElementById("inactiveURL");
+    if (urlString.match(regex)) {
+        var request = new XMLHttpRequest();  
+        urlExists(urlString, function(exists) {
+            if (exists) {
+                invalidURL.hidden = true;
+                inactiveURL.hidden = true;
+                newBookmarkTextBox.style.borderColor = "black";
+                $.ajax({
+                    type: "POST",
+                    url: 'AddBookmark.php',
+                    data: { newBookmarkURL: urlString, newBookmarkName: newBookmarkNameTextBox },
+                    complete: function (response) {
+                         alert("Bookmark Added");
+                        location.reload();
+                    },
+                    error: function() {
+                        alert("Error Adding Bookmark");
+                    }
+                });
+            }
+            else {
+                invalidURL.hidden = true;
+                inactiveURL.hidden = false;
+                e.preventDefault();
+            }
+        });
+    }
+
+    else {
+        inactiveURL.hidden = true;
+        invalidURL.hidden = false;        
+        newBookmarkTextBox.style.borderColor = "red";
+    }
+}
+
+function urlExists(urlString, callback) {
+    $.ajax({
+        type: 'HEAD',
+        url: "http://cors-anywhere.herokuapp.com/" + urlString,
+        success: function() {
+            callback(true);
+        },
+        error: function() {
+            callback(false);
+        }
+    });
 }
 
 function SelectBookmark(bookmark) {
