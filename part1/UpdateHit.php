@@ -9,13 +9,10 @@
                     header("Location:SiteMarkLogin.php");
                 }
 
-                $url = $_POST["editedBookmarkURL"];
-                $name = $_POST["editedBookmarkName"];
-                $oldURL = $_POST["oldBookmarkURL"];
-                $oldName = $_POST["oldBookmarkName"];
+                $url = $_POST["url"];
                 $user = $_COOKIE["user"];
 
-                $query = "UPDATE bookmarks SET url = '$url', name = '$name' WHERE username = '$user' AND url = '$oldURL' AND name = '$oldName'";
+                $query = "UPDATE bookmarks SET hits = hits + 1 WHERE username = '$user' AND url = '$url'";
 
                 // Connect to MySQL
                 if (!($database = mysql_connect("localhost", "iw3htp", "password"))) {
@@ -30,12 +27,10 @@
                 // query Products database
                 if (!($result = mysql_query($query, $database))) 
                 {
-                    print( "<p>The bookmark already exists!</p>" );
-                    print( "<p><a href='SiteMark.php'>Click Here</a> to continue.</p>" );
-                    die("</body></html>");
+                    print( "<p>Could not execute query!</p>" );
+                    die( mysql_error() . "</body></html>" );
                 } // end if
                 mysql_close( $database );
-                header("Location:SiteMark.php");
             ?>
         </body>
     </head>

@@ -10,7 +10,7 @@
     </head>
     <body>
         <?php
-            $query = "SELECT url, name FROM bookmarks ORDER BY hits";
+            $query = "SELECT url, name FROM bookmarks ORDER BY hits DESC";
 
             // Connect to MySQL
             if (!($database = mysql_connect("localhost", "iw3htp", "password"))) {
@@ -44,18 +44,20 @@
                             }
                             $urlVal = $row["url"];
                             $nameVal = $row["name"];
-                            print("<li class='bookmarkListElement'><a href='http://$urlVal'>$nameVal</a></li>");
+                            print("<li class='bookmarkListElement'><p href='$urlVal' class='blueText' onclick='OpenURL(this);'>$nameVal</p></li>");
                             $numBookmarks++;
                         }
                     ?>
                 </ol>
             </div>
-            <form action="SiteMarkLogin.php">    
-                <button class="whiteButton" type="submit">Login</button>
-            </form>
-            <form action="SiteMarkSignup.php">    
-                <button class="whiteButton" type="submit" style="margin-top: 0;">Sign Up</button>
-            </form>
+            <div class="innerDiv" style="width: 225px;">
+                <form action="SiteMarkLogin.php">    
+                    <button class="whiteButton floatLeft" style="height: 50px; width: 100px;"type="submit">Login</button>
+                </form>
+                <form action="SiteMarkSignup.php">    
+                    <button class="whiteButton floatRight" style="height: 50px; width: 100px;"type="submit">Sign Up</button>
+                </form>
+            </div>
         </div>
     </body>
 </html>

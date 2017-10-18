@@ -21,18 +21,18 @@ function AddBookmark() {
     // var bookmarkDiv = document.getElementById("bookmarkDiv");
     // var newBookmarkDiv = document.createElement("div");
     // newBookmarkDiv.id = "newBookmarkDiv";
-    // newBookmarkDiv.className += "innerDiv";
+    // newBookmarkDiv.classList.add("innerDiv";
     
     // var newBookmarkTextBox = document.createElement("input");
     // newBookmarkTextBox.id = "newBookmarkTextBox";
     // newBookmarkTextBox.type = "text";
     // newBookmarkTextBox.name = "newBookmark";
-    // newBookmarkTextBox.className += "floatLeft";
-    // newBookmarkTextBox.className += " largeInputBox";
+    // newBookmarkTextBox.classList.add("floatLeft";
+    // newBookmarkTextBox.classList.add(" largeInputBox";
 
     // var newBookmarkButton = document.createElement("button");
     // newBookmarkButton.id = "newBookmarkButton";
-    // newBookmarkButton.className += "whiteButton";
+    // newBookmarkButton.classList.add("whiteButton";
     // newBookmarkButton.style.marginTop = "0px";
     // newBookmarkButton.innerHTML = "Add";
     // newBookmarkButton.addEventListener("click", function() {
@@ -42,44 +42,6 @@ function AddBookmark() {
     // newBookmarkDiv.appendChild(newBookmarkTextBox);
     // newBookmarkDiv.appendChild(newBookmarkButton);
     // bookmarkDiv.appendChild(newBookmarkDiv);
-}
-
-function StoreBookmark(urlString) {
-    // var request;
-    // if(window.XMLHttpRequest)
-    //     request = new XMLHttpRequest();
-    // else
-    //     request = new ActiveXObject("Microsoft.XMLHTTP");
-    // request.open('GET', urlString, false);
-    // request.send(); // there will be a 'pause' here until the response to come.
-    // // the object request will be actually modified
-    // if (request.status === 404) {
-    //     alert("didn't work");
-    //     var newBookmarkTextBox = document.getElementById("newBookmarkTextBox");
-    //     if (!newBookmarkTextBox.classList.contains("errorTextBox")) {
-    //         newBookmarkTextBox.className += " errorTextBox";
-    //     }
-    // }
-    // else {
-    //     alert("worked");
-    //     var bookmarkDiv = document.getElementById("bookmarkDiv");
-    //     bookmarkDiv.removeChild(document.getElementById("newBookmarkDiv"));
-    // }
-        $.post("AddBookmark.php");
-    // $.ajax({
-    //     type: 'HEAD',
-    //     url: urlString,
-    //     success: function() {
-    //         var bookmarkDiv = document.getElementById("bookmarkDiv");
-    //         bookmarkDiv.removeChild(document.getElementById("newBookmarkDiv"));
-    //     },
-    //     error: function() {
-    //         var newBookmarkTextBox = document.getElementById("newBookmarkTextBox");
-    //         if (!newBookmarkTextBox.classList.contains("errorTextBox")) {
-    //             newBookmarkTextBox.className += "errorTextBox";
-    //         }
-    //     }
-    // });
 }
 
 function EditBookmark() {
@@ -99,12 +61,33 @@ function DeleteBookmark() {
 
 }
 
+function VerifyURL() {
+    var mainDiv = document.getElementById("mainDiv");
+    var newBookmarkTextBox = document.getElementById("newBookmarkTextBox");
+    var urlString = newBookmarkTextBox.value;    
+    var expression = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,4}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g;
+    var regex = new RegExp(expression);
+    
+    var errorText = document.getElementById("invalidURL");
+    if (urlString.match(regex)) {
+        errorText.hidden = true;
+        newBookmarkTextBox.style.borderColor = "black";        
+        return true;
+    }
+
+    else {
+        errorText.hidden = false;        
+        newBookmarkTextBox.style.borderColor = "red";
+        return false;
+    }
+}
+
 function SelectBookmark(bookmark) {
     var prevSelectedBookmark = document.getElementsByClassName("selectedBookmark");
     for (var i = 0; i < prevSelectedBookmark.length; i++) {
-        prevSelectedBookmark[i].className -= " selectedBookmark";
+        prevSelectedBookmark[i].classList.remove("selectedBookmark");
     }
-    bookmark.className += " selectedBookmark";
+    bookmark.classList.add("selectedBookmark");
 
     var oldBookmarkName = document.getElementsByName("oldBookmarkName")[0];
     var oldBookmarkURL = document.getElementsByName("oldBookmarkURL")[0];
@@ -127,6 +110,18 @@ function SelectBookmark(bookmark) {
 
 function OpenURL(url) {
     var urlString = url.attributes[0].nodeValue;
+
+    $.ajax({
+        type: "POST",
+        url: 'UpdateHit.php',
+        data: { url: urlString },
+        complete: function (response) {
+        },
+        error: function() {
+            alert("Error Updating Hit");
+        }
+    });
+
     var newTab = window.open(urlString, '_blank');
     newTab.focus();
 }

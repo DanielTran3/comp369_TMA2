@@ -16,6 +16,8 @@
         <title>SiteMark</title>
     </head>
     <body>
+        <div id="mainDiv">
+        <span class="title4"> Welcome <?php print($_COOKIE["user"]) ?>, <a href="Logout.php">Logout?</a>
         <?php
             echo $_COOKIE["user"];
             echo $_COOKIE["pass"];
@@ -55,21 +57,24 @@
                 ?>
             </ol>
         </div>
-        <form method="post" action="AddBookmark.php">    
+        <form method="post" onsubmit="return VerifyURL()" action="AddBookmark.php">    
             <div class="innerDiv" style="width: 350px;">
                 <span class="floatLeft">Bookmark Name: </span>
                 <input id="newBookmarkNameTextBox" name="newBookmarkName" type="text" class="largeInputBox floatRight"></input>        
             </div>
             <div class="innerDiv" style="width: 350px;">
-                <span class="floatLeft">URL: </span>
+                <span id="urlLabel" class="floatLeft">URL: </span>
                 <input id="newBookmarkTextBox" name="newBookmarkURL" type="text" class="largeInputBox floatRight"></input>
+                <br />
+                <br />
+                <span id="invalidURL" class="errorText" style="margin-top:10px" hidden>Please input a URL with correct formatting. <br /> (ex. http://www.google.ca)</span>
             </div>
             <button id="addBookmarkButton" type="submit" class="whiteButton" style="margin-top:0px;">Add Bookmark</button>
         </form>
         <form method="post" action="EditBookmark.php">
             <input type="hidden" name="oldBookmarkName"></input>
             <input type="hidden" name="oldBookmarkURL"></input>
-            <input type="hidden" name="editedBookmarkName" value="testtttt"></input>
+            <input type="hidden" name="editedBookmarkName"></input>
             <input type="hidden" name="editedBookmarkURL"></input>
             <button id="editBookmarkButton" type="submit" class="whiteButton" style="margin-top:0px;">Edit Bookmark</button>            
         </form>
@@ -78,5 +83,6 @@
             <input type="hidden" name="bookmarkURLToDelete"></input>            
             <button id="deleteBookmarkButton" type="submit" class="whiteButton" style="margin-top:0px;">Delete Bookmark</button>        
         </form>
+        </div>
     </body>
 </html>

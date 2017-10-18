@@ -27,8 +27,9 @@
                 // query Products database
                 if (!($result = mysql_query($query, $database))) 
                 {
-                    print( "<p>Could not execute query!</p>" );
-                    die( mysql_error() . "</body></html>" );
+                    print( "<p>The bookmark already exists!</p>" );
+                    print( "<p><a href='SiteMark.php'>Click Here</a> to continue.</p>" );
+                    die("</body></html>");
                 } // end if
                 mysql_close( $database );
                 header("Location:SiteMark.php");
