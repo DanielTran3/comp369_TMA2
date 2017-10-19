@@ -57,6 +57,7 @@
                 ?>
             </ol>
         </div>
+        <form id="addBookmarkForm" method="post" action="AddBookmark.php">    
             <div class="innerDiv" style="width: 350px;">
                 <span class="floatLeft">Bookmark Name: </span>
                 <input id="newBookmarkNameTextBox" name="newBookmarkName" type="text" class="largeInputBox floatRight"></input>        
@@ -69,12 +70,16 @@
                 <span id="invalidURL" class="errorText" style="margin-top:10px" hidden>Please input a URL with correct formatting. <br /> (ex. http://www.google.ca)</span>
                 <span id="inactiveURL" class="errorText" style="margin-top:10px" hidden>Please input an active URL with correct formatting. <br /> (ex. http://www.google.ca)</span>
             </div>
-            <button id="addBookmarkButton" type="submit" class="whiteButton" style="margin-top:0px;">Add Bookmark</button>
+        </form>            
+        <button id="addBookmarkButton" type="submit" class="whiteButton" style="margin-top:0px;">Add Bookmark</button>
+        
+        <form id="editBookmarkForm" method="post" action="EditBookmark.php">    
             <input type="hidden" name="oldBookmarkName"></input>
             <input type="hidden" name="oldBookmarkURL"></input>
             <input type="hidden" name="editedBookmarkName"></input>
             <input type="hidden" name="editedBookmarkURL"></input>
-            <button id="editBookmarkButton" type="submit" class="whiteButton" style="margin-top:0px;">Edit Bookmark</button>            
+        </form>
+        <button id="editBookmarkButton" type="submit" class="whiteButton" style="margin-top:0px;">Edit Bookmark</button>            
         <form method="post" action="DeleteBookmark.php">
             <input type="hidden" name="bookmarkNameToDelete"></input>
             <input type="hidden" name="bookmarkURLToDelete"></input>            

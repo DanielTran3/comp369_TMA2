@@ -32,18 +32,7 @@ function AddBookmark() {
                 invalidURL.hidden = true;
                 inactiveURL.hidden = true;
                 newBookmarkTextBox.style.borderColor = "black";
-                $.ajax({
-                    type: "POST",
-                    url: 'AddBookmark.php',
-                    data: { newBookmarkURL: urlString, newBookmarkName: newBookmarkNameTextBox },
-                    complete: function (response) {
-                        // alert("Bookmark Added");
-                        location.reload();
-                    },
-                    error: function() {
-                        alert("Error Adding Bookmark");
-                    }
-                });
+                document.getElementById("addBookmarkForm").submit();
             }
             else {
                 invalidURL.hidden = true;
@@ -71,8 +60,6 @@ function EditBookmark() {
     _editedBookmarkName.value = document.getElementById("newBookmarkNameTextBox").value;
     _editedBookmarkURL.value = document.getElementById("newBookmarkTextBox").value;
 
-    var newBookmarkTextBox = document.getElementById("newBookmarkTextBox");
-    var newBookmarkNameTextBox = document.getElementById("newBookmarkNameTextBox").value;
     var urlString = _editedBookmarkURL.value;    
     var expression = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,4}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g;
     var regex = new RegExp(expression);
@@ -86,19 +73,7 @@ function EditBookmark() {
                 invalidURL.hidden = true;
                 inactiveURL.hidden = true;
                 newBookmarkTextBox.style.borderColor = "black";
-                $.ajax({
-                    type: "POST",
-                    url: 'EditBookmark.php',
-                    data: { editedBookmarkURL: _editedBookmarkURL, editedBookmarkName: _editedBookmarkName,
-                            oldBookmarkURL: _oldBookmarkURL, oldBookmarkName: _oldBookmarkName },
-                    complete: function (response) {
-                        alert("Bookmark Added");
-                        location.reload();
-                    },
-                    error: function() {
-                        alert("Error Adding Bookmark");
-                    }
-                });
+                document.getElementById("editBookmarkForm").submit();
             }
             else {
                 invalidURL.hidden = true;
