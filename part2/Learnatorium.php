@@ -1,16 +1,16 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
-   <head>
-      <meta charset="utf-8">
-        <link rel = "stylesheet" type="text/css" href="../shared/tma2_stylesheet.css" />
+    <head>
+        <meta charset="utf-8">
+        <link rel = "stylesheet" type="text/css" href="../shared/tma1_stylesheet.css" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-        <script src="Learnatorium.js" ></script>
+        <script src="LearnTheWeb.js" ></script>
         <script type="text/javascript">
             window.onload = function () {
-                InitListeners();
+                pageStartup();
             }
         </script>
-        <title>SiteMark</title>
+        <title>Learn The Web</title>
     </head>
     <body>
         <div class="linksBar">
@@ -33,16 +33,10 @@
                 </li>
             </ul>
         </div>
-        <div id="mainDiv">
-            <h1 class="title1">Create A Course</h1>
-            <form id="addBookmarkForm" method="post" action="UploadCourse.php">    
-                <div id="courseDiv" class="innerDiv">
-                    <span>Course Name: </span>
-                    <input id="courseNameInput" name="courseNameName" type="text" class="largeInputBox"></input>        
-                    <button type="button" id="addUnitButton" class="whiteButton" Value="AddUnit">Add Unit</button>
-                    <button type="submit" id="createCourseButton" class="whiteButton" Value="CreateCourse">Create Course</button>                
-                </div>
-            </form>
+        <div id="aside" class="aside">
+        </div>
+
+        <div id="main-content" class="main-content">
         </div>
     </body>
 </html>

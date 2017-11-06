@@ -32,7 +32,6 @@ CREATE TABLE lessons (
 CREATE TABLE quizzes (
 	ID int NOT NULL AUTO_INCREMENT,
 	lesson int NOT NULL,
-    name VARCHAR(64) NOT NULL,
     content VARCHAR(16838) NOT NULL,
     PRIMARY KEY (ID),
     FOREIGN KEY (lesson) REFERENCES lessons(ID)

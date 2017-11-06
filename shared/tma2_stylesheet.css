@@ -63,6 +63,13 @@ body {
     padding: 10px;
 }
 
+.linksBar > ul > li:hover {
+    background-color: #000000;
+}
+.linksBar > ol > li:hover {
+    background-color: #000000;
+}
+
 .aside {
     width: 20%;
     height: 95vh;

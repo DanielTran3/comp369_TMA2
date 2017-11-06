@@ -24,13 +24,13 @@
 
                 print("<hr />");
                 
-                foreach ($_POST['eml'] as $eml) {
+                foreach ($_POST['lessonEML'] as $eml) {
                     print("<p>" . $eml . " | </p>");
                 }
                 
                 print("<hr />");
                 
-                foreach ($_POST['quiz'] as $quiz) {
+                foreach ($_POST['quizEML'] as $quiz) {
                     print("<p>" . $quiz . " | </p>");
                 }
 
@@ -70,14 +70,6 @@
 
                 print("<p>Course ID: " . $courseID . "</p>");
 
-                $query = "INSERT INTO units (course, name) VALUES ('$courseID', 'test')";
-                if (!($result = mysql_query($query, $database))) 
-                {
-                    print( "<p>Could not add Unit: " . $courseID . " in Course: " . $course . "</p>" );
-                    print( "<p><a href='CreateCourseContent.php'>Click Here</a> to continue.</p>" );
-                    die("</body></html>");
-                }
-
                 for ($unitIndex = 0; $unitIndex < sizeOf($_POST['unit']); $unitIndex++) {
                     $unit = $_POST['unit'][$unitIndex];
 
@@ -112,7 +104,7 @@
                         $query = "INSERT INTO lessons (unit, name, content) VALUES ('$unitID', '$lesson', '$lessonEML')";
                         if (!($result = mysql_query($query, $database))) 
                         {
-                            print( "<p>Could not add Unit: " . $unit . " in Course ID: " . $courseID . "</p>" );
+                            print( "<p>Could not add Lesson: " . $lesson . "</p>" );
                             print( "<p><a href='CreateCourseContent.php'>Click Here</a> to continue.</p>" );
                             die("</body></html>");
                         }
@@ -120,13 +112,22 @@
                         $query = "SELECT ID FROM lessons WHERE name='$lesson'";
                         if (!($result = mysql_query($query, $database))) 
                         {
-                            print( "<p>Could not retrieve Unit ID</p>" );
+                            print( "<p>Could not retrieve Lesson ID</p>" );
                             print( "<p><a href='CreateCourseContent.php'>Click Here</a> to continue.</p>" );
                             die("</body></html>");
                         }
 
                         $lessonID = mysql_fetch_assoc($result)["ID"];
                         print("<p>Lesson ID: " . $lessonID . "</p>");
+
+                        $query = "INSERT INTO quizzes (lesson, content) VALUES ('$lessonID', '$quizEML')";
+                        if (!($result = mysql_query($query, $database))) 
+                        {
+                            print( "<p>Could not add Quiz to Lesson ID: " . $lessonID . "</p>" );
+                            print( "<p><a href='CreateCourseContent.php'>Click Here</a> to continue.</p>" );
+                            die("</body></html>");
+                        }
+                        $currentLesson++;
                     }
                 }
 
@@ -137,42 +138,3 @@
         </body>
     </head>
 </html>
-
-
-
-
-<!-- print("<hr />");
-
-                foreach($_POST["numLessons[]"] as $num) {
-                    echo($num);
-                }
-
-                print("<hr />");                
-
-                foreach($_POST["eml[]"] as $eml) {
-                    echo($eml);
-                } -->
-
-
-<!-- 
-// $query = "INSERT INTO bookmarks (username, url, name, hits) VALUES ('$user', '$url', '$name', '0')";
-
-                // // Connect to MySQL
-                // if (!($database = mysql_connect("localhost", "iw3htp", "password"))) {
-                //     die("Could not connect to database </body></html>");
-                // }
-
-                // // open Products database
-                // if (!mysql_select_db( "users", $database)) {
-                //     die("Could not open products database </body></html>");
-                // }
-
-                // // query Products database
-                // if (!($result = mysql_query($query, $database))) 
-                // {
-                //     print( "<p>The bookmark already exists!</p>" );
-                //     print( "<p><a href='SiteMark.php'>Click Here</a> to continue.</p>" );
-                //     die("</body></html>");
-                // } // end if
-                // mysql_close( $database );
-                // header("Location:CreateCourseContent.php"); -->

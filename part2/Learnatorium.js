@@ -86,4 +86,6 @@ function GetChildElementBasedOnName(divElem, elementName) {
     }
 }
 
-// function create
+function SelectACourse(course) {
+    course.name="submittedCourse";
+}
