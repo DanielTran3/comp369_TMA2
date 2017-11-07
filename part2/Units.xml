@@ -1,273 +1,285 @@
 <?xml version="1.0"?>
-
-<units>
-    <tutorial name="Unit 1">
-        <section title="HTML Part 1">
-            <subsection title="1.1 An Introduction to HTML Structure Elements">
-                <paragraph>
-                    HTML (HyperText Markup Language) is used to create elements that the user interacts with. Since HTML is a
-                    Markup language, it is used to define the content and structure of the webpage. These contents act to display
-                    information from a server, or to receive inputs from the user to send to a server for processing. HTML is the
-                    front-end side (or Top tier) of the three-tier architecture. The three-tier architecture is used to help
-                    define a separation of logic between the front-end and the back-end, where the tiers are called Top Tier
-                    (or User Interface Tier or Client Tier), the Middle Tier (or Business Logic Tier), and the Bottom Tier
-                    (or Data Tier or Information Tier).
-                </paragraph>
-                <paragraph>
-                    HTML elements can appear differently depending on the browser used, as well as the browser version. Thus,
-                    it is important to ensure that the elements being added into your application are compatible with a majority
-                    of the web browsers. This will help ensure that everyone can use the application as it was intended and not
-                    miss out on any features that you add in. To help with this, there are websites that can help compare and
-                    contrast between different browsers to see which browsers can utilize which HTML elements. Some of them
-                    are Html5Test.com and CanIUse.com
-                </paragraph>
-                <paragraph>
-                    In this unit, we will be looking at a couple of page-structure elements, and in the next unit, we will look at
-                    some different input types that are available in HTML5. So in this chapter, we will be looking at the
-                    following page-structure elements: paragraph, table, div, a, and ul/ol/li elements.
-                </paragraph>
-                <paragraph>
-                    A quick note in regards to HTML elements is that each element can be given an unique ID (specified by the ID attribute).
-                    The id can be used to identify a specific element on a page (each ID must be different on one given page). As well, CSS
-                    attributes can be applied directly to an element with the specified ID. There will be more discussion on this later on.
-                </paragraph>
-            </subsection>
-            <subsection title="1.2 Paragraph Element">
-                <paragraph>
-                    In HTML, there exists a paragraph element, which can be created by using the &lt;img src="../shared/1.2_1.png"&gt;&lt;/img&gt; tag. Paragraphs
-                    are used to display text that the programmer wants the end-user to see. It helps with defining a structure for the document.
-                </paragraph>
-                <paragraph>
-                    Here is an example of a couple of paragraph elements displayed over eachother.
-                </paragraph>
-                <image src="../shared/paragraph.png">Two paragraphs, one ontop of the other saying &quot;This is a paragraph&quot; and &quot;This is another paragraph&quot; respectively</image>
-                <image src="../shared/paragraph_code.png">
-                    &lt;p&gt;This is a paragraph&lt;/p&gt;
-                    &lt;p&gt;This is another paragraph&lt;/p&gt;
-                </image>
-            </subsection>
-            <subsection title="1.3 Table Element">
-                <paragraph>
-                    A table element is very useful for formatting data output and displaying tabular data. Tables begin by using the
-                    &lt;table&gt;&lt;/table&gt; tag. This will create the outer boundary that contains the table. The rows of the
-                    table can be created using the &lt;tr&gt;&lt;/tr&gt; tags, which stands for "table row". Each of these tags that
-                    are specified within a table element will create a new row. To create columns, the &lt;td&gt;&lt;/td&gt; tag
-                    can be used. The "td" tag stands for "table data"
-                </paragraph>
-                <paragraph>
-                    Here is an example of a table creation, with 3 rows and 4 columns
-                     &lt;table&gt;
-                        &lt;tr&gt;
-                            &lt;td&gt;1&lt;/td&gt;
-                            &lt;td&gt;2&lt;/td&gt;
-                            &lt;td&gt;3&lt;/td&gt;
-                            &lt;td&gt;4&lt;/td&gt;
-                        &lt;/tr&gt;
-                        &lt;tr&gt;
-                            &lt;td&gt;5&lt;/td&gt;
-                            &lt;td&gt;6&lt;/td&gt;
-                            &lt;td&gt;7&lt;/td&gt;
-                            &lt;td&gt;8&lt;/td&gt;
-                        &lt;/tr&gt;
-                        &lt;tr&gt;
-                            &lt;td&gt;9&lt;/td&gt;
-                            &lt;td&gt;10&lt;/td&gt;
-                            &lt;td&gt;11&lt;/td&gt;
-                            &lt;td&gt;12&lt;/td&gt;
-                        &lt;/tr&gt;
-                    &lt;/table&gt;
-                </paragraph>
-                <image src="../shared/table_code.png">
-                    &lt;table&gt;
-                        &lt;tr&gt;
-                            &lt;td&gt;1&lt;/td&gt;
-                            &lt;td&gt;2&lt;/td&gt;
-                            &lt;td&gt;3&lt;/td&gt;
-                            &lt;td&gt;4&lt;/td&gt;
-                        &lt;/tr&gt;
-                        &lt;tr&gt;
-                            &lt;td&gt;5&lt;/td&gt;
-                            &lt;td&gt;6&lt;/td&gt;
-                            &lt;td&gt;7&lt;/td&gt;
-                            &lt;td&gt;8&lt;/td&gt;
-                        &lt;/tr&gt;
-                        &lt;tr&gt;
-                            &lt;td&gt;9&lt;/td&gt;
-                            &lt;td&gt;10&lt;/td&gt;
-                            &lt;td&gt;11&lt;/td&gt;
-                            &lt;td&gt;12&lt;/td&gt;
-                        &lt;/tr&gt;
-                    &lt;/table&gt;
-                </image>
-            </subsection>
-            <subsection title="1.4 Div Element">
-                <paragraph>
-                    A div element can be used to separate portions of the web page. A div is block-level element, meaning it has its own
-                    padding, border, and margin spacing around the div's content. A div element can contain any other html elements
-                    within it.
-                </paragraph>
-                <paragraph>
-                    Here's an example of a div element with a paragraph inside of it. The div will have a 1px padding on the left and a 10px
-                    padding on the right, with a blue dotted border.
-                </paragraph>
-                 <image src="../shared/div.png">A div with a paragraph that says "A paragraph inside a div", where the div has a 1px left padding, 10px right padding, a width of 100px, and a blue dotted border</image> 
-                <image src="../shared/div_code.png">
-                    &lt;div style=&quot;padding-left:1px; padding-right:10px; border-style:dotted; border-color:blue; width:100px;&quot;%gt;
-                        &lt;p%gt;A paragraph inside a div&lt;/p%gt;
-                    &lt;/div%gt;
-                </image>
-            </subsection>
-            <subsection title="1.5 Anchor Element">
-                <paragraph>
-                    The anchor element can contain a link  that will redirect the user to the specified http address. The address can be
-                    specified in the href attribute of the a element. Text can be placed between the start and end tags to create a
-                    hyperlinked text (generally denoted with blue text and an underline beneath the text). Clicking the link will
-                    change the color of the text to purple, denoting that the site had been visited before. CSS styles can be used
-                    to change these behaviours, but they will be discussed later on.
-                </paragraph>
-                <paragraph>
-                    Here's an example of an anchor element before and after it was clicked.
-                    &lt;a href="#"&gt;Anchor Element&lt;/a&gt;
-                </paragraph>
-                <image src="../shared/a_before.png">Anchor element with the text "Anchor Element" before it was clicked (text is blue)</image>
-                <image src="../shared/a_after.png">Anchor element with the text "Anchor Element" after it was clicked (text is purple)</image>
-                <image src="../shared/a_code.png">
-                    &lt;a href="#"&gt;Anchor Element&lt;/a&gt;
-                </image>
-            </subsection>
-            <subsection title="1.6 Lists">
-                <paragraph>
-                    Lists are used to order and more neatly display information. There are two kinds of lists that are available in HTML. Lists can
-                    be displayed as either ordered or unordered lists. The difference is that ordered lists have an increasing index starting from one,
-                    while the unordered list has bullet points for each element. Ordered Lists are created using the ol element, while unordered lists
-                    use the ul element. The points inside these lists are created using the li element.
-                </paragraph>
-                <paragraph>Here is an example of an ordered list using the ol element.</paragraph>
-                <paragraph>
+    <Overview>
+        This lesson is on the topic of HTML and provides a brief introduction to what HTML is, the purpose of HTML, 
+        as well as some of the basic HTML elements that can be used to create simple webpages or web forms. By the 
+        end of this lesson, you should be able to:
+        <Outline>
+            <BulletPoint>
+                Define what HTML stands for and what it's use is.
+            </BulletPoint>
+            <BulletPoint>
+                Create basic page structure elements such as Paragraphs, tables, divs, anchors, and list elements.
+            </BulletPoint>
+            <BulletPoint>
+                Create nested lists.
+            </BulletPoint>
+        </Outline>
+    </Overview>
+    <Introduction>
+        HTML is a markup language that resides on the client-side. HTML is a fundamental language used to create and 
+        format any webpages that you would see on when you browse the internet. It is important to learn and understand 
+        how to utilize HTML in order to design proper and elegant web pages.
+    </Introduction>
+    <SectionHeader>1.1 An Introduction to HTML Structure Elements</SectionHeader>
+    <Section>
+        <Paragraph>
+            HTML (HyperText Markup Language) is used to create elements that the user interacts with. Since HTML is a
+            Markup language, it is used to define the content and structure of the webpage. These contents act to display
+            information from a server, or to receive inputs from the user to send to a server for processing. HTML is the
+            front-end side (or Top tier) of the three-tier architecture. The three-tier architecture is used to help
+            define a separation of logic between the front-end and the back-end, where the tiers are called Top Tier
+            (or User Interface Tier or Client Tier), the Middle Tier (or Business Logic Tier), and the Bottom Tier
+            (or Data Tier or Information Tier).
+        </Paragraph>
+        <Paragraph>
+            HTML elements can appear differently depending on the browser used, as well as the browser version. Thus,
+            it is important to ensure that the elements being added into your application are compatible with a majority
+            of the web browsers. This will help ensure that everyone can use the application as it was intended and not
+            miss out on any features that you add in. To help with this, there are websites that can help compare and
+            contrast between different browsers to see which browsers can utilize which HTML elements. Some of them
+            are Html5Test.com and CanIUse.com
+        </Paragraph>
+        <Paragraph>
+            In this unit, we will be looking at a couple of page-structure elements, and in the next unit, we will look at
+            some different input types that are available in HTML5. So in this chapter, we will be looking at the
+            following page-structure elements: paragraph, table, div, a, and ul/ol/li elements.
+        </Paragraph>
+        <Paragraph>
+            A quick note in regards to HTML elements is that each element can be given an unique ID (specified by the ID attribute).
+            The id can be used to identify a specific element on a page (each ID must be different on one given page). As well, CSS
+            attributes can be applied directly to an element with the specified ID. There will be more discussion on this later on.
+        </Paragraph>
+    </Section>
+    <SectionHeader>1.2 Paragraph Element</SectionHeader>
+    <Section>
+        <Paragraph>
+            In HTML, there exists a paragraph element, which can be created by using the &lt;img src="../shared/1.2_1.png"&gt;&lt;/img&gt; tag. Paragraphs
+            are used to display text that the programmer wants the end-user to see. It helps with defining a structure for the document.
+        </Paragraph>
+        <Paragraph>
+            Here is an example of a couple of paragraph elements displayed over eachother.
+        </Paragraph>
+        <Image src="../shared/paragraph.png">Two paragraphs, one ontop of the other saying &quot;This is a paragraph&quot; and &quot;This is another paragraph&quot; respectively</Image>
+        <Image src="../shared/paragraph_code.png">
+            &lt;p&gt;This is a paragraph&lt;/p&gt;
+            &lt;p&gt;This is another paragraph&lt;/p&gt;
+        </Image>
+    </Section>
+    <SectionHeader>1.3 Table Element</SectionHeader>
+    <Section>
+        <Paragraph>
+            A table element is very useful for formatting data output and displaying tabular data. Tables begin by using the
+            &lt;table&gt;&lt;/table&gt; tag. This will create the outer boundary that contains the table. The rows of the
+            table can be created using the &lt;tr&gt;&lt;/tr&gt; tags, which stands for "table row". Each of these tags that
+            are specified within a table element will create a new row. To create columns, the &lt;td&gt;&lt;/td&gt; tag
+            can be used. The "td" tag stands for "table data"
+        </Paragraph>
+        <Paragraph>
+            Here is an example of a table creation, with 3 rows and 4 columns
+                &lt;table&gt;
+                &lt;tr&gt;
+                    &lt;td&gt;1&lt;/td&gt;
+                    &lt;td&gt;2&lt;/td&gt;
+                    &lt;td&gt;3&lt;/td&gt;
+                    &lt;td&gt;4&lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;tr&gt;
+                    &lt;td&gt;5&lt;/td&gt;
+                    &lt;td&gt;6&lt;/td&gt;
+                    &lt;td&gt;7&lt;/td&gt;
+                    &lt;td&gt;8&lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;tr&gt;
+                    &lt;td&gt;9&lt;/td&gt;
+                    &lt;td&gt;10&lt;/td&gt;
+                    &lt;td&gt;11&lt;/td&gt;
+                    &lt;td&gt;12&lt;/td&gt;
+                &lt;/tr&gt;
+            &lt;/table&gt;
+        </Paragraph>
+        <Image src="../shared/table_code.png">
+            &lt;table&gt;
+                &lt;tr&gt;
+                    &lt;td&gt;1&lt;/td&gt;
+                    &lt;td&gt;2&lt;/td&gt;
+                    &lt;td&gt;3&lt;/td&gt;
+                    &lt;td&gt;4&lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;tr&gt;
+                    &lt;td&gt;5&lt;/td&gt;
+                    &lt;td&gt;6&lt;/td&gt;
+                    &lt;td&gt;7&lt;/td&gt;
+                    &lt;td&gt;8&lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;tr&gt;
+                    &lt;td&gt;9&lt;/td&gt;
+                    &lt;td&gt;10&lt;/td&gt;
+                    &lt;td&gt;11&lt;/td&gt;
+                    &lt;td&gt;12&lt;/td&gt;
+                &lt;/tr&gt;
+            &lt;/table&gt;
+        </Image>
+    </Section>
+    <SectionHeader>1.4 Div Element</SectionHeader>
+    <Section>
+        <Paragraph>
+            A div element can be used to separate portions of the web page. A div is block-level element, meaning it has its own
+            padding, border, and margin spacing around the div's content. A div element can contain any other html elements
+            within it.
+        </Paragraph>
+        <Paragraph>
+            Here's an example of a div element with a paragraph inside of it. The div will have a 1px padding on the left and a 10px
+            padding on the right, with a blue dotted border.
+        </Paragraph>
+            <Image src="../shared/div.png">A div with a paragraph that says "A paragraph inside a div", where the div has a 1px left padding, 10px right padding, a width of 100px, and a blue dotted border</Image> 
+        <Image src="../shared/div_code.png">
+            &lt;div style=&quot;padding-left:1px; padding-right:10px; border-style:dotted; border-color:blue; width:100px;&quot;%gt;
+                &lt;p%gt;A paragraph inside a div&lt;/p%gt;
+            &lt;/div%gt;
+        </Image>
+    </Section>
+    <SectionHeader>1.5 Anchor Element</SectionHeader>
+    <Section>
+        <Paragraph>
+            The anchor element can contain a link  that will redirect the user to the specified http address. The address can be
+            specified in the href attribute of the a element. Text can be placed between the start and end tags to create a
+            hyperlinked text (generally denoted with blue text and an underline beneath the text). Clicking the link will
+            change the color of the text to purple, denoting that the site had been visited before. CSS styles can be used
+            to change these behaviours, but they will be discussed later on.
+        </Paragraph>
+        <Paragraph>
+            Here's an example of an anchor element before and after it was clicked.
+            &lt;a href="#"&gt;Anchor Element&lt;/a&gt;
+        </Paragraph>
+        <Image src="../shared/a_before.png">Anchor element with the text "Anchor Element" before it was clicked (text is blue)</Image>
+        <Image src="../shared/a_after.png">Anchor element with the text "Anchor Element" after it was clicked (text is purple)</Image>
+        <Image src="../shared/a_code.png">
+            &lt;a href="#"&gt;Anchor Element&lt;/a&gt;
+        </Image>
+    </Section>
+    <SectionHeader>1.6 Lists</SectionHeader>
+    <Section>
+        <Paragraph>
+            Lists are used to order and more neatly display information. There are two kinds of lists that are available in HTML. Lists can
+            be displayed as either ordered or unordered lists. The difference is that ordered lists have an increasing index starting from one,
+            while the unordered list has bullet points for each element. Ordered Lists are created using the ol element, while unordered lists
+            use the ul element. The points inside these lists are created using the li element.
+        </Paragraph>
+        <Paragraph>Here is an example of an ordered list using the ol element.</Paragraph>
+        <Paragraph>
+            &lt;ol&gt;
+                &lt;li&gt;Element 1&lt;/li&gt;
+                &lt;li&gt;Element 2&lt;/li&gt;
+                &lt;li&gt;Element 3&lt;/li&gt;
+            &lt;ol/&gt;
+        </Paragraph>
+        <Image src="../shared/orderedlist_code.png">
+            &lt;ol&gt;
+                &lt;li&gt;Element 1&lt;/li&gt;
+                &lt;li&gt;Element 2&lt;/li&gt;
+                &lt;li&gt;Element 3&lt;/li&gt;
+            &lt;ol/&gt;
+        </Image>
+        <Paragraph>The same ordered list can be changed into an unordered list by replacing the ol element with a ul element, as shown below.</Paragraph>
+        <Paragraph>
+            &lt;ul&gt;
+                &lt;li&gt;Element 1&lt;/li&gt;
+                &lt;li&gt;Element 2&lt;/li&gt;
+                &lt;li&gt;Element 3&lt;/li&gt;
+            &lt;ul/&gt;
+        </Paragraph>
+        <Image src="../shared/unorderedlist_code.png">
+            &lt;ul&gt;
+                &lt;li&gt;Element 1&lt;/li&gt;
+                &lt;li&gt;Element 2&lt;/li&gt;
+                &lt;li&gt;Element 3&lt;/li&gt;
+            &lt;ul/&gt;
+        </Image>
+        <Paragraph>
+            Lists can also be nested inside eachother, called a nested list. Different lists can be nested within eachother, such as having an
+            ordered list nested inside an unordered list, and vice-versa. This is done the same way as creating a list, but ol and ul lists are
+            created within li element. Any number of lists can be nested within eachother. Here's an example of an unordered list nested inside an 
+            ordered list, which is nested inside another unordered list.
+        </Paragraph>
+        <Paragraph>
+            &lt;ul&gt;
+                &lt;li&gt;Element 1&lt;/li&gt;
+                &lt;li&gt;Element 2&lt;/li&gt;
+                &lt;li&gt; Ordered Nested List
                     &lt;ol&gt;
-                        &lt;li&gt;Element 1&lt;/li&gt;
-                        &lt;li&gt;Element 2&lt;/li&gt;
-                        &lt;li&gt;Element 3&lt;/li&gt;
-                    &lt;ol/&gt;
-                </paragraph>
-                <image src="../shared/orderedlist_code.png">
+                        &lt;li&gt;Ordered Nested Element 1&lt;/li&gt;
+                        &lt;li&gt;Ordered Nested Element 2&lt;/li&gt;
+                        &lt;li&gt; Unordered Nested List
+                            &lt;ul&gt;
+                                &lt;li&gt;Unordered Nested Element 1&lt;/li&gt;
+                                &lt;li&gt;Unordered Nested Element 2&lt;/li&gt;
+                                &lt;li&gt;Unordered Nested Element 3&lt;/li&gt;
+                            &lt;/ul&gt;
+                        &lt;/li&gt;
+                        &lt;li&gt;Ordered Nested Element 3&lt;/li&gt;
+                    &lt;/ol&gt;
+                &lt;/li&gt;
+                &lt;li&gt;Element 3&lt;/li&gt;
+            &lt;/ul&gt;
+        </Paragraph>
+        <Image src="../shared/nestedlist_code.png">
+            &lt;ul&gt;
+                &lt;li&gt;Element 1&lt;/li&gt;
+                &lt;li&gt;Element 2&lt;/li&gt;
+                &lt;li&gt; Ordered Nested List
                     &lt;ol&gt;
-                        &lt;li&gt;Element 1&lt;/li&gt;
-                        &lt;li&gt;Element 2&lt;/li&gt;
-                        &lt;li&gt;Element 3&lt;/li&gt;
-                    &lt;ol/&gt;
-                </image>
-                <paragraph>The same ordered list can be changed into an unordered list by replacing the ol element with a ul element, as shown below.</paragraph>
-                <paragraph>
-                    &lt;ul&gt;
-                        &lt;li&gt;Element 1&lt;/li&gt;
-                        &lt;li&gt;Element 2&lt;/li&gt;
-                        &lt;li&gt;Element 3&lt;/li&gt;
-                    &lt;ul/&gt;
-                </paragraph>
-                <image src="../shared/unorderedlist_code.png">
-                    &lt;ul&gt;
-                        &lt;li&gt;Element 1&lt;/li&gt;
-                        &lt;li&gt;Element 2&lt;/li&gt;
-                        &lt;li&gt;Element 3&lt;/li&gt;
-                    &lt;ul/&gt;
-                </image>
-                <paragraph>
-                    Lists can also be nested inside eachother, called a nested list. Different lists can be nested within eachother, such as having an
-                    ordered list nested inside an unordered list, and vice-versa. This is done the same way as creating a list, but ol and ul lists are
-                    created within li element. Any number of lists can be nested within eachother. Here's an example of an unordered list nested inside an 
-                    ordered list, which is nested inside another unordered list.
-                </paragraph>
-                <paragraph>
-                    &lt;ul&gt;
-                        &lt;li&gt;Element 1&lt;/li&gt;
-                        &lt;li&gt;Element 2&lt;/li&gt;
-                        &lt;li&gt; Ordered Nested List
-                            &lt;ol&gt;
-                                &lt;li&gt;Ordered Nested Element 1&lt;/li&gt;
-                                &lt;li&gt;Ordered Nested Element 2&lt;/li&gt;
-                                &lt;li&gt; Unordered Nested List
-                                    &lt;ul&gt;
-                                        &lt;li&gt;Unordered Nested Element 1&lt;/li&gt;
-                                        &lt;li&gt;Unordered Nested Element 2&lt;/li&gt;
-                                        &lt;li&gt;Unordered Nested Element 3&lt;/li&gt;
-                                    &lt;/ul&gt;
-                                &lt;/li&gt;
-                                &lt;li&gt;Ordered Nested Element 3&lt;/li&gt;
-                            &lt;/ol&gt;
+                        &lt;li&gt;Ordered Nested Element 1&lt;/li&gt;
+                        &lt;li&gt;Ordered Nested Element 2&lt;/li&gt;
+                        &lt;li&gt; Unordered Nested List
+                            &lt;ul&gt;
+                                &lt;li&gt;Unordered Nested Element 1&lt;/li&gt;
+                                &lt;li&gt;Unordered Nested Element 2&lt;/li&gt;
+                                &lt;li&gt;Unordered Nested Element 3&lt;/li&gt;
+                            &lt;/ul&gt;
                         &lt;/li&gt;
-                        &lt;li&gt;Element 3&lt;/li&gt;
-                    &lt;/ul&gt;
-                </paragraph>
-                <image src="../shared/nestedlist_code.png">
-                    &lt;ul&gt;
-                        &lt;li&gt;Element 1&lt;/li&gt;
-                        &lt;li&gt;Element 2&lt;/li&gt;
-                        &lt;li&gt; Ordered Nested List
-                            &lt;ol&gt;
-                                &lt;li&gt;Ordered Nested Element 1&lt;/li&gt;
-                                &lt;li&gt;Ordered Nested Element 2&lt;/li&gt;
-                                &lt;li&gt; Unordered Nested List
-                                    &lt;ul&gt;
-                                        &lt;li&gt;Unordered Nested Element 1&lt;/li&gt;
-                                        &lt;li&gt;Unordered Nested Element 2&lt;/li&gt;
-                                        &lt;li&gt;Unordered Nested Element 3&lt;/li&gt;
-                                    &lt;/ul&gt;
-                                &lt;/li&gt;
-                                &lt;li&gt;Ordered Nested Element 3&lt;/li&gt;
-                            &lt;/ol&gt;
-                        &lt;/li&gt;
-                        &lt;li&gt;Element 3&lt;/li&gt;
-                    &lt;/ul&gt;
-                </image>
-            </subsection>
-        </section>
-    </tutorial>
-    <quiz name="Unit 1 Quiz">
-        <section title="Unit 1 Quiz">
-            <question title="Question 1. What kind of language is HTML?">
-                <answer name="q1" correct="">A. Scripting Language</answer>
-                <answer name="q1" correct="*">B. Markup Language</answer>
-                <answer name="q1" correct="">C. XML-based Language</answer>
-                <answer name="q1" correct="">D. Visual Language</answer>
-            </question>
-            <question title="Question 2. A paragraph is defined using the ___ tag">
-                <answer name="q2" correct="*">A. p</answer>
-                <answer name="q2" correct="">B. para</answer>
-                <answer name="q2" correct="">C. paragraph</answer>
-                <answer name="q2" correct="">D. p1</answer>
-            </question>
-            <question title="Question 3. How is a row created in an HTML table?">
-                <answer name="q3" correct="*">A. Using the &quot;tr&quot; tag</answer>
-                <answer name="q3" correct="">B. Using the &quot;td&quot; tag</answer>
-                <answer name="q3" correct="">C. Using the &quot;row&quot; tag</answer>
-                <answer name="q3" correct="">D. Using the &quot;tableRow&quot; tag</answer>
-            </question>
-            <question title="Question 4. What happens if a nested list is not inside an &quot;li&quot; element?">
-                <answer name="q4" correct="">A. The HTML page gets an error and does not render</answer>
-                <answer name="q4" correct="">B. The HTML page renders but the nested list does not</answer>
-                <answer name="q4" correct="">C. The output is the same as if the list was inside an &quot;li&quot; element</answer>
-                <answer name="q4" correct="*">D. Every subsequent &quot;li&quot; element is nested under the nested list</answer>
-            </question>
-            <question title="Question 5. What is an HTML ID used for?">
-                <answer name="q5" correct="*">A. Uniquely identifying an HTML element</answer>
-                <answer name="q5" correct="">B. Applying CSS to elements on the same page with the same ID</answer>
-                <answer name="q5" correct="">C. Both A and B</answer>
-                <answer name="q5" correct="">D. None of the Above</answer>
-            </question>
-        </section>
-    </quiz>
+                        &lt;li&gt;Ordered Nested Element 3&lt;/li&gt;
+                    &lt;/ol&gt;
+                &lt;/li&gt;
+                &lt;li&gt;Element 3&lt;/li&gt;
+            &lt;/ul&gt;
+        </Image>
+    </Section>
+    <Question>Question 1. What kind of language is HTML?</Question>
+        <Answer>A. Scripting Language</Answer>
+        <CorrectAnswer>B. Markup Language</CorrectAnswer>
+        <Answer>C. XML-based Language</Answer>
+        <Answer>D. Visual Language</Answer>
+    <Question>Question 2. A paragraph is defined using the ___ tag</Question>
+        <CorrectAnswer>A. p</CorrectAnswer>
+        <Answer>B. para</Answer>
+        <Answer>C. paragraph</Answer>
+        <Answer>D. p1</Answer>
+    <Question title="Question 3. How is a row created in an HTML table?"></Question>
+        <CorrectAnswer>A. Using the &quot;tr&quot; tag</CorrectAnswer>
+        <Answer>B. Using the &quot;td&quot; tag</Answer>
+        <Answer>C. Using the &quot;row&quot; tag</Answer>
+        <Answer>D. Using the &quot;tableRow&quot; tag</Answer>
+    <Question>Question 4. What happens if a nested list is not inside an &quot;li&quot; element?</Question>
+        <Answer>A. The HTML page gets an error and does not render</Answer>
+        <Answer>B. The HTML page renders but the nested list does not</Answer>
+        <Answer>C. The output is the same as if the list was inside an &quot;li&quot; element</Answer>
+        <CorrectAnswer>D. Every subsequent &quot;li&quot; element is nested under the nested list</CorrectAnswer>
+    <Question>Question 5. What is an HTML ID used for?</Question>
+        <CorrectAnswer>A. Uniquely identifying an HTML element</CorrectAnswer>
+        <Answer>B. Applying CSS to elements on the same page with the same ID</Answer>
+        <Answer>C. Both A and B</Answer>
+        <Answer>D. None of the Above</Answer>
     <tutorial name="Unit 2">
         <section title="HTML Part 2">
             <subsection title="2.1 An Introduction to HTML Input Elements">
-                <paragraph>
+                <Paragraph>
                     Now that you have some basic information on some HTML structure elements, it's time to investigate another important realm of
                     HTML, which are the input elements. These elements allow the user to provide data to the backend for processing. Generally, a
                     majority of input elements can be seen in forms, where the user enters some sensitive data that is used to query a database.
                     An example of this would be when someone is filling out registration information to sign up on a social media platform. Most
                     likely, you will be asked to fill in your First Name, Last Name, Date of Birth, Email Address, and Password. All of these inputs
                     use the HTML input elements that will be discussed. The inputs are also defined using the input tag
-                </paragraph>
+                </Paragraph>
                 <paragraph>
                     &lt;input type=&quot;&quot; /&gt;
                 </paragraph>
