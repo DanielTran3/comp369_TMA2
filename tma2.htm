@@ -112,19 +112,63 @@
                         an abstract for a technical document.
                     </li>
                     <li>
+                        <b>&lt;Outline&gt;&lt;/Outline&gt;</b> A container inside the outline of topics associated with. 
+                        Each Outline tag contains BulletPoint tags inside to specify each point for the outline.
+                    </li>
+                    <li>
+                        <b>&lt;BulletPoint&gt;&lt;/BulletPoint&gt;</b> A bullet point inside of the outline.
+                    </li>
+                    <li>
                         <b>&lt;Introduction&gt;&lt;/Introduction&gt;</b> Is a brief paragraph providing some insight 
                         on what the lesson is about.
                     </li>
                     <li>
-                        <b>&lt;SectionHeader&gt;&lt;/SectionHeader&gt;</b> The name of the section 
+                        <b>&lt;SectionHeader&gt;&lt;/SectionHeader&gt;</b> The name of the section.
                     </li>
                     <li>
-                        <b>&lt;Section&gt;&lt;/Section&gt;</b> A portion of the lesson describing a specific topic 
+                        <b>&lt;Section&gt;&lt;/Section&gt;</b> A portion of the lesson describing a specific topic.
                     </li>
                     <li>
-                        <b>&lt;Conclusion&gt;&lt;/Conclusion&gt;</b> The conclusion, or closing section of the lesson
+                        <b>&lt;Paragraph&gt;</b> Used to split the text of a section into different paragraphs for 
+                        easier readability.
+                    </li>
+                    <li>
+                        <b>&lt;Conclusion&gt;&lt;/Conclusion&gt;</b> The conclusion, or closing section of the lesson.
+                    </li>
+                    <li>
+                        <b>&lt;Keyword&gt;&lt;/Keyword&gt;</b> A keyword tag is used to enclose a word or phrase, adding 
+                        emphasis to the word or phrase by bolding the text.
+                    </li>
+                    <li>
+                        <b>&lt;Image&gt;&lt;/Image&gt;</b> Used to define an image.
+                    </li>
+                    <li>
+                        <b>&lt;Video&gt;&lt;/Video&gt;</b> Used to define a video.
+                    </li>
+                    <li>
+                        <b>&lt;Audio&gt;&lt;/Audio&gt;</b> Used to define an audio file.
                     </li>
                 </ul>
+
+                <p class="title4">
+                    Following the EML for lessons, there is also an EML for quizzes, which is used to define a question, 
+                    possible multiple choice answers, and the correct answer. The tags are described as follows:
+                </p>
+
+                <ul class="title4">
+                        <li>
+                            <b>&lt;Question&gt;&lt;/Question&gt;</b> Defines the question for the quiz. Include the question
+                            number within the tags
+                        </li>
+                        <li>
+                            <b>&lt;Answer&gt;&lt;/Answer&gt;</b>Defines an incorrect answer to the question. Each answer 
+                            is following a question is associated with the question.
+                        </li>
+                        <li>
+                            <b>&lt;CorrectAnswer&gt;&lt;/CorrectAnswer&gt;</b> Similar to an answer, but specifies the correct 
+                            answer to the question
+                        </li>
+                    </ul>
 
                 <hr />
 
@@ -459,6 +503,11 @@
                     <li>
                         <a href="https://www.w3schools.com/php/php_mysql_select.asp">
                             Get a result from a select query using mysql_fetch_assoc
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://stackoverflow.com/questions/1609947/regex-for-replacing-a-single-quote-with-two-single-quotes">
+                            String replace single quotes
                         </a>
                     </li>
                 </ul>

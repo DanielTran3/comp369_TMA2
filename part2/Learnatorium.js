@@ -6,8 +6,8 @@ function InitListeners() {
     });
 
     var createCourseButton = document.getElementById("createCourseButton");
-    createCourseButton.addEventListener("createCourseButton", function() {
-
+    createCourseButton.addEventListener("click", function() {
+        CreateCourseButton();
     });
 }
 
@@ -63,6 +63,28 @@ function AddLessonButton_Click(unitDiv) {
 }
 
 function CreateCourseButton() {
+    var courseName = document.getElementById("courseNameInput");
+    courseName.value = courseName.value.replace(/'/g,"''");
+    var unitNames = document.getElementsByName("unit[]");
+    for (var i = 0; i < unitNames.length; i++) {
+        unitNames[i].value = unitNames[i].value.replace(/'/g,"''");
+    }
+    var lessonNames = document.getElementsByName("lesson[]");
+    for (var i = 0; i < lessonNames.length; i++) {
+        lessonNames[i].value = lessonNames[i].value.replace(/'/g,"''");
+    }
+    var lessonEMLs = document.getElementsByName("lessonEML[]");
+    for (var i = 0; i < lessonEMLs.length; i++) {
+        lessonEMLs[i].value = lessonEMLs[i].value.replace(/'/g,"''");
+        lessonEMLs[i].value = lessonEMLs[i].value.replace(/</g,"&lt;");
+        lessonEMLs[i].value = lessonEMLs[i].value.replace(/>/g,"&gt;");
+    }
+    var quizEMLs = document.getElementsByName("quizEML[]");
+    for (var i = 0; i < quizEMLs.length; i++) {
+        quizEMLs[i].value = quizEMLs[i].value.replace(/'/g,"''");
+        quizEMLs[i].value = quizEMLs[i].value.replace(/</g,"&lt;");
+        quizEMLs[i].value = quizEMLs[i].value.replace(/'/g,"&gt;");
+    }
 
 }
 

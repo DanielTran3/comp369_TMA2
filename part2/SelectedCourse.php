@@ -7,6 +7,33 @@
         <script src="Learnatorium.js" ></script>
     </head>
     <body>
+        <?php
+            function lessonEMLParser($lesson) {
+                $lesson = parseOverview($lesson);
+                $lesson = parseOutline($lesson);
+                return htmlspecialchars_decode($lesson);
+            } 
+            function parseOverview($lesson) {
+                // $patterns = array();
+                // $patterns[0] = "/\b&lt;Overview&gt;\b/";
+                // $patterns[1] = "/\b&lt;\/Overview&gt;\b/";
+                // $replacementStrings = array();
+                // $replacementStrings[0] = "&lt;h2&gt;Overview&lt;/h2&gt;&lt;p&gt;";
+                // $replacementStrings[1] = "&lt;/p&gt;";
+                $lesson = preg_replace('/&lt;Overview&gt;/', '&lt;h2&gt;Overview&lt;/h2&gt;&lt;p&gt;', $lesson);
+                $lesson = preg_replace('/&lt;\/Overview&gt;/', '&lt;/p&gt;', $lesson);
+
+                return $lesson;
+            }
+            function parseOutline($lesson) {
+                $lesson = preg_replace('/&lt;Outline&gt;/', '&lt;ul&gt;', $lesson);
+                $lesson = preg_replace('/&lt;\/Outline&gt;/', '&lt;/ul&gt;', $lesson);
+                $lesson = preg_replace('/&lt;\/BulletPoint&gt;/', '&lt;li&gt;', $lesson);
+                $lesson = preg_replace('/&lt;\/BulletPoint&gt;/', '&lt;/ligt;', $lesson);
+
+                return $lesson;
+            }
+        ?>
         <div class="linksBar">
             <h1 class="banner">Learn The Web</h1>
             <ul>
@@ -86,7 +113,9 @@
                         while($lessonRow = mysql_fetch_assoc($lessonResult)) {
                             $lessonID = $lessonRow['ID'];
                             print("<h2>" . $lessonRow["name"] . "</h2>");
-                            print("<p>" . $lessonRow["content"] . "</p>");
+                            $lessonContent = $lessonRow["content"];
+                            $lessonContent = lessonEMLParser($lessonContent);
+                            print("$lessonContent");
                         
                             $quizQuery = "SELECT content FROM quizzes where lesson='$lessonID'";
                             if (!($quizResult = mysql_query($quizQuery, $database))) 
