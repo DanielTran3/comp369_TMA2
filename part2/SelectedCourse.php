@@ -11,6 +11,10 @@
             function lessonEMLParser($lesson) {
                 $lesson = parseOverview($lesson);
                 $lesson = parseOutline($lesson);
+                $lesson = parseIntroduction($lesson);
+                $lesson = parseSection($lesson);
+                $lesson = parseParagraph($lesson);
+
                 return htmlspecialchars_decode($lesson);
             } 
             function parseOverview($lesson) {
@@ -28,11 +32,44 @@
             function parseOutline($lesson) {
                 $lesson = preg_replace('/&lt;Outline&gt;/', '&lt;ul&gt;', $lesson);
                 $lesson = preg_replace('/&lt;\/Outline&gt;/', '&lt;/ul&gt;', $lesson);
-                $lesson = preg_replace('/&lt;\/BulletPoint&gt;/', '&lt;li&gt;', $lesson);
-                $lesson = preg_replace('/&lt;\/BulletPoint&gt;/', '&lt;/ligt;', $lesson);
+                $lesson = preg_replace('/&lt;BulletPoint&gt;/', '&lt;li&gt;', $lesson);
+                //$lesson = preg_replace('/&lt;\/BulletPoint&gt;/', '&lt;/ligt;', $lesson);
 
                 return $lesson;
             }
+            function parseIntroduction($lesson) {
+                $lesson = preg_replace('/&lt;Introduction&gt;/', '&lt;h2&gt;Introduction&lt;/h2&gt;&lt;p&gt;', $lesson);
+                $lesson = preg_replace('/&lt;\/Introduction&gt;/', '&lt;/p&gt;', $lesson);
+
+                return $lesson;
+            }
+
+            function parseSection($lesson) {
+                $lesson = preg_replace('/&lt;Section&gt;/', '&lt;h2&gt;', $lesson);
+                $lesson = preg_replace('/&lt;\/Section&gt;/', '&lt;/h2&gt;', $lesson);
+
+                return $lesson;
+            }
+
+            function parseParagraph($lesson) {
+                $lesson = preg_replace('/&lt;Paragraph&gt;/', '&lt;p&gt;', $lesson);
+                $lesson = preg_replace('/&lt;\/Paragraph&gt;/', '&lt;/p&gt;', $lesson);
+
+                return $lesson;
+            }
+
+            function quizEMLParser($quiz) {
+                $quiz = parseOverview($quiz);
+
+                return htmlspecialchars_decode($quiz);
+            } 
+            function parseQuestion($quiz) {
+                $quiz = preg_replace('/&lt;Question&gt;/', '&lt;h3&gt;', $quiz);
+                $quiz = preg_replace('/&lt;\/Question&gt;/', '&lt;/h3&gt;', $quiz);
+
+                return $quiz;
+            }
+
         ?>
         <div class="linksBar">
             <h1 class="banner">Learn The Web</h1>
@@ -115,7 +152,7 @@
                             print("<h2>" . $lessonRow["name"] . "</h2>");
                             $lessonContent = $lessonRow["content"];
                             $lessonContent = lessonEMLParser($lessonContent);
-                            print("$lessonContent");
+                            print($lessonContent);
                         
                             $quizQuery = "SELECT content FROM quizzes where lesson='$lessonID'";
                             if (!($quizResult = mysql_query($quizQuery, $database))) 
@@ -127,7 +164,9 @@
 
                             if (mysql_num_rows($quizResult) > 0) {
                                 while ($quizRow = mysql_fetch_assoc($quizResult)) {
-                                    print("<p>" . $quizRow["content"] . "</p>");
+                                    $quizContent = $quizRow["content"];
+                                    $quizContent = quizEMLParser($quizContent);
+                                    print($quizContent);
                                 }
                             }
                         }

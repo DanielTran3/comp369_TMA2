@@ -156,19 +156,19 @@
                 </p>
 
                 <ul class="title4">
-                        <li>
-                            <b>&lt;Question&gt;&lt;/Question&gt;</b> Defines the question for the quiz. Include the question
-                            number within the tags
-                        </li>
-                        <li>
-                            <b>&lt;Answer&gt;&lt;/Answer&gt;</b>Defines an incorrect answer to the question. Each answer 
-                            is following a question is associated with the question.
-                        </li>
-                        <li>
-                            <b>&lt;CorrectAnswer&gt;&lt;/CorrectAnswer&gt;</b> Similar to an answer, but specifies the correct 
-                            answer to the question
-                        </li>
-                    </ul>
+                    <li>
+                        <b>&lt;Question&gt;&lt;/Question&gt;</b> Defines the question for the quiz. Include the question
+                        number within the tags
+                    </li>
+                    <li>
+                        <b>&lt;Answer&gt;&lt;/Answer&gt;</b>Defines an incorrect answer to the question. Each answer 
+                        is following a question is associated with the question.
+                    </li>
+                    <li>
+                        <b>&lt;CorrectAnswer&gt;&lt;/CorrectAnswer&gt;</b> Similar to an answer, but specifies the correct 
+                        answer to the question
+                    </li>
+                </ul>
 
                 <hr />
 
@@ -414,74 +414,74 @@
 
                 <span class="title2">Documentation of Implementation</span>                
                 <p class="title4">
-                    For the implementation, the top banner was implemented as a div containing an unordered list, where the 
-                    aesthetics was modified through an external CSS stylesheet. The list contains links (&lt;a&gt; tags) 
-                    containing a reference to the other web applications. The side navigation menu and buttons are contained 
-                    in a div, taking up 20% of the screen. First, the XML data is read from a file, which is structured for 
-                    tutorial data as follows: 
+                    
+
+                    There are two different EMLs for this assignment; one EML is used for describing the lessons, 
+                    while the other lesson is an EML to describe the quizzes associated with each lesson. The EML
+                    for the lessons is described using the following tags:
                 </p>
-                <ul class="title4">
-                    <li>&lt;units&gt; tag contains all of the other tags and information.</li>
-                    <li>
-                        &lt;tutorial name=&quot;&quot;&gt; tag contains a single unit, where the &quot;name&quot; attribute is the name of 
-                        the name of the button on the navigation menu.
-                    </li>
-                    <li>
-                        &lt;section title=&quot;&quot;&gt; tag contains multiple subsectionssections for the tutorial. The &quot;title&quot; 
-                        attribute is displayed at the top of the each tutorial unit and quiz as a &lt;h1&gt; element.
-                    </li>
-                    <li>
-                        &lt;subsection title=&quot;&quot;&gt; tag is contained within a section tag and contains a subsection 
-                        of the unit, such as a particular part of the unit. The &quot;title&quot; attribute contains the name of the subsection 
-                        as a &lt;h2&gt; element.
-                    </li>
-                    <li>
-                        &lt;paragraph&gt; tag is contained within a subsection tag, where multiple paragraph tags can appear within 
-                        one subsection text information or html elements that will be displayed in a &lt;p&gt; paragraph element in HTML.
-                    </li>
-                    <li>
-                        &lt;image src=&quot;&quot;&gt; tag is used to render an image in HTML. The &quot;src&quot; attribute is used to provide the  
-                        path to the image file, and the text within the &lt;image&gt;&lt;/&gt; tags is the backup text if the image 
-                        fails to render.
-                    </li>
-                </ul>
-                <p class="title4">
-                    For the quiz data, it follows a similar format, and is contained within the same XML file as the Tutorial data. 
-                    The quiz information is also under the &lt;units&gt; tag. The rest of the tags are contained within it as follows:  
-                </p>
+                
                 <ul class="title4">
                     <li>
-                        &lt;quiz name=&quot;&quot;&gt; tag contains a quiz for a unit, where the &quot;name&quot; attribute is the name of 
-                        the name of the button on the navigation menu.
+                        <b>&lt;Overview&gt;&lt;/Overview&gt;</b> Describes the overview of the lesson, similar to 
+                        an abstract for a technical document.
                     </li>
                     <li>
-                        &lt;section title=&quot;&quot;&gt; tag contains multiple questions for the tutorial. The &quot;title&quot; attribute
-                        is displayed at the top of the each tutorial unit and quiz as a &lt;h1&gt; element.
+                        <b>&lt;Outline&gt;&lt;/Outline&gt;</b> A container inside the outline of topics associated with. 
+                        Each Outline tag contains BulletPoint tags inside to specify each point for the outline.
                     </li>
                     <li>
-                        &lt;question title=&quot;&quot;&gt; tag is contained within a section tag and contains a single question  
-                        for the unit. The &quot;title&quot; attribute contains the text for the question, created as an &lt;h3&gt; element.
+                        <b>&lt;BulletPoint&gt;&lt;/BulletPoint&gt;</b> A bullet point inside of the outline.
                     </li>
                     <li>
-                        &lt;answer name=&quot;&quot; correct=&quot;&quot;&gt; tag is contained within a question tag, where multiple answer tags 
-                        can appear within one question tag. These represent the possible answers to the question. The &quot;name&quot; attribute 
-                        defines the group of radio buttons for the question. The &quot;correct&quot; attribute defines if that answer is correct 
-                        or not. A &#42; inside the &quot;correct&quot; attribute denotes the correct answer
+                        <b>&lt;Introduction&gt;&lt;/Introduction&gt;</b> Is a brief paragraph providing some insight 
+                        on what the lesson is about.
+                    </li>
+                    <li>
+                        <b>&lt;Section&gt;&lt;/Section&gt;</b> Contains the section name inside the tag. The section 
+                        contains a portion of the lesson describing a specific topic.
+                    </li>
+                    <li>
+                        <b>&lt;Paragraph&gt;</b> Used to split the text of a section into different paragraphs for 
+                        easier readability.
+                    </li>
+                    <li>
+                        <b>&lt;Conclusion&gt;&lt;/Conclusion&gt;</b> The conclusion, or closing section of the lesson.
+                    </li>
+                    <li>
+                        <b>&lt;Keyword&gt;&lt;/Keyword&gt;</b> A keyword tag is used to enclose a word or phrase, adding 
+                        emphasis to the word or phrase by bolding the text.
+                    </li>
+                    <li>
+                        <b>&lt;Image&gt;&lt;/Image&gt;</b> Used to define an image.
+                    </li>
+                    <li>
+                        <b>&lt;Video&gt;&lt;/Video&gt;</b> Used to define a video.
+                    </li>
+                    <li>
+                        <b>&lt;Audio&gt;&lt;/Audio&gt;</b> Used to define an audio file.
                     </li>
                 </ul>
+
                 <p class="title4">
-                    The navigation menu and information work by showing and hiding specific information on the main-content div depending on 
-                    what button is pressed in the aside div. Pressing a button on the navigation menu will remove the information in the 
-                    main-content div, read the stored XML information (from reading the XML file once and storing the data into a variable) 
-                    and displaying the appropriate information from the selected information. There is JavaScript code that is used to recursively 
-                    parse the XML tags and create the appropriate HTML elements, as defined in the above XML structure. For linking the button 
-                    at the bottom of the quiz to the navigation button to access the same quiz, the button is dynamically created when the data 
-                    is loaded into the main-content div. If the button is pressed, the tabs in the navigation menu will change to the appropriate 
-                    quiz tab that follows the chapter. Then, the JavaScript program will detect that the user is now on a quiz page and it will 
-                    clear the main-content div, load the quiz information, and dynamically add a button to submit the quiz. When the submit button 
-                    is pressed, the program will check the position of the answers that the user selected, compare it with the answers in the XML 
-                    file, and return the results of how much the user got correct and their percent correct.
+                    Following the EML for lessons, there is also an EML for quizzes, which is used to define a question, 
+                    possible multiple choice answers, and the correct answer. The tags are described as follows:
                 </p>
+
+                <ul class="title4">
+                    <li>
+                        <b>&lt;Question&gt;&lt;/Question&gt;</b> Defines the question for the quiz. Include the question
+                        number within the tags
+                    </li>
+                    <li>
+                        <b>&lt;Answer&gt;&lt;/Answer&gt;</b>Defines an incorrect answer to the question. Each answer 
+                        is following a question is associated with the question.
+                    </li>
+                    <li>
+                        <b>&lt;CorrectAnswer&gt;&lt;/CorrectAnswer&gt;</b> Similar to an answer, but specifies the correct 
+                        answer to the question
+                    </li>
+                </ul>
 
                 <hr />
 
