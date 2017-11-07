@@ -59,17 +59,25 @@
             }
 
             function quizEMLParser($quiz) {
-                $quiz = parseOverview($quiz);
+                $quiz = parseQuestion($quiz);
+                $quiz = parseAnswers($quiz);
 
                 return htmlspecialchars_decode($quiz);
             } 
-            function parseQuestion($quiz) {
+            function parseQuestion($quiz, $answerGroup) {
                 $quiz = preg_replace('/&lt;Question&gt;/', '&lt;h3&gt;', $quiz);
                 $quiz = preg_replace('/&lt;\/Question&gt;/', '&lt;/h3&gt;', $quiz);
 
                 return $quiz;
             }
+            function parseAnswers($quiz, $answerGroup) {
+                $quiz = preg_replace('/&lt;Answer&gt;/', '&lt;input type="radio"&gt;', $quiz);
+                $quiz = preg_replace('/&lt;\/Answer&gt;/', '&lt;/input&gt;', $quiz);
+                $quiz = preg_replace('/&lt;CorrectAnswer&gt;/', '&lt;input type="radio"&gt;', $quiz);
+                $quiz = preg_replace('/&lt;\/CorrectAnswer&gt;/', '&lt;/input&gt;', $quiz);
 
+                return $quiz;
+            }
         ?>
         <div class="linksBar">
             <h1 class="banner">Learn The Web</h1>
@@ -165,7 +173,7 @@
                             if (mysql_num_rows($quizResult) > 0) {
                                 while ($quizRow = mysql_fetch_assoc($quizResult)) {
                                     $quizContent = $quizRow["content"];
-                                    $quizContent = quizEMLParser($quizContent);
+                                    $quizContent = quizEMLParser($quizContent, );
                                     print($quizContent);
                                 }
                             }

@@ -83,7 +83,7 @@ function CreateCourseButton() {
     for (var i = 0; i < quizEMLs.length; i++) {
         quizEMLs[i].value = quizEMLs[i].value.replace(/'/g,"''");
         quizEMLs[i].value = quizEMLs[i].value.replace(/</g,"&lt;");
-        quizEMLs[i].value = quizEMLs[i].value.replace(/'/g,"&gt;");
+        quizEMLs[i].value = quizEMLs[i].value.replace(/>/g,"&gt;");
     }
 
 }
