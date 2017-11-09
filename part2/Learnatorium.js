@@ -110,9 +110,32 @@ function GetChildElementBasedOnName(divElem, elementName) {
 
 function SelectACourse(course) {
     course.name="submittedCourse";
+    var courseID = document.getElementsByName("courseId")[0];
+    courseID.value = course.id;
 }
 
-
+function MarkQuiz(lessonID) {
+    var totalCorrect = 0;
+    var totalQuestions = 0;
+    var quizDiv = document.getElementById(lessonID);
+    var inputElements = quizDiv.getElementsByTagName("INPUT");
+    for (var i = 0; i < inputElements.childElementCount; i++) {
+        if (inputElements[i].type === "radio") {
+            if (submittedAnswer.getAttribute("correct") === "*") {
+                totalQuestions++;
+                if (submittedAnswer.checked) {
+                    totalCorrect++;
+                }
+            }
+        }
+    }
+    var finalScore = document.createElement("h3");
+    finalScore.style.styleFloat = 'right';
+    finalScore.style.cssFloat = 'right';
+    finalScore.innerHTML = "Final Score: " + totalCorrect + "/" + totalQuestions + 
+                           " | " + ((totalCorrect/totalQuestions) * 100).toFixed(2) + "%";
+    quizDiv.appendChild(finalScore);
+}
 
 
 function createUnitTabs(xr) {

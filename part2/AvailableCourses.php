@@ -37,7 +37,7 @@
                         die("Could not open learnatorium database </body></html>");
                     }
 
-                    $query = "SELECT name FROM courses";
+                    $query = "SELECT ID, name FROM courses";
                     if (!($result = mysql_query($query, $database))) 
                     {
                         print( "<p>Could not add Course</p>" );
@@ -48,7 +48,8 @@
                     if (mysql_num_rows($result) > 0) {
                         print("<ol>");
                         while($row = mysql_fetch_assoc($result)) {
-                            print("<li>".$row["name"]."</li>");
+                            $courseID = $row["ID"];
+                            print("<li name='$courseID'>".$row["name"]."</li>");
                         }
                         print("</ol>");
                     }

@@ -232,31 +232,31 @@
             &lt;li&gt;Element 3&lt;/li&gt;
         &lt;/ul&gt;
     </Image>
-    <Question>Question 1. What kind of language is HTML?</Question>
-        <Answer>A. Scripting Language</Answer>
-        <CorrectAnswer>B. Markup Language</CorrectAnswer>
-        <Answer>C. XML-based Language</Answer>
-        <Answer>D. Visual Language</Answer>
-    <Question>Question 2. A paragraph is defined using the ___ tag</Question>
-        <CorrectAnswer>A. p</CorrectAnswer>
-        <Answer>B. para</Answer>
-        <Answer>C. paragraph</Answer>
-        <Answer>D. p1</Answer>
-    <Question title="Question 3. How is a row created in an HTML table?"></Question>
-        <CorrectAnswer>A. Using the &quot;tr&quot; tag</CorrectAnswer>
-        <Answer>B. Using the &quot;td&quot; tag</Answer>
-        <Answer>C. Using the &quot;row&quot; tag</Answer>
-        <Answer>D. Using the &quot;tableRow&quot; tag</Answer>
-    <Question>Question 4. What happens if a nested list is not inside an &quot;li&quot; element?</Question>
-        <Answer>A. The HTML page gets an error and does not render</Answer>
-        <Answer>B. The HTML page renders but the nested list does not</Answer>
-        <Answer>C. The output is the same as if the list was inside an &quot;li&quot; element</Answer>
-        <CorrectAnswer>D. Every subsequent &quot;li&quot; element is nested under the nested list</CorrectAnswer>
-    <Question>Question 5. What is an HTML ID used for?</Question>
-        <CorrectAnswer>A. Uniquely identifying an HTML element</CorrectAnswer>
-        <Answer>B. Applying CSS to elements on the same page with the same ID</Answer>
-        <Answer>C. Both A and B</Answer>
-        <Answer>D. None of the Above</Answer>
+    <Question name="Question1">Question 1. What kind of language is HTML?</Question>
+        <Answer name="Question1" correct="">A. Scripting Language</Answer>
+        <Answer name="Question1" correct="*">B. Markup Language</Answer>
+        <Answer name="Question1" correct="">C. XML-based Language</Answer>
+        <Answer name="Question1" correct="">D. Visual Language</Answer>
+    <Question name="Question2">Question 2. A paragraph is defined using the ___ tag</Question>
+        <Answer name="Question2" correct="*">A. p</Answer>
+        <Answer name="Question2" correct="">B. para</Answer>
+        <Answer name="Question2" correct="">C. paragraph</Answer>
+        <Answer name="Question2" correct="">D. p1</Answer>
+    <Question name="Question3">Question 3. How is a row created in an HTML table?</Question>
+        <Answer name="Question3" correct="*">A. Using the &quot;tr&quot; tag</Answer>
+        <Answer name="Question3" correct="">B. Using the &quot;td&quot; tag</Answer>
+        <Answer name="Question3" correct="">C. Using the &quot;row&quot; tag</Answer>
+        <Answer name="Question3" correct="">D. Using the &quot;tableRow&quot; tag</Answer>
+    <Question name="Question4">Question 4. What happens if a nested list is not inside an &quot;li&quot; element?</Question>
+        <Answer name="Question4" correct="">A. The HTML page gets an error and does not render</Answer>
+        <Answer name="Question4" correct="">B. The HTML page renders but the nested list does not</Answer>
+        <Answer name="Question4" correct="">C. The output is the same as if the list was inside an &quot;li&quot; element</Answer>
+        <Answer name="Question4" correct="*">D. Every subsequent &quot;li&quot; element is nested under the nested list</Answer>
+    <Question name="Question5">Question 5. What is an HTML ID used for?</Question>
+        <Answer name="Question5" correct="*">A. Uniquely identifying an HTML element</Answer>
+        <Answer name="Question5" correct="">B. Applying CSS to elements on the same page with the same ID</Answer>
+        <Answer name="Question5" correct="">C. Both A and B</Answer>
+        <Answer name="Question5" correct="">D. None of the Above</Answer>
 
 
 HTML Part 2

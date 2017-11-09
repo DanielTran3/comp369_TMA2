@@ -29,6 +29,7 @@
             <div>
                 <h1>Your Courses</h1>
                 <form id="selectCourseForm" method="post" action="SelectedCourse.php">
+                <input type="hidden" name="courseId"></input>
                 <?php
                     // Connect to MySQL
                     if (!($database = mysql_connect("localhost", "iw3htp", "password"))) {
@@ -41,7 +42,7 @@
                     }
 
                     // $query = "SELECT courses FROM users";
-                    $query = "SELECT name FROM courses";
+                    $query = "SELECT ID, name FROM courses";
                     if (!($result = mysql_query($query, $database))) 
                     {
                         print( "<p>Could not add Course</p>" );
@@ -53,7 +54,8 @@
                         print("<ul>");
                         while($row = mysql_fetch_assoc($result)) {
                             $val = $row['name'];
-                            print("<li><input type='submit' class='whiteButton' style='margin:0px' onclick='SelectACourse(this)' value='$val' /></li>");
+                            $courseID = $row['ID'];
+                            print("<li><input id='$courseID' type='submit' class='whiteButton' style='margin:0px' onclick='SelectACourse(this)' value='$val' /></li>");
                         }
                         print("</ul>");
                     }

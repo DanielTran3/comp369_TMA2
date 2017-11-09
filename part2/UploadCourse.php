@@ -58,15 +58,15 @@
                     die("</body></html>");
                 }
 
-                $query = "SELECT ID FROM courses WHERE name='$course'";
-                if (!($result = mysql_query($query, $database))) 
-                {
-                    print( "<p>Could not retrieve Course ID</p>" );
-                    print( "<p><a href='CreateCourseContent.php'>Click Here</a> to continue.</p>" );
-                    die("</body></html>");
-                }
+                // $query = "SELECT LAST_INSERT_ID()";
+                // if (!($result = mysql_query($query, $database))) 
+                // {
+                //     print( "<p>Could not retrieve Course ID</p>" );
+                //     print( "<p><a href='CreateCourseContent.php'>Click Here</a> to continue.</p>" );
+                //     die("</body></html>");
+                // }
 
-                $courseID = mysql_fetch_assoc($result)["ID"];
+                $courseID = mysql_insert_id($database);
 
                 print("<p>Course ID: " . $courseID . "</p>");
 
@@ -81,15 +81,15 @@
                         die("</body></html>");
                     }
 
-                    $query = "SELECT ID FROM units WHERE name='$unit'";
-                    if (!($result = mysql_query($query, $database))) 
-                    {
-                        print( "<p>Could not retrieve Unit ID</p>" );
-                        print( "<p><a href='CreateCourseContent.php'>Click Here</a> to continue.</p>" );
-                        die("</body></html>");
-                    }
+                    // $query = "SELECT LAST_INSERT_ID";
+                    // if (!($result = mysql_query($query, $database))) 
+                    // {
+                    //     print( "<p>Could not retrieve Unit ID</p>" );
+                    //     print( "<p><a href='CreateCourseContent.php'>Click Here</a> to continue.</p>" );
+                    //     die("</body></html>");
+                    // }
 
-                    $unitID = mysql_fetch_assoc($result)["ID"];
+                    $unitID = mysql_insert_id($database);
                     print("<p>Unit ID: " . $unitID . "</p>");
 
 

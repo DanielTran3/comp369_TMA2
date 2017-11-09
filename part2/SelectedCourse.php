@@ -64,17 +64,15 @@
 
                 return htmlspecialchars_decode($quiz);
             } 
-            function parseQuestion($quiz, $answerGroup) {
-                $quiz = preg_replace('/&lt;Question&gt;/', '&lt;h3&gt;', $quiz);
+            function parseQuestion($quiz) {
+                $quiz = preg_replace('/&lt;Question/', '&lt;h3', $quiz);
                 $quiz = preg_replace('/&lt;\/Question&gt;/', '&lt;/h3&gt;', $quiz);
 
                 return $quiz;
             }
-            function parseAnswers($quiz, $answerGroup) {
-                $quiz = preg_replace('/&lt;Answer&gt;/', '&lt;input type="radio"&gt;', $quiz);
-                $quiz = preg_replace('/&lt;\/Answer&gt;/', '&lt;/input&gt;', $quiz);
-                $quiz = preg_replace('/&lt;CorrectAnswer&gt;/', '&lt;input type="radio"&gt;', $quiz);
-                $quiz = preg_replace('/&lt;\/CorrectAnswer&gt;/', '&lt;/input&gt;', $quiz);
+            function parseAnswers($quiz) {
+                $quiz = preg_replace('/&lt;Answer/', '&lt;input type="radio"', $quiz);
+                $quiz = preg_replace('/&lt;\/Answer&gt;/', '&lt;/input&gt; &lt;br /&gt;', $quiz);
 
                 return $quiz;
             }
@@ -103,6 +101,7 @@
         <!-- <div class="aside"> -->
         <?php
             $courseName = $_POST["submittedCourse"];
+            $courseID = $_POST["courseId"];
             // Connect to MySQL
             if (!($database = mysql_connect("localhost", "iw3htp", "password"))) {
                 die("Could not connect to database </body></html>");
@@ -113,16 +112,16 @@
                 die("Could not open learnatorium database </body></html>");
             }
 
-            $query = "SELECT ID FROM courses where name='$courseName'";
-            if (!($result = mysql_query($query, $database))) 
-            {
-                print( "<p>Could not retrieve Course ID</p>" );
-                print( "<p><a href='CreateCourseContent.php'>Click Here</a> to continue.</p>" );
-                die("</body></html>");
-            }
+            // $query = "SELECT ID FROM courses where name='$courseName'";
+            // if (!($result = mysql_query($query, $database))) 
+            // {
+            //     print( "<p>Could not retrieve Course ID</p>" );
+            //     print( "<p><a href='CreateCourseContent.php'>Click Here</a> to continue.</p>" );
+            //     die("</body></html>");
+            // }
 
-            $courseID = mysql_fetch_assoc($result)["ID"];
-
+            // $courseID = mysql_fetch_assoc($result)["ID"];
+            print("<p> CourseID: " . $courseID . "</p>");    
             $query = "SELECT ID, name FROM units where course='$courseID'";
             if (!($result = mysql_query($query, $database))) 
             {
@@ -143,6 +142,7 @@
                     // }
                     // $curIndex++;
                     $unitID = $unitRow['ID'];
+                    print("<p> UnitID: " . $unitID . "</p>");    
                     print("<h1>" . $unitRow['name'] . "</h1>");
                 
                     $lessonQuery = "SELECT ID, name, content FROM lessons where unit='$unitID'";
@@ -157,6 +157,8 @@
                         // $curIndex = 0;
                         while($lessonRow = mysql_fetch_assoc($lessonResult)) {
                             $lessonID = $lessonRow['ID'];
+                            print("<p> LessonID: " . $lessonID . "</p>");    
+                    
                             print("<h2>" . $lessonRow["name"] . "</h2>");
                             $lessonContent = $lessonRow["content"];
                             $lessonContent = lessonEMLParser($lessonContent);
@@ -171,11 +173,14 @@
                             }
 
                             if (mysql_num_rows($quizResult) > 0) {
+                                print("<div id='$lessonID'>");
                                 while ($quizRow = mysql_fetch_assoc($quizResult)) {
                                     $quizContent = $quizRow["content"];
-                                    $quizContent = quizEMLParser($quizContent, );
+                                    $quizContent = quizEMLParser($quizContent);
                                     print($quizContent);
                                 }
+                                print("<input type='button' class='whiteButton' value='Submit Quiz' onclick='MarkQuiz($lessonID)'/>");
+                                print("</div>");
                             }
                         }
                     }
