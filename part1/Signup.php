@@ -5,10 +5,11 @@
         <link rel = "stylesheet" type="text/css" href="../shared/tma2_stylesheet.css" />
         <body>
             <?php
+                // Get the user's inputted username and password
                 $user = $_POST["signupUsername"];
                 $pass = $_POST["signupPassword"];
 
-                // $query = "INSERT INTO credentials ('username', password') VALUES ("  . $user . ", " . $password . ")";
+                // Create a query to insert the specified username and password into the credentials database
                 $query = "INSERT INTO credentials (username, password) VALUES ('$user', '$pass')";
 
                 // Connect to MySQL
@@ -16,20 +17,28 @@
                     die("Could not connect to database </body></html>");
                 }
 
-                // open Products database
+                // open users database
                 if (!mysql_select_db( "users", $database)) {
                     die("Could not open products database </body></html>");
                 }
 
-                // query Products database
+                // Perform the insert query to create a new user in the database
                 if (!($result = mysql_query( $query, $database))) 
                 {
-                    print( "<p>Could not execute query!</p>" );
+                    // If the insert failed, then the username already exists in the database. Prompt the user and 
+                    // create a button to redirect the user to the Signup page
+                    print("<span class='title4' style='margin-top: 100px'>Username already exists!</span>");
+                    print("<form method='post' action='SiteMarkSignup.php'>");
+                    print("<button class='whiteButton' type='submit' style='margin-top:0px;'>Continue</button>");
+                    print("</form>");
                     die( mysql_error() . "</body></html>" );
-                } // end if
+                }
+
+                // Query was successful. Close the database and display the rest of the page
                 mysql_close( $database );
             ?>
 
+            <!-- Display the successful signup information and create a button to redirect the user to the main page -->
             <form method="post" action="SiteMark.php">
                 <div class="welcomeText">
                     <h1 class="title1 titleFont">SiteMark</h1>
@@ -40,6 +49,7 @@
                 </div>
             </form>
             <?php
+                // Set the cookies for the user's username and password for an hour 
                 define("ONE_HOUR", 60 * 60 * 1);
 
                 setcookie("user", $_POST["signupUsername"], time() + ONE_HOUR);

@@ -16,10 +16,14 @@
         <?php
             echo $_COOKIE["user"];
             echo $_COOKIE["pass"];
+            // Check for valid user login, if there is one, redirect the user to the main page
             if (isset($_COOKIE["user"]) && isset($_COOKIE["pass"])) {
                 header("Location:SiteMark.php");
             }
         ?>
+
+        <!-- If there is no currently logged in user, display the signup page, allowing for a user to 
+             enter their credentials to create a new account-->
         <form method="post" action="Signup.php">
             <div class="containerDiv">
                 <h1 class="title1 loginTitle">SiteMark Signup</h1>    

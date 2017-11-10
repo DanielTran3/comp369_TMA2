@@ -5,21 +5,12 @@
         <link rel = "stylesheet" type="text/css" href="../shared/tma2_stylesheet.css" />
         <body>
             <?php
+                // Clear the user and pass cookies by making them expire
                 define("ONE_HOUR", 60 * 60 * 1);      
                 setcookie('user', '', time() - ONE_HOUR);
                 setcookie('pass', '', time() - ONE_HOUR);
-                
-                // if (isset($_COOKIE['user'])) {
-                //     unset($_COOKIE['user']);
-                //     setcookie('user', '', time() - ONE_HOUR, '/');
-                // }
-                // if (isset($_COOKIE['pass'])) {
-                //     unset($_COOKIE['pass']);
-                //     setcookie('pass', '', time() - ONE_HOUR, '/');
-                // }
-                // echo $_COOKIE['user'];
-                // echo $_COOKIE['pass'];
             ?>
+            <!-- Display the logged out page and create a button that returns the user to the Welcome Page -->
             <form method="post" action="WelcomeToSiteMark.php">
                 <div class="welcomeText">
                     <h1 class="title1 titleFont">You've Been Logged Out!</h1>

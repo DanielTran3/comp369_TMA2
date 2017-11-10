@@ -10,6 +10,8 @@
     </head>
     <body>
         <?php
+            // Create a query that looks at all of the bookmarks in the database and orders it in descending
+            // order by number of hits. Thus, the bookmarks with the most hits are at the top
             $query = "SELECT url, name FROM bookmarks ORDER BY hits DESC";
 
             // Connect to MySQL
@@ -17,17 +19,20 @@
                 die("Could not connect to database </body></html>");
             }
 
-            // open Products database
+            // open users database
             if (!mysql_select_db( "users", $database)) {
                 die("Could not open products database </body></html>");
             }
 
-            // query Products database
+            // Execute the select query and return the resulting rows back to be read
             if (!($result = mysql_query( $query, $database))) 
             {
-                print( "<p>Could not execute query!</p>" );
+                // Error retrieving the bookmarks
+                print( "<p>Could retrieve Top 10 Marked Sites</p>" );
                 die( mysql_error() . "</body></html>" );
-            } // end if
+            }
+
+            // Query was successful, close the database
             mysql_close( $database );
         ?>
 
@@ -37,6 +42,7 @@
             <div id="bookmarkDiv" style="text-align:start;">
                 <ol>
                     <?php
+                        // Iterate through the first 10 bookmarks from the query and display them on the main page
                         $numBookmarks = 0;
                         while($row = mysql_fetch_assoc($result)) {
                             if ($numBookmarks > 9) {

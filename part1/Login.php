@@ -5,10 +5,12 @@
         <link rel = "stylesheet" type="text/css" href="../shared/tma2_stylesheet.css" />
         <body>
             <?php
+                // Get the user's inputted username and password
                 $user = $_POST["loginUsername"];
                 $pass = $_POST["loginPassword"];
 
-                // $query = "INSERT INTO credentials ('username', password') VALUES ("  . $user . ", " . $password . ")";
+                // Create a select query to select the user's username from the database that matches the user's 
+                // inputted username and password
                 $query = "SELECT username FROM credentials WHERE username = '$user' AND password = '$pass'";
 
                 // Connect to MySQL
@@ -16,18 +18,21 @@
                     die("Could not connect to database </body></html>");
                 }
 
-                // open Products database
+                // open users database
                 if (!mysql_select_db( "users", $database)) {
                     die("Could not open products database </body></html>");
                 }
 
-                // query Products database
+                // Perform the select query on the credentials table in the users database 
                 if (!($result = mysql_query($query, $database))) 
                 {
+                    // If the query could not be performed, display an error page
                     print( "<p>Could not execute query!</p>" );
                     die( mysql_error() . "</body></html>" );
                 } // end if
 
+                // If no rows were selected, display an invalid username/password error message and a button to 
+                // redirect the user back to the login page
                 if (mysql_num_rows($result) == 0) {
                     print("<span class='title4' style='margin-top: 100px'>Invalid Username and/or Password</span>");
                     print("<form method='post' action='SiteMarkLogin.php'>");
@@ -36,6 +41,7 @@
                     die("</body></html>");                    
                 }
 
+                // The inputted credentials were valid, close the database and display the welcome page
                 mysql_close( $database );
             ?>
 
@@ -50,6 +56,7 @@
                 </div>
             </form>
             <?php
+                // Set the user's login to be valid for an hour
                 define("ONE_HOUR", 60 * 60 * 1);
 
                 setcookie("user", $_POST["loginUsername"], time() + ONE_HOUR);

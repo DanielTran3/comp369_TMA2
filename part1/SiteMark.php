@@ -6,6 +6,8 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
         <script src="SiteMark.js" ></script>
         <script type="text/javascript">
+            // Load the event listeners for the buttons and for selecting a bookmark to fill in the
+            // appropriate field information
             window.onload = function () {
                 initListeners();
                 $('.bookmarkListElement').click(function(){
@@ -21,10 +23,12 @@
         <?php
             echo $_COOKIE["user"];
             echo $_COOKIE["pass"];
+            // Check for valid user login, otherwise redirect to login screen
             if (!isset($_COOKIE["user"]) || !isset($_COOKIE["pass"])) {
                 header("Location:SiteMarkLogin.php");
             }
 
+            // Create a select query to the URL addresses and the name of the bookmark from the database
             $query = "SELECT url, name FROM bookmarks WHERE username='$_COOKIE[user]'";
 
             // Connect to MySQL
@@ -32,23 +36,32 @@
                 die("Could not connect to database </body></html>");
             }
 
-            // open Products database
+            // open users database
             if (!mysql_select_db( "users", $database)) {
                 die("Could not open products database </body></html>");
             }
 
-            // query Products database
+            // Execute the select query and retrieve the user's bookmarks
             if (!($result = mysql_query( $query, $database))) 
             {
-                print( "<p>Could not execute query!</p>" );
+                // If the select query failed, notify the user
+                print( "<p>Failed to retrieve your bookmarks</p>" );
+                print("<form method='post' action='WelcomeToSiteMark.php'>");
+                print("<button class='whiteButton' type='submit' style='margin-top:0px;'>Continue</button>");
+                print("</form>");
                 die( mysql_error() . "</body></html>" );
-            } // end if
+            }
+
+            // Query was valid, close the database and display the main page
             mysql_close( $database );
         ?>
         <h1 class="title1">SiteMark</h1>
         <div id="bookmarkDiv">
             <ol>
                 <?php
+                    // Iterate through each row of the query from the database and create list elements
+                    // that contain a p element that can redirect the user to the bookmark URL. The name displayed is 
+                    // the name retrieved from the database
                     while($row = mysql_fetch_assoc($result)) {
                         $urlVal = $row["url"];
                         $nameVal = $row["name"];
@@ -74,6 +87,7 @@
         <button id="addBookmarkButton" type="submit" class="whiteButton" style="margin-top:0px;">Add Bookmark</button>
         
         <form id="editBookmarkForm" method="post" action="EditBookmark.php">    
+            <!-- Hidden elements taht contain the old and new URL information for editing the URLS in the database -->
             <input type="hidden" name="oldBookmarkName"></input>
             <input type="hidden" name="oldBookmarkURL"></input>
             <input type="hidden" name="editedBookmarkName"></input>
