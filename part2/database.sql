@@ -1,11 +1,29 @@
 CREATE DATABASE IF NOT EXISTS Learnatorium;
 USE Learnatorium;
 
+DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS usersCourses;
 DROP TABLE IF EXISTS lessonObjects;
 DROP TABLE IF EXISTS quizzes;
 DROP TABLE IF EXISTS lessons;
 DROP TABLE IF EXISTS units;
 DROP TABLE IF EXISTS courses;
+
+CREATE TABLE users (
+	username VARCHAR(20) NOT NULL,
+    password VARCHAR(20) NOT NULL,
+    admin bool NOT NULL,
+    PRIMARY KEY (username)
+);
+
+CREATE TABLE usersCourses (
+	username VARCHAR(20) NOT NULL , 
+	courseID int NOT NULL,
+	FOREIGN KEY (username) REFERENCES users(username),
+	PRIMARY KEY(username, courseID)
+);
+
+INSERT INTO users (username, password, admin) VALUES ("admin", "password", true);
 
 CREATE TABLE courses (
 	ID int NOT NULL AUTO_INCREMENT,

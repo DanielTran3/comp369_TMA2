@@ -9,16 +9,16 @@
                 $user = $_POST["signupUsername"];
                 $pass = $_POST["signupPassword"];
 
-                // Create a query to insert the specified username and password into the users database
-                $query = "INSERT INTO credentials (username, password) VALUES ('$user', '$pass')";
+                // Create a query to insert the specified username and password into the Learnatorium database
+                $query = "INSERT INTO users (username, password, admin) VALUES ('$user', '$pass', 'false')";
 
                 // Connect to MySQL
                 if (!($database = mysql_connect("localhost", "iw3htp", "password"))) {
                     die("Could not connect to database </body></html>");
                 }
 
-                // open users database
-                if (!mysql_select_db( "users", $database)) {
+                // open Learnatorium database
+                if (!mysql_select_db( "Learnatorium", $database)) {
                     die("Could not open products database </body></html>");
                 }
 
@@ -28,10 +28,10 @@
                     // If the insert failed, then the username already exists in the database. Prompt the user and 
                     // create a button to redirect the user to the Signup page
                     print("<span class='title4' style='margin-top: 100px'>Username already exists!</span>");
-                    print("<form method='post' action='SiteMarkSignup.php'>");
+                    print("<form method='post' action='LearnatoriumSignup.php'>");
                     print("<button class='whiteButton' type='submit' style='margin-top:0px;'>Continue</button>");
                     print("</form>");
-                    die( mysql_error() . "</body></html>" );
+                    die("</body></html>" );
                 }
 
                 // Query was successful. Close the database and display the rest of the page
@@ -39,9 +39,9 @@
             ?>
 
             <!-- Display the successful signup information and create a button to redirect the user to the main page -->
-            <form method="post" action="SiteMark.php">
+            <form method="post" action="Learnatorium.php">
                 <div class="welcomeText">
-                    <h1 class="title1 titleFont">SiteMark</h1>
+                    <h1 class="title1 titleFont">Learnatorium</h1>
 
                     <span class="title1">You've Been signed up <?php print($user) ?>!</span>
                     <span class="title4">Click the button below to continue</span>
@@ -53,7 +53,6 @@
                 define("ONE_HOUR", 60 * 60 * 1);
 
                 setcookie("user", $_POST["signupUsername"], time() + ONE_HOUR);
-                setcookie("pass", $_POST["signupPassword"], time() + ONE_HOUR);
             ?>
         </body>
     </head>

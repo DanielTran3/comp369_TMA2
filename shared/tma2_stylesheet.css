@@ -261,3 +261,18 @@ textarea {
     width: 600px;
     height: 400px;
 }
+
+.banner {
+    color: white;
+    margin-top: 2px;
+    margin-bottom: 10px;
+    text-decoration: underline;
+}
+
+a:link {
+    color: #4CE89C;
+}
+
+a:visited {
+    color: #4CE89C;
+}

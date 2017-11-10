@@ -19,7 +19,7 @@
     </head>
     <body>
         <div id="mainDiv">
-        <span class="title4"> Welcome <?php print($_COOKIE["user"]) ?>, <a href="Logout.php">Logout?</a>
+        <span class="title4"> Welcome <?php print($_COOKIE["user"]) ?>, <a href="Logout.php">Logout?</a></span>
         <?php
             echo $_COOKIE["user"];
             echo $_COOKIE["pass"];
@@ -51,6 +51,16 @@
                 print("</form>");
                 die( mysql_error() . "</body></html>" );
             }
+
+                // If no rows were selected, display an invalid username/password error message and a button to 
+                // redirect the user back to the login page
+                if (mysql_num_rows($result) == 0) {
+                    print("<span class='title4' style='margin-top: 100px'>Invalid Username and/or Password</span>");
+                    print("<form method='post' action='SiteMarkLogin.php'>");
+                    print("<button class='whiteButton' type='submit' style='margin-top:0px;'>Try Again</button>");
+                    print("</form>");
+                    die("</body></html>");                    
+                }
 
             // Query was valid, close the database and display the main page
             mysql_close( $database );

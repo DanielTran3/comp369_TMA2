@@ -60,7 +60,7 @@
                 <form action="SiteMarkLogin.php">    
                     <button class="whiteButton floatLeft" style="height: 50px; width: 100px;"type="submit">Login</button>
                 </form>
-                <form action="SiteMarkSignup.php">    
+                <form action="SiteMarkSignup.php">
                     <button class="whiteButton floatRight" style="height: 50px; width: 100px;"type="submit">Sign Up</button>
                 </form>
             </div>

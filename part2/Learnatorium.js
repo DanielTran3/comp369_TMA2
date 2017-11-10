@@ -119,22 +119,26 @@ function MarkQuiz(lessonID) {
     var totalQuestions = 0;
     var quizDiv = document.getElementById(lessonID);
     var inputElements = quizDiv.getElementsByTagName("INPUT");
-    for (var i = 0; i < inputElements.childElementCount; i++) {
+    for (var i = 0; i < inputElements.length; i++) {
         if (inputElements[i].type === "radio") {
-            if (submittedAnswer.getAttribute("correct") === "*") {
+            if (inputElements[i].getAttribute("correct") === "*") {
                 totalQuestions++;
-                if (submittedAnswer.checked) {
+                if (inputElements[i].checked) {
                     totalCorrect++;
                 }
             }
         }
     }
-    var finalScore = document.createElement("h3");
-    finalScore.style.styleFloat = 'right';
-    finalScore.style.cssFloat = 'right';
+    if (document.getElementById("finalScore" + lessonID) === null) {
+        var finalScore = document.createElement("h3");
+        finalScore.id = "finalScore" + lessonID;
+        finalScore.style.styleFloat = 'right';
+        finalScore.style.cssFloat = 'right';
+        quizDiv.appendChild(finalScore);
+    }
+    var finalScore = document.getElementById("finalScore" + lessonID);
     finalScore.innerHTML = "Final Score: " + totalCorrect + "/" + totalQuestions + 
                            " | " + ((totalCorrect/totalQuestions) * 100).toFixed(2) + "%";
-    quizDiv.appendChild(finalScore);
 }
 
 

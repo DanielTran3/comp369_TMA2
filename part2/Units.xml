@@ -424,37 +424,32 @@ HTML Part 2
     </Section>
 
 
-    <Question title="Question 1. The starting value of a Range Input can be specified with the ___ attribute">
-        <Answer name="q1" correct="">A. start</Answer>
-        <Answer name="q1" correct="">B. step</Answer>
-        <Answer name="q1" correct="*">C. value</Answer>
-        <Answer name="q1" correct="">D. begin</Answer>
-    </Question>
-    <Question title="Question 2. Multiple emails inside an email input are separated by ">
-        <Answer name="q2" correct="">A. Asterisk</Answer>
-        <Answer name="q2" correct="">B. Semi-Colons</Answer>
-        <Answer name="q2" correct="">C. Spaces</Answer>
-        <Answer name="q2" correct="*">D. Commas</Answer>
-    </Question>
-    <Question title="Question 3. Consider a Number Input with a minimum value of 3, maximum value of 11, starting value of 4, and step value of 9.
-                        What happens when the up arrow on the spinner is pressed?">
-        <Answer name="q3" correct="">A. 11</Answer>
-        <Answer name="q3" correct="">B. 9</Answer>
-        <Answer name="q3" correct="*">C. 4</Answer>
-        <Answer name="q3" correct="">D. NaN</Answer>
-    </Question>
-    <Question title="Question 4. What do the Tel Input and Email Input have in common?">
-        <Answer name="q4" correct="*">A. They both do not validate if the input exists</Answer>
-        <Answer name="q4" correct="">B. They both validate if the input exists</Answer>
-        <Answer name="q4" correct="">C. Both inputs can accept multiple inputs, separated by spaces</Answer>
-        <Answer name="q4" correct="">D. Both A and C</Answer>
-    </Question>
-    <Question title="Question 5. Why is a Range Input self-validating?">
-        <Answer name="q5" correct="">A. The slider checks its current value to see if it is outside of the range and corrects itself</Answer>
-        <Answer name="q5" correct="*">B. The slider cannot move outside of the valid range</Answer>
-        <Answer name="q5" correct="">C. The slider can only move within the min and max range exclusively (never reach the min or max value)</Answer>
-        <Answer name="q5" correct="">D. None of the Above</Answer>
-    </Question>
+    <Question name="Question1">Question 1. The starting value of a Range Input can be specified with the ___ attribute</Question>
+        <Answer name="Question1" correct="">A. start</Answer>
+        <Answer name="Question1" correct="">B. step</Answer>
+        <Answer name="Question1" correct="*">C. value</Answer>
+        <Answer name="Question1" correct="">D. begin</Answer>
+    <Question name="Question2">Question 2. Multiple emails inside an email input are separated by </Question>
+        <Answer name="Question2" correct="">A. Asterisk</Answer>
+        <Answer name="Question2" correct="">B. Semi-Colons</Answer>
+        <Answer name="Question2" correct="">C. Spaces</Answer>
+        <Answer name="Question2" correct="*">D. Commas</Answer>
+    <Question name="Question3">Question 3. Consider a Number Input with a minimum value of 3, maximum value of 11, starting value of 4, and step value of 9.
+                        What happens when the up arrow on the spinner is pressed?</Question>
+        <Answer name="Question3" correct="">A. 11</Answer>
+        <Answer name="Question3" correct="">B. 9</Answer>
+        <Answer name="Question3" correct="*">C. 4</Answer>
+        <Answer name="Question3" correct="">D. NaN</Answer>
+    <Question name="Question4">Question 4. What do the Tel Input and Email Input have in common?</Question>
+        <Answer name="Question4" correct="*">A. They both do not validate if the input exists</Answer>
+        <Answer name="Question4" correct="">B. They both validate if the input exists</Answer>
+        <Answer name="Question4" correct="">C. Both inputs can accept multiple inputs, separated by spaces</Answer>
+        <Answer name="Question4" correct="">D. Both A and C</Answer>
+    <Question name="Question5">Question 5. Why is a Range Input self-validating?</Question>
+        <Answer name="Question5" correct="">A. The slider checks its current value to see if it is outside of the range and corrects itself</Answer>
+        <Answer name="Question5" correct="*">B. The slider cannot move outside of the valid range</Answer>
+        <Answer name="Question5" correct="">C. The slider can only move within the min and max range exclusively (never reach the min or max value)</Answer>
+        <Answer name="Question5" correct="">D. None of the Above</Answer>
 
 
 CSS
@@ -522,36 +517,31 @@ CSS
     </Section>
 
 
-    <Question title="Question 1. CSS is used to">
-        <Answer name="q1" correct="">A. Define HTML elements</Answer>
-        <Answer name="q1" correct="">B. Create JavaScript objects</Answer>
-        <Answer name="q1" correct="*">C. Style HTML elements</Answer>
-        <Answer name="q1" correct="">D. Create attributes for JavaScript objects</Answer>
-    </Question>
-    <Question title="Question 2. Why is it considered bad to use inline HTML?">
-        <Answer name="q2" correct="">A. Because it makes it difficult to change themes of web pages</Answer>
-        <Answer name="q2" correct="">B. There is duplicate CSS code for HTML element that should be styled the same</Answer>
-        <Answer name="q2" correct="">C. CSS code becomes less maintainable</Answer>
-        <Answer name="q2" correct="*">D. All of the Above</Answer>
-    </Question>
-    <Question title="Question 3. CSS styles an HTML element by ID by preceding the ID with a ">
-        <Answer name="q3" correct="*">A. &quot;#&quot;</Answer>
-        <Answer name="q3" correct="">B. &quot;.&quot;</Answer>
-        <Answer name="q3" correct="">C. &quot;>&quot;</Answer>
-        <Answer name="q3" correct="">D. &quot;&amp;&quot;</Answer>
-    </Question>
-    <Question title="Question 4. CSS is considered a ">
-        <Answer name="q4" correct="*">A. Style Sheet Language</Answer>
-        <Answer name="q4" correct="">B. Scripting Language</Answer>
-        <Answer name="q4" correct="">C. Markup Language</Answer>
-        <Answer name="q4" correct="">D. Declarative Language</Answer>
-    </Question>
-    <Question title="Question 5. Where can CSS code reside?">
-        <Answer name="q5" correct="">A. In HTML elements</Answer>
-        <Answer name="q5" correct="">B. In an HTML style element</Answer>
-        <Answer name="q5" correct="">C. Outside of a HTML style element</Answer>
-        <Answer name="q5" correct="*">D. Both A and B</Answer>
-    </Question>
+    <Question name="Question1">Question 1. CSS is used to</Question>
+        <Answer name="Question1" correct="">A. Define HTML elements</Answer>
+        <Answer name="Question1" correct="">B. Create JavaScript objects</Answer>
+        <Answer name="Question1" correct="*">C. Style HTML elements</Answer>
+        <Answer name="Question1" correct="">D. Create attributes for JavaScript objects</Answer>
+    <Question name="Question2">Question 2. Why is it considered bad to use inline HTML?</Question>
+        <Answer name="Question2" correct="">A. Because it makes it difficult to change themes of web pages</Answer>
+        <Answer name="Question2" correct="">B. There is duplicate CSS code for HTML element that should be styled the same</Answer>
+        <Answer name="Question2" correct="">C. CSS code becomes less maintainable</Answer>
+        <Answer name="Question2" correct="*">D. All of the Above</Answer>
+    <Question name="Question3">Question 3. CSS styles an HTML element by ID by preceding the ID with a </Question>
+        <Answer name="Question3" correct="*">A. &quot;#&quot;</Answer>
+        <Answer name="Question3" correct="">B. &quot;.&quot;</Answer>
+        <Answer name="Question3" correct="">C. &quot;>&quot;</Answer>
+        <Answer name="Question3" correct="">D. &quot;&amp;&quot;</Answer>
+    <Question name="Question4">Question 4. CSS is considered a </Question>
+        <Answer name="Question4" correct="*">A. Style Sheet Language</Answer>
+        <Answer name="Question4" correct="">B. Scripting Language</Answer>
+        <Answer name="Question4" correct="">C. Markup Language</Answer>
+        <Answer name="Question4" correct="">D. Declarative Language</Answer>
+    <Question name="Question5">Question 5. Where can CSS code reside?</Question>
+        <Answer name="Question5" correct="">A. In HTML elements</Answer>
+        <Answer name="Question5" correct="">B. In an HTML style element</Answer>
+        <Answer name="Question5" correct="">C. Outside of a HTML style element</Answer>
+        <Answer name="Question5" correct="*">D. Both A and B</Answer>
 
 
 JavaScript and AJAX
@@ -634,33 +624,28 @@ JavaScript and AJAX
     </Section>
 
 
-    <Question title="Question 1. JavaScript is a scripting language that works on the ">
-        <Answer name="q1" correct="">A. Server-side</Answer>
-        <Answer name="q1" correct="*">B. Client-side</Answer>
-        <Answer name="q1" correct="">C. As an intermediate between the server-side and client-side</Answer>
-        <Answer name="q1" correct="">D. None of the Above</Answer>
-    </Question>
-    <Question title="Question 2. Is it safe to store sensitive data in JavaScript objects and why? Choose the best Answer.">
-        <Answer name="q2" correct="">A. Yes, because the client cannot view the data</Answer>
-        <Answer name="q2" correct="*">B. No, because the data can be viewed through the browser console</Answer>
-        <Answer name="q2" correct="">C. Yes, because the data is encrypted when stored and decrypted when displayed</Answer>
-        <Answer name="q2" correct="">D. Both A and C</Answer>
-    </Question>
-    <Question title="Question 3. What does AJAX do?">
-        <Answer name="q3" correct="">A. Helps transfer data between the client and server asynchronously</Answer>
-        <Answer name="q3" correct="">B. Helps transfer data between the client and server synchronously</Answer>
-        <Answer name="q3" correct="">C. Helps store data on the client side</Answer>
-        <Answer name="q3" correct="*">D. Both A and B</Answer>
-    </Question>
-    <Question title="Question 4. Where can JavaScript code reside?">
-        <Answer name="q4" correct="">A. Inline HTML elements</Answer>
-        <Answer name="q4" correct="">B. External JavaScript file</Answer>
-        <Answer name="q4" correct="">C. In a script tag in the HTML document</Answer>
-        <Answer name="q4" correct="*">D. All of the Above</Answer>
-    </Question>
-    <Question title="Question 5. What does the readyState and status in an XMLHttpRequest stand for?">
-        <Answer name="q5" correct="*">A. Done (sent) and Successful</Answer>
-        <Answer name="q5" correct="">B. Loading (processing) and Found</Answer>
-        <Answer name="q5" correct="">C. Loading (processing) and Successful</Answer>
-        <Answer name="q5" correct="">D. Done (sent) and Found</Answer>
-    </Question>
+    <Question name="Question1">Question 1. JavaScript is a scripting language that works on the </Question>
+        <Answer name="Question1" correct="">A. Server-side</Answer>
+        <Answer name="Question1" correct="*">B. Client-side</Answer>
+        <Answer name="Question1" correct="">C. As an intermediate between the server-side and client-side</Answer>
+        <Answer name="Question1" correct="">D. None of the Above</Answer>
+    <Question name="Question2">Question 2. Is it safe to store sensitive data in JavaScript objects and why? Choose the best Answer.</Question>
+        <Answer name="Question2" correct="">A. Yes, because the client cannot view the data</Answer>
+        <Answer name="Question2" correct="*">B. No, because the data can be viewed through the browser console</Answer>
+        <Answer name="Question2" correct="">C. Yes, because the data is encrypted when stored and decrypted when displayed</Answer>
+        <Answer name="Question2" correct="">D. Both A and C</Answer>
+    <Question name="Question3">Question 3. What does AJAX do?</Question>
+        <Answer name="Question3" correct="">A. Helps transfer data between the client and server asynchronously</Answer>
+        <Answer name="Question3" correct="">B. Helps transfer data between the client and server synchronously</Answer>
+        <Answer name="Question3" correct="">C. Helps store data on the client side</Answer>
+        <Answer name="Question3" correct="*">D. Both A and B</Answer>
+    <Question name="Question4">Question 4. Where can JavaScript code reside?</Question>
+        <Answer name="Question4" correct="">A. Inline HTML elements</Answer>
+        <Answer name="Question4" correct="">B. External JavaScript file</Answer>
+        <Answer name="Question4" correct="">C. In a script tag in the HTML document</Answer>
+        <Answer name="Question4" correct="*">D. All of the Above</Answer>
+    <Question name="Question5">Question 5. What does the readyState and status in an XMLHttpRequest stand for?</Question>
+        <Answer name="Question5" correct="*">A. Done (sent) and Successful</Answer>
+        <Answer name="Question5" correct="">B. Loading (processing) and Found</Answer>
+        <Answer name="Question5" correct="">C. Loading (processing) and Successful</Answer>
+        <Answer name="Question5" correct="">D. Done (sent) and Found</Answer>
