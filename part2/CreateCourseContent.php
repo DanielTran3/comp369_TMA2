@@ -15,7 +15,7 @@
     <body>
         <?php
             // Check for valid user login, if there is one, redirect the user to the main page
-            if (isset($_COOKIE["user"])) {
+            if (!isset($_COOKIE["user"])) {
                 header("Location:Learnatorium.php");
             }
 
@@ -47,6 +47,7 @@
         ?>
         <div class="linksBar">
             <h1 class="banner">Learn The Web</h1>
+            <span class="title4 floatRight" style="color:white"> Welcome <?php print($_COOKIE["user"]) ?>, <a href="Logout.php">Logout?</a></span>
             <ul>
                 <li>
                     <a href="../tma1.htm">Home</a>
@@ -62,7 +63,7 @@
                 </li>
                 <?php 
                     $adminRights = mysql_fetch_assoc($result);
-                    if ($adminRights) {
+                    if ($adminRights["admin"]) {
                         print('<li><a href="CreateCourseContent.php">Create A Course</a></li>');
                     }
                     else {

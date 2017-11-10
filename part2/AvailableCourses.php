@@ -37,31 +37,34 @@
                 mysql_close( $database );
             ?>
             <div class="linksBar">
-            <h1 class="banner">Learn The Web</h1>
-            <ul>
-                <li>
-                    <a href="../tma1.htm">Home</a>
-                </li>
-                <li>
-                    <a href="../part1/WelcomeToResume.html">Resume</a>
-                </li>
-                <li>
-                    <a href="AvailableCourses.php">Available Courses</a>
-                </li>
-                <li>
-                    <a href="YourCourses.php">Your Courses</a>
-                </li>
+                <h1 class="banner">Learn The Web</h1>
+                <span class="title4 floatRight" style="color:white"> Welcome <?php print($_COOKIE["user"]) ?>, <a href="Logout.php">Logout?</a></span>
+                <ul>
+                    <li>
+                        <a href="../tma1.htm">Home</a>
+                    </li>
+                    <li>
+                        <a href="../part1/WelcomeToResume.html">Resume</a>
+                    </li>
+                    <li>
+                        <a href="AvailableCourses.php">Available Courses</a>
+                    </li>
+                    <li>
+                        <a href="YourCourses.php">Your Courses</a>
+                    </li>
 
-                <?php 
-                    $adminRights = mysql_fetch_assoc($result);
-                    if ($adminRights) {
-                        print('<li><a href="CreateCourseContent.php">Create A Course</a></li>');
-                    }
-                ?>
-            </ul>
+                    <?php 
+                        $adminRights = mysql_fetch_assoc($result);
+                        if ($adminRights == 1) {
+                            print('<li><a href="CreateCourseContent.php">Create A Course</a></li>');
+                        }
+                    ?>
+                </ul>
             </div>
             <div>
                 <h1>Available Courses</h1>
+                <form id="selectCourseForm" method="post" action="SelectedCourse.php">
+                <input type="hidden" name="courseId"></input>
                 <?php
                     // Connect to MySQL
                     if (!($database = mysql_connect("localhost", "iw3htp", "password"))) {
@@ -69,10 +72,11 @@
                     }
 
                     // open Products database
-                    if (!mysql_select_db( "learnatorium", $database)) {
-                        die("Could not open learnatorium database </body></html>");
+                    if (!mysql_select_db( "Learnatorium", $database)) {
+                        die("Could not open Learnatorium database </body></html>");
                     }
 
+                    // $query = "SELECT courses FROM users";
                     $query = "SELECT ID, name FROM courses";
                     if (!($result = mysql_query($query, $database))) 
                     {
@@ -82,16 +86,18 @@
                     }
 
                     if (mysql_num_rows($result) > 0) {
-                        print("<ol>");
+                        print("<ul>");
                         while($row = mysql_fetch_assoc($result)) {
-                            $courseID = $row["ID"];
-                            print("<li name='$courseID'>".$row["name"]."</li>");
+                            $val = $row['name'];
+                            $courseID = $row['ID'];
+                            print("<li><input id='$courseID' type='submit' class='whiteButton' style='margin:0px' onclick='SelectACourse(this)' value='$val' /></li>");
                         }
-                        print("</ol>");
+                        print("</ul>");
                     }
 
                     mysql_close( $database );
                 ?>
+                </form>
             </div>
         </body>
     </head>

@@ -28,12 +28,12 @@
             }
 
             // open users database
-            if (!mysql_select_db( "Learnatorium", $database)) {
+            if (!mysql_select_db("Learnatorium", $database)) {
                 die("Could not open products database </body></html>");
             }
 
             // Execute the select query and retrieve the user's bookmarks
-            if (!($result = mysql_query( $query, $database))) 
+            if (!($result = mysql_query($query, $database))) 
             {
                 // If the select query failed, notify the user
                 print( "<p>Failed to retrieve your user status</p>" );
@@ -65,7 +65,7 @@
 
                 <?php 
                     $adminRights = mysql_fetch_assoc($result);
-                    if ($adminRights) {
+                    if ($adminRights["admin"]) {
                         print('<li><a href="CreateCourseContent.php">Create A Course</a></li>');
                     }
                 ?>
