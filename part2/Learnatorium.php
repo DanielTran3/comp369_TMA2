@@ -20,6 +20,7 @@
                 header("Location:LearnatoriumLogin.php");
             }
 
+            // Get the admin status of the user
             $query = "SELECT admin FROM users WHERE username='$_COOKIE[user]'";
 
             // Connect to MySQL
@@ -27,12 +28,12 @@
                 die("Could not connect to database </body></html>");
             }
 
-            // open users database
+            // open Learnatorium database
             if (!mysql_select_db("Learnatorium", $database)) {
                 die("Could not open products database </body></html>");
             }
 
-            // Execute the select query and retrieve the user's bookmarks
+            // Execute the select query to retrieve the status of the user
             if (!($result = mysql_query($query, $database))) 
             {
                 // If the select query failed, notify the user
@@ -48,6 +49,7 @@
         ?>
         <div class="linksBar">
             <h1 class="banner">Learnatorium</h1>
+            <!-- Print the user's name along with a link to log out -->
             <span class="title4 floatRight" style="color:white"> Welcome <?php print($_COOKIE["user"]) ?>, <a href="Logout.php">Logout?</a></span>
             <ul>
                 <li>
@@ -64,6 +66,8 @@
                 </li>
 
                 <?php 
+                    // Retrieve the user's satatus and check if they are an admin or not. If they are,
+                    // display the Create A Course link
                     $adminRights = mysql_fetch_assoc($result);
                     if ($adminRights["admin"]) {
                         print('<li><a href="CreateCourseContent.php">Create A Course</a></li>');

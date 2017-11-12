@@ -58,14 +58,6 @@
                     die("</body></html>");
                 }
 
-                // $query = "SELECT LAST_INSERT_ID()";
-                // if (!($result = mysql_query($query, $database))) 
-                // {
-                //     print( "<p>Could not retrieve Course ID</p>" );
-                //     print( "<p><a href='CreateCourseContent.php'>Click Here</a> to continue.</p>" );
-                //     die("</body></html>");
-                // }
-
                 $courseID = mysql_insert_id($database);
 
                 print("<p>Course ID: " . $courseID . "</p>");
@@ -81,17 +73,8 @@
                         die("</body></html>");
                     }
 
-                    // $query = "SELECT LAST_INSERT_ID";
-                    // if (!($result = mysql_query($query, $database))) 
-                    // {
-                    //     print( "<p>Could not retrieve Unit ID</p>" );
-                    //     print( "<p><a href='CreateCourseContent.php'>Click Here</a> to continue.</p>" );
-                    //     die("</body></html>");
-                    // }
-
                     $unitID = mysql_insert_id($database);
                     print("<p>Unit ID: " . $unitID . "</p>");
-
 
                     $numberOfLessons = $_POST['numLessons'][$unitIndex];
                     print("<p>Number of Children Lessons: " . $unitID . "</p>");
@@ -129,6 +112,51 @@
                         }
                         $currentLesson++;
                     }
+                }
+
+                if (!empty($_FILES['lessonObjects'])) {
+                    $numObjects = count($_FILES['lessonObjects']['name']);
+                    $directory = "./uploads/" . $course . $courseID;
+                    if (!file_exists($directory)) {
+                        mkdir($directory);
+                    }
+                    $path = $directory . "/";
+                    for ($i = 0; $i < $numObjects; $i++) {
+                        if (isset($_FILES['lessonObjects']['name'][$i]) && !empty($_FILES['lessonObjects']['name'][$i])) {
+                            $lessonObjectName = $_FILES['lessonObjects']['name'][$i];
+                            $lessonObjectTmpName = $_FILES['lessonObjects']['tmp_name'][$i];
+                            $dotPosition = strrpos($lessonObjectName, ".");
+                            $lessonObjectType = substr($lessonObjectName, $dotPosition + 1);
+                            if (move_uploaded_file($lessonObjectTmpName, $path.$lessonObjectName)) {
+                                // Create a query to the users table to get the admin status of the currently
+                                // logged in user
+                                echo("<p>Name: " . $lessonObjectName . "</p>");
+                                $query = "INSERT INTO lessonObjects (course, type, filename) VALUES ('$courseID', '$lessonObjectType','$lessonObjectName') " . 
+                                         "ON DUPLICATE KEY UPDATE type='$lessonObjectType', filename='$lessonObjectName'";
+
+                                // Execute the to retrieve the user's admin status
+                                if (!($result = mysql_query( $query, $database))) 
+                                {
+                                    // If the select query failed, notify the user
+                                    print( "<p>Failed to retrieve your user status</p>" );
+                                    print("<form method='post' action='WelcomeToSiteMark.php'>");
+                                    print("<button class='whiteButton' type='submit' style='margin-top:0px;'>Continue</button>");
+                                    print("</form>");
+                                    die( mysql_error() . "</body></html>" );
+                                }
+                                echo 'Uploaded!';
+                            }
+                            else {
+                                echo("Move object failed");
+                            }
+                        }
+                        else {
+                            echo("Object not set");            
+                        }
+                    }
+                }
+                else {
+                    echo("Lesson Objects Empty");
                 }
 
                 // query Products database

@@ -276,3 +276,12 @@ a:link {
 a:visited {
     color: #4CE89C;
 }
+
+.selectedCourse {
+    background-color: slategray;
+}
+
+.courseListItem {
+    list-style: none;
+    font-family: Courier New, Courier, monospace;
+}

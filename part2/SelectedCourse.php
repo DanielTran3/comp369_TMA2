@@ -10,9 +10,11 @@
         <?php
             // Check for valid user login, if there is one, redirect the user to the main page
             if (!isset($_COOKIE["user"])) {
-                header("Location:Learnatorium.php");
+                header("Location:LearnatoriumLogin.php");
             }
 
+            // Create a query to the users table to get the admin status of the currently
+            // logged in user
             $query = "SELECT admin FROM users WHERE username='$_COOKIE[user]'";
             
             // Connect to MySQL
@@ -20,7 +22,7 @@
                 die("Could not connect to database </body></html>");
             }
 
-            // open users database
+            // Open Learnatorium database
             if (!mysql_select_db( "Learnatorium", $database)) {
                 die("Could not open products database </body></html>");
             }
@@ -40,6 +42,8 @@
             mysql_close( $database );
         ?>
         <?php
+            // PHP parser for Lesson EMLs. Returns a string that is HTML decoded and
+            // is ready to be displayed in a browser
             function lessonEMLParser($lesson) {
                 $lesson = parseOverview($lesson);
                 $lesson = parseOutline($lesson);
@@ -48,7 +52,9 @@
                 $lesson = parseParagraph($lesson);
 
                 return htmlspecialchars_decode($lesson);
-            } 
+            }
+
+            // Parse the Overview section
             function parseOverview($lesson) {
                 // $patterns = array();
                 // $patterns[0] = "/\b&lt;Overview&gt;\b/";
@@ -56,20 +62,30 @@
                 // $replacementStrings = array();
                 // $replacementStrings[0] = "&lt;h2&gt;Overview&lt;/h2&gt;&lt;p&gt;";
                 // $replacementStrings[1] = "&lt;/p&gt;";
+                
+                // Create an Overview h2 header and display the contents of the overview in a p element
                 $lesson = preg_replace('/&lt;Overview&gt;/', '&lt;h2&gt;Overview&lt;/h2&gt;&lt;p&gt;', $lesson);
                 $lesson = preg_replace('/&lt;\/Overview&gt;/', '&lt;/p&gt;', $lesson);
 
                 return $lesson;
             }
+
+            // Parse the outline that is stored within the Overview
             function parseOutline($lesson) {
+                // Replace the Outline tag with unordered list (ul) tags
                 $lesson = preg_replace('/&lt;Outline&gt;/', '&lt;ul&gt;', $lesson);
                 $lesson = preg_replace('/&lt;\/Outline&gt;/', '&lt;/ul&gt;', $lesson);
+
+                // Replacae the BulletPoint tags with list element (li) tags
                 $lesson = preg_replace('/&lt;BulletPoint&gt;/', '&lt;li&gt;', $lesson);
                 //$lesson = preg_replace('/&lt;\/BulletPoint&gt;/', '&lt;/ligt;', $lesson);
 
                 return $lesson;
             }
+
+            // Parse the introduction
             function parseIntroduction($lesson) {
+                // Create an Introduction h2 element and store the contents of the 
                 $lesson = preg_replace('/&lt;Introduction&gt;/', '&lt;h2&gt;Introduction&lt;/h2&gt;&lt;p&gt;', $lesson);
                 $lesson = preg_replace('/&lt;\/Introduction&gt;/', '&lt;/p&gt;', $lesson);
 
@@ -126,6 +142,8 @@
                     <a href="YourCourses.php">Your Courses</a>
                 </li>
                 <?php 
+                    // Retrieve the user's satatus and check if they are an admin or not. If they are,
+                    // display the Create A Course link
                     $adminRights = mysql_fetch_assoc($result);
                     if ($adminRights["admin"]) {
                         print('<li><a href="CreateCourseContent.php">Create A Course</a></li>');

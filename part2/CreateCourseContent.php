@@ -16,9 +16,11 @@
         <?php
             // Check for valid user login, if there is one, redirect the user to the main page
             if (!isset($_COOKIE["user"])) {
-                header("Location:Learnatorium.php");
+                header("Location:LearnatoriumLogin.php");
             }
 
+            // Create a query to the users table to get the admin status of the currently
+            // logged in user
             $query = "SELECT admin FROM users WHERE username='$_COOKIE[user]'";
             
             // Connect to MySQL
@@ -46,7 +48,7 @@
             mysql_close( $database );
         ?>
         <div class="linksBar">
-            <h1 class="banner">Learn The Web</h1>
+            <h1 class="banner">Learnatorium</h1>
             <span class="title4 floatRight" style="color:white"> Welcome <?php print($_COOKIE["user"]) ?>, <a href="Logout.php">Logout?</a></span>
             <ul>
                 <li>
@@ -62,6 +64,8 @@
                     <a href="YourCourses.php">Your Courses</a>
                 </li>
                 <?php 
+                    // Retrieve the user's satatus and check if they are an admin or not. If they are,
+                    // display the Create A Course link, otherwise send the user back to the Learnatorium main page
                     $adminRights = mysql_fetch_assoc($result);
                     if ($adminRights["admin"]) {
                         print('<li><a href="CreateCourseContent.php">Create A Course</a></li>');
@@ -74,13 +78,13 @@
         </div>
         <div id="mainDiv">
             <h1 class="title1">Create A Course</h1>
-            <form id="addBookmarkForm" method="post" action="UploadCourse.php">    
+            <form id="addCourse" method="post" action="UploadCourse.php" enctype="multipart/form-data">    
                 <div id="courseDiv" class="innerDiv">
                     <span>Course Name: </span>
                     <input id="courseNameInput" name="courseNameName" type="text" class="largeInputBox"></input>        
                     <button type="button" id="addUnitButton" class="whiteButton" Value="AddUnit">Add Unit</button>
                     <button type="submit" id="createCourseButton" class="whiteButton" Value="CreateCourse">Create Course</button>                
-                    <input id="uploadFile" name="fileToUpload" type="file" multiple></input>        
+                    <input id="uploadFile" name="lessonObjects[]" type="file" multiple></input>        
                 </div>
             </form>
         </div>

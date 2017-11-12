@@ -3,13 +3,26 @@
    <head>
         <meta charset = "utf-8">
         <link rel = "stylesheet" type="text/css" href="../shared/tma2_stylesheet.css" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <script src="Learnatorium.js" ></script>
+        <script type="text/javascript">
+            // Load the event listeners for the buttons and for selecting a bookmark to fill in the
+            // appropriate field information
+            window.onload = function () {
+                $('.availableCourse').click(function(){
+                    SelectCourse(this);
+                });
+            }
+        </script>
         <body>
             <?php
                 // Check for valid user login, if there is one, redirect the user to the main page
                 if (!isset($_COOKIE["user"])) {
-                    header("Location:Learnatorium.php");
+                    header("Location:LearnatoriumLogin.php");
                 }
 
+                // Create a query to the users table to get the admin status of the currently
+                // logged in user
                 $query = "SELECT admin FROM users WHERE username='$_COOKIE[user]'";
                 
                 // Connect to MySQL
@@ -17,12 +30,12 @@
                     die("Could not connect to database </body></html>");
                 }
     
-                // open users database
+                // Open Learnatorium database
                 if (!mysql_select_db( "Learnatorium", $database)) {
                     die("Could not open products database </body></html>");
                 }
     
-                // Execute the select query and retrieve the user's bookmarks
+                // Execute the to retrieve the user's admin status
                 if (!($result = mysql_query( $query, $database))) 
                 {
                     // If the select query failed, notify the user
@@ -37,7 +50,7 @@
                 mysql_close( $database );
             ?>
             <div class="linksBar">
-                <h1 class="banner">Learn The Web</h1>
+                <h1 class="banner">Learnatorium</h1>
                 <span class="title4 floatRight" style="color:white"> Welcome <?php print($_COOKIE["user"]) ?>, <a href="Logout.php">Logout?</a></span>
                 <ul>
                     <li>
@@ -53,16 +66,22 @@
                         <a href="YourCourses.php">Your Courses</a>
                     </li>
 
-                    <?php 
+                    <?php
+                        // Retrieve the user's satatus and check if they are an admin or not. If they are,
+                        // display the Create A Course link 
                         $adminRights = mysql_fetch_assoc($result);
-                        if ($adminRights == 1) {
+                        if ($adminRights["admin"]) {
                             print('<li><a href="CreateCourseContent.php">Create A Course</a></li>');
                         }
                     ?>
                 </ul>
             </div>
             <div>
-                <h1>Available Courses</h1>
+                <form id="selectCourseForm" method="post" action="AddCourse.php">            
+                    <h1>Available Courses</h1>
+                    <input type='hidden' id="addCourseID" name="addCourseID"></input>
+                    <input id='$courseID' type='submit' class='whiteButton' style='margin:0px' onclick='SelectACourse(this)' value='Add Course' />                  
+                </form>
                 <form id="selectCourseForm" method="post" action="SelectedCourse.php">
                 <input type="hidden" name="courseId"></input>
                 <?php
@@ -71,13 +90,15 @@
                         die("Could not connect to database </body></html>");
                     }
 
-                    // open Products database
+                    // Open Learnatorium database
                     if (!mysql_select_db( "Learnatorium", $database)) {
                         die("Could not open Learnatorium database </body></html>");
                     }
 
+                    $user = $_COOKIE["user"];
+
                     // $query = "SELECT courses FROM users";
-                    $query = "SELECT ID, name FROM courses";
+                    $query = "SELECT ID, name FROM courses WHERE ID NOT IN (SELECT courseID FROM usersCourses WHERE username='$user')";
                     if (!($result = mysql_query($query, $database))) 
                     {
                         print( "<p>Could not add Course</p>" );
@@ -90,7 +111,7 @@
                         while($row = mysql_fetch_assoc($result)) {
                             $val = $row['name'];
                             $courseID = $row['ID'];
-                            print("<li><input id='$courseID' type='submit' class='whiteButton' style='margin:0px' onclick='SelectACourse(this)' value='$val' /></li>");
+                            print("<li id='$courseID' class='courseListItem availableCourse'><h2 style='margin:0px'>$val</h2></li>");
                         }
                         print("</ul>");
                     }

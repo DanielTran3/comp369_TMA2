@@ -39,7 +39,7 @@
                 mysql_close( $database );
             ?>
             <div class="linksBar">
-                <h1 class="banner">Learn The Web</h1>
+                <h1 class="banner">Learnatorium</h1>
                 <span class="title4 floatRight" style="color:white"> Welcome <?php print($_COOKIE["user"]) ?>, <a href="Logout.php">Logout?</a></span>
                 <ul>
                     <li>
@@ -67,6 +67,7 @@
                 <form id="selectCourseForm" method="post" action="SelectedCourse.php">
                 <input type="hidden" name="courseId"></input>
                 <?php
+                    $user = $_COOKIE["user"];
                     // Connect to MySQL
                     if (!($database = mysql_connect("localhost", "iw3htp", "password"))) {
                         die("Could not connect to database </body></html>");
@@ -78,7 +79,7 @@
                     }
 
                     // $query = "SELECT courses FROM users";
-                    $query = "SELECT ID, name FROM courses";
+                    $query = "SELECT ID, name FROM courses WHERE ID IN (SELECT courseID FROM usersCourses WHERE username = '$user')";
                     if (!($result = mysql_query($query, $database))) 
                     {
                         print( "<p>Could not add Course</p>" );

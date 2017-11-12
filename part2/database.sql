@@ -57,10 +57,9 @@ CREATE TABLE quizzes (
 );
 
 CREATE TABLE lessonObjects (
-	ID int NOT NULL AUTO_INCREMENT,
-    lesson int NOT NULL,
+    course int NOT NULL,
     type VARCHAR(32) NOT NULL,
-	objectData blob NOT NULL,
-    PRIMARY KEY (ID),
-    FOREIGN KEY (lesson) REFERENCES lessons(ID)
+	filename VARCHAR(256) NOT NULL,
+    PRIMARY KEY (course, filename),
+    FOREIGN KEY (course) REFERENCES courses(ID)
 );
