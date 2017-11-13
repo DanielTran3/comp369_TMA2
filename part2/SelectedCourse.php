@@ -32,7 +32,7 @@
             {
                 // If the select query failed, notify the user
                 print( "<p>Failed to retrieve your user status</p>" );
-                print("<form method='post' action='WelcomeToSiteMark.php'>");
+                print("<form method='post' action='YourCourses.php'>");
                 print("<button class='whiteButton' type='submit' style='margin-top:0px;'>Continue</button>");
                 print("</form>");
                 die( mysql_error() . "</body></html>" );
@@ -42,8 +42,7 @@
             mysql_close( $database );
         ?>
         <?php
-            // PHP parser for Lesson EMLs. Returns a string that is HTML decoded and
-            // is ready to be displayed in a browser
+            // PHP parser for Lesson EMLs. Returns a string that is HTML decoded and is ready to be displayed in a browser
             function lessonEMLParser($lesson, $courseID, $database) {
                 $lesson = parseOverview($lesson);
                 $lesson = parseOutline($lesson);
@@ -57,13 +56,6 @@
 
             // Parse the Overview section
             function parseOverview($lesson) {
-                // $patterns = array();
-                // $patterns[0] = "/\b&lt;Overview&gt;\b/";
-                // $patterns[1] = "/\b&lt;\/Overview&gt;\b/";
-                // $replacementStrings = array();
-                // $replacementStrings[0] = "&lt;h2&gt;Overview&lt;/h2&gt;&lt;p&gt;";
-                // $replacementStrings[1] = "&lt;/p&gt;";
-                
                 // Create an Overview h2 header and display the contents of the overview in a p element
                 $lesson = preg_replace('/&lt;Overview&gt;/', '&lt;h2&gt;Overview&lt;/h2&gt;&lt;p&gt;', $lesson);
                 $lesson = preg_replace('/&lt;\/Overview&gt;/', '&lt;/p&gt;', $lesson);
@@ -77,7 +69,7 @@
                 $lesson = preg_replace('/&lt;Outline&gt;/', '&lt;ul&gt;', $lesson);
                 $lesson = preg_replace('/&lt;\/Outline&gt;/', '&lt;/ul&gt;', $lesson);
 
-                // Replacae the BulletPoint tags with list element (li) tags
+                // Replace the BulletPoint tags with list element (li) tags
                 $lesson = preg_replace('/&lt;BulletPoint&gt;/', '&lt;li&gt;', $lesson);
                 //$lesson = preg_replace('/&lt;\/BulletPoint&gt;/', '&lt;/ligt;', $lesson);
 
@@ -93,56 +85,81 @@
                 return $lesson;
             }
 
+            // Parse a section header title
             function parseSection($lesson) {
+                // Parse the Section tag as a h2 tag
                 $lesson = preg_replace('/&lt;Section&gt;/', '&lt;h2&gt;', $lesson);
                 $lesson = preg_replace('/&lt;\/Section&gt;/', '&lt;/h2&gt;', $lesson);
 
                 return $lesson;
             }
 
+            // Parse a paragraph within a lesson
             function parseParagraph($lesson) {
+                // Parse the Paragraph tag a p tag
                 $lesson = preg_replace('/&lt;Paragraph&gt;/', '&lt;p&gt;', $lesson);
                 $lesson = preg_replace('/&lt;\/Paragraph&gt;/', '&lt;/p&gt;', $lesson);
 
                 return $lesson;
             }
 
+            // Parse the learning objectives, where the program currently supports images, videos, and audio files
             function parseLearningObjects($lesson, $courseID, $database) {
+                // Query for the current course
                 $query = "SELECT name FROM courses where ID='$courseID'";
                 if (!($result = mysql_query($query, $database))) 
                 {
                     print( "<p>Could not retrieve course ID</p>" );
                     die("</body></html>");
                 }
+                // Retrieve the current course name
                 $course = mysql_fetch_assoc($result);
+                $courseDirectory = $course['name'] . $courseID . '/';
                 
-                $lesson = preg_replace('/&lt;Image filename="/', '&lt;image src="./uploads/' . $course['name'] . $courseID . '/', $lesson);
+                // Parse the Image tag to replace it with an image tag and replace the filename attribute with a src attribute, 
+                // pointing to the designated file location.
+                $lesson = preg_replace('/&lt;Image filename="/', '&lt;image src="./uploads/' . $courseDirectory, $lesson);
                 $lesson = preg_replace('/&lt;\/Image&gt;/', '', $lesson);
                 
+                // Parse the description tag and replace it with an alt tag. This is done by matching the image tag with the source attribute as 
+                // a group and the value of the description attribute as another group. Afterwards, the description tag is replaced with an alt 
+                // tag and the saved groups are unaffected.
                 $lesson = preg_replace('/(&lt;image src=".+?[\s\S]") description=(".+?[\s\S]"&gt;)/', '$1alt=$2', $lesson);
                 
-                $lesson = preg_replace('/&lt;Video filename="/', '&lt;video width="360" height="240" controls&gt; &lt;source type="video/mp4" src="./uploads/' . $course['name'] . $courseID . '/', $lesson);
+                // Replace the Video tag with a video tag set the width and height of the video to 360px by 240px. Also set controls for the video.
+                // Currently, the only supported source type is mp4. Set the filename attribute to be a src attribute with a value set to the 
+                // respective file location
+                $lesson = preg_replace('/&lt;Video filename="/', '&lt;video width="360" height="240" controls&gt; &lt;source type="video/mp4" src="./uploads/' . $courseDirectory, $lesson);
                 $lesson = preg_replace('/&lt;\/Video&gt;/', 'Your Browser Does Not Support Video. &lt;/video&gt;', $lesson);
 
-                $lesson = preg_replace('/&lt;Audio filename="/', '&lt;audio controls&gt; &lt;source type="audio/mpeg" src="./uploads/' . $course['name'] . $courseID . '/', $lesson);
+                // Replace the Audio tag with a audio tag and set the controls for the audio input. Currently, the only supported source type 
+                // is mp3 (or mpeg). Set the filename attribute to be a src attribute with a value set to the respective file location
+                $lesson = preg_replace('/&lt;Audio filename="/', '&lt;audio controls&gt; &lt;source type="audio/mpeg" src="./uploads/' . $courseDirectory, $lesson);
                 $lesson = preg_replace('/&lt;\/Audio&gt;/', 'Your Browser Does Not Support Audio. &lt;/audio&gt;', $lesson);
 
                 return $lesson;
             }
 
+            // PHP parser for Quiz EMLs. Returns a string that is HTML decoded and is ready to be displayed in a browser
             function quizEMLParser($quiz) {
                 $quiz = parseQuestion($quiz);
                 $quiz = parseAnswers($quiz);
 
                 return htmlspecialchars_decode($quiz);
             } 
+
+            // Parse the Quiz's question
             function parseQuestion($quiz) {
+                // Parse the Question tag as a h3 tag
                 $quiz = preg_replace('/&lt;Question/', '&lt;h3', $quiz);
                 $quiz = preg_replace('/&lt;\/Question&gt;/', '&lt;/h3&gt;', $quiz);
 
                 return $quiz;
             }
+
+            // Parse the Quiz's answer
             function parseAnswers($quiz) {
+                // Parse the Answer tag as a radio input tag
                 $quiz = preg_replace('/&lt;Answer/', '&lt;input type="radio"', $quiz);
                 $quiz = preg_replace('/&lt;\/Answer&gt;/', '&lt;/input&gt; &lt;br /&gt;', $quiz);
 
@@ -150,7 +167,7 @@
             }
         ?>
         <div class="linksBar">
-            <h1 class="banner">Learn The Web</h1>
+            <h1 class="banner">Learnatorium</h1>
             <span class="title4 floatRight" style="color:white"> Welcome <?php print($_COOKIE["user"]) ?>, <a href="Logout.php">Logout?</a></span>
             <ul>
                 <li>
@@ -175,101 +192,112 @@
                 ?>
             </ul>
         </div>
-        <form id="selectCourseForm" method="post" action="SelectedCourse.php">
-        <!-- <div class="aside"> -->
+        <div id="courseContentDiv">
         <?php
+            // If the page is refreshed or there is no submitted course name or course ID, 
+            // then return the user to the 'Your Courses' page
+            if (!isset($_POST["submittedCourse"]) || !isset($_POST["courseId"])) {
+                header("Location:YourCourses.php");
+            }
+            // Get the course name and ID
             $courseName = $_POST["submittedCourse"];
             $courseID = $_POST["courseId"];
+
             // Connect to MySQL
             if (!($database = mysql_connect("localhost", "iw3htp", "password"))) {
                 die("Could not connect to database </body></html>");
             }
 
-            // open Products database
-            if (!mysql_select_db( "learnatorium", $database)) {
+            // open Learnatorium database
+            if (!mysql_select_db("Learnatorium", $database)) {
                 die("Could not open learnatorium database </body></html>");
             }
 
-            // $query = "SELECT ID FROM courses where name='$courseName'";
-            // if (!($result = mysql_query($query, $database))) 
-            // {
-            //     print( "<p>Could not retrieve Course ID</p>" );
-            //     print( "<p><a href='CreateCourseContent.php'>Click Here</a> to continue.</p>" );
-            //     die("</body></html>");
-            // }
-
-            // $courseID = mysql_fetch_assoc($result)["ID"];
-            print("<p> CourseID: " . $courseID . "</p>");    
+            // Get the unit's ID and Name from the current course using the course ID
             $query = "SELECT ID, name FROM units where course='$courseID'";
             if (!($result = mysql_query($query, $database))) 
             {
+                // Could not retrieve information about the unit, display error message to the user
                 print( "<p>Could not retrieve Unit ID or Unit Name</p>" );
-                print( "<p><a href='CreateCourseContent.php'>Click Here</a> to continue.</p>" );
+                print( "<p><a href='YourCourses.php'>Click Here</a> to continue.</p>" );
                 die("</body></html>");
             }
 
+            // Iterate through each each unit in the course and retrieve the course material
+            // (units, lessons, and quiz information)
             if (mysql_num_rows($result) > 0) {
-                // $curIndex = 0;
                 while($unitRow = mysql_fetch_assoc($result)) {
-                    // $unitName = $unitRow['name'];
-                    // if ($curIndex == 0) {
-                    //     print("<button id='defaultOpen' class='active tablinks' onclick='changeTab(this)'>" . $unitName . "</button>");
-                    // }
-                    // else {
-                    //     print("<button class='tablinks' onclick='changeTab(this)'>" . $unitName . "</button>");
-                    // }
-                    // $curIndex++;
+
+                    // Get the unit ID
                     $unitID = $unitRow['ID'];
-                    print("<p> UnitID: " . $unitID . "</p>");    
-                    print("<h1>" . $unitRow['name'] . "</h1>");
+
+                    // Display the unit name in as a h1 title
+                    print("<h1 class='title'>" . $unitRow['name'] . "</h1>");
                 
+                    // Query for the lesson ID, name, and EML content for the unit
                     $lessonQuery = "SELECT ID, name, content FROM lessons where unit='$unitID'";
                     if (!($lessonResult = mysql_query($lessonQuery, $database))) 
                     {
+                        // Could not retrieve information about the lesson, display error message to the user
                         print( "<p>Could not retrieve lesson Name or Lesson Content</p>" );
-                        print( "<p><a href='CreateCourseContent.php'>Click Here</a> to continue.</p>" );
+                        print( "<p><a href='YourCourses.php'>Click Here</a> to continue.</p>" );
                         die("</body></html>");
                     }
 
+                    // Iterate through each each lessons in the unit and retrieve the course material
+                    // lesson EML and quiz EML
                     if (mysql_num_rows($lessonResult) > 0) {
-                        // $curIndex = 0;
                         while($lessonRow = mysql_fetch_assoc($lessonResult)) {
+                            // Get the lessonID
                             $lessonID = $lessonRow['ID'];
-                            print("<p> LessonID: " . $lessonID . "</p>");    
                     
-                            print("<h2>" . $lessonRow["name"] . "</h2>");
+                            // Display the lesson name in as a h2 title
+                            print("<h2 class='title'>" . $lessonRow["name"] . "</h2>");
+
+                            // Get and parse the lesson EML and display the HTML to the user
                             $lessonContent = $lessonRow["content"];
                             $lessonContent = lessonEMLParser($lessonContent, $courseID, $database);
                             print($lessonContent);
                         
-                            $quizQuery = "SELECT content FROM quizzes where lesson='$lessonID'";
+                            // Every quiz ID matches the same LessonID since every lesson has a quiz, so get the quiz EML
+                            // based off of the lessonID
+                            $quizQuery = "SELECT content FROM quizzes where ID='$lessonID'";
                             if (!($quizResult = mysql_query($quizQuery, $database))) 
                             {
+                                // Could not retrieve information about the quiz, display error message to the user
                                 print( "<p>Could not retrieve quiz Content</p>" );
                                 print( "<p><a href='CreateCourseContent.php'>Click Here</a> to continue.</p>" );
                                 die("</body></html>");
                             }
 
+                            // Iterate through the quiz that's associated with the lesson and display the quiz information
                             if (mysql_num_rows($quizResult) > 0) {
+                                // Create a new div based on the lessonID
                                 print("<div id='$lessonID'>");
-                                print("<h1>" . $lessonRow["name"] . " - Quiz</h1>");
+                                // Display the title for the quiz
+                                print("<h2 class='title'>" . $lessonRow["name"] . " - Quiz</h1>");
+                                
+                                // Parse the quiz information and display it to the user
                                 while ($quizRow = mysql_fetch_assoc($quizResult)) {
                                     $quizContent = $quizRow["content"];
                                     $quizContent = quizEMLParser($quizContent);
                                     print($quizContent);
                                 }
+
+                                // Create a button to submit and mark the quiz
                                 print("<input type='button' class='whiteButton' value='Submit Quiz' onclick='MarkQuiz($lessonID)'/>");
                                 print("</div>");
                             }
+                            else {
+                                print("<p>There is No Quiz For this Lesson</p>");
+                            }
+                            print("<hr />");
                         }
                     }
                 }
             }
             mysql_close( $database );
         ?>
-        <!-- </div>
-        <div class="main-content">
-        
-        </div> -->
+        </div>
     </body>
 </html>

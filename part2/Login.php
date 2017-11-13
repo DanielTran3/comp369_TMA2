@@ -27,13 +27,15 @@
                 if (!($result = mysql_query($query, $database))) 
                 {
                     // If the query could not be performed, display an error page
-                    print( "<p>Could not execute query!</p>" );
+                    print( "<p>Could not check for valid logins.</p>" );
+                    print( "<p><a href='WelcomeToLearnatorium.php'>Click Here</a> to continue.</p>" );                    
                     die( mysql_error() . "</body></html>" );
-                } // end if
+                }
 
                 // If no rows were selected, display an invalid username/password error message and a button to 
                 // redirect the user back to the login page
                 if (mysql_num_rows($result) == 0) {
+                    // Display invalid username/password error for the user
                     print("<span class='title4' style='margin-top: 100px'>Invalid Username and/or Password</span>");
                     print("<form method='post' action='LearnatoriumLogin.php'>");
                     print("<button class='whiteButton' type='submit' style='margin-top:0px;'>Try Again</button>");

@@ -10,9 +10,9 @@
                     header("Location:LearnatoriumLogin.php");
                 }
 
+                // Get the currently logged in user's name and the selected courseID
                 $user = $_COOKIE["user"];
                 $courseID = $_POST["addCourseID"];
-                echo($courseID);
 
                 // Create a select query to select the user's username from the database that matches the user's 
                 // inputted username and password
@@ -37,7 +37,7 @@
                     print("<button class='whiteButton' type='submit' style='margin-top:0px;'>Try Again</button>");
                     print("</form>");
                     die("</body></html>");  
-                } // end if
+                }
 
                 // The inputted credentials were valid, close the database and display the welcome page
                 mysql_close( $database );

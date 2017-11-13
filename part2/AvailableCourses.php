@@ -95,25 +95,31 @@
                         die("Could not open Learnatorium database </body></html>");
                     }
 
+                    // Get the currently logged in user's name
                     $user = $_COOKIE["user"];
 
-                    // $query = "SELECT courses FROM users";
+                    // Create a query to retrieve all of the available courses (or courses that the user has not added yet)
                     $query = "SELECT ID, name FROM courses WHERE ID NOT IN (SELECT courseID FROM usersCourses WHERE username='$user')";
                     if (!($result = mysql_query($query, $database))) 
                     {
-                        print( "<p>Could not add Course</p>" );
-                        print( "<p><a href='CreateCourseContent.php'>Click Here</a> to continue.</p>" );
+                        print( "<p>Could not find available Course</p>" );
+                        print( "<p><a href='Learnatorium.php'>Click Here</a> to continue.</p>" );
                         die("</body></html>");
                     }
 
+                    // Check if there are any available courses for the user to add
                     if (mysql_num_rows($result) > 0) {
                         print("<ul>");
+                        // Iterate through each of the available courses and display them as list elements
                         while($row = mysql_fetch_assoc($result)) {
                             $val = $row['name'];
                             $courseID = $row['ID'];
                             print("<li id='$courseID' class='courseListItem availableCourse'><h2 style='margin:0px'>$val</h2></li>");
                         }
                         print("</ul>");
+                    }
+                    else {
+                        print("<h1>There are currently no available courses, or you have added all available courses");
                     }
 
                     mysql_close( $database );

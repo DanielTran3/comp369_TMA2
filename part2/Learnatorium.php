@@ -14,7 +14,6 @@
     </head>
     <body>
         <?php
-            echo $_COOKIE["user"];
             // Check for valid user login, otherwise redirect to login screen
             if (!isset($_COOKIE["user"])) {
                 header("Location:LearnatoriumLogin.php");

@@ -5,123 +5,110 @@
         <link rel = "stylesheet" type="text/css" href="../shared/tma3_stylesheet.css" />
         <body>
             <?php
+                // The current lesson that is being uploaded to the server
                 $currentLesson = 0;
-                foreach ($_POST['unit'] as $unit) {
-                    print("<p>" . $unit . "</p>");
-                }
-                
-                print("<hr />");
 
-                foreach ($_POST['numLessons'] as $number) {
-                    print("<p>" . $number . " | </p>");
+                if (!isset($_POST['unit']) || !isset($_POST['lesson']) || 
+                    !isset($_POST['lessonEML']) || !isset($_POST['quizEML'])) {
+                        print("<p>Please include at least one unit and lesson/quiz");
+                        print( "<p><a href='CreateCourseContent.php'>Click Here</a> to continue.</p>" );
+                        die("</body></html>");
                 }
-
-                print("<hr />");
-                
-                foreach ($_POST['lesson'] as $lesson) {
-                    print("<p>" . $lesson . " | </p>");
-                }
-
-                print("<hr />");
-                
-                foreach ($_POST['lessonEML'] as $eml) {
-                    print("<p>" . $eml . " | </p>");
-                }
-                
-                print("<hr />");
-                
-                foreach ($_POST['quizEML'] as $quiz) {
-                    print("<p>" . $quiz . " | </p>");
-                }
-
-                print("<hr />");
-                print("<p>Number of Units: " . sizeof($_POST['unit']) . "</p>");
-                print("<hr />");
 
                 // Connect to MySQL
                 if (!($database = mysql_connect("localhost", "iw3htp", "password"))) {
                     die("Could not connect to database </body></html>");
                 }
 
-                // open Products database
+                // Open Learnatorium database
                 if (!mysql_select_db( "learnatorium", $database)) {
                     die("Could not open learnatorium database </body></html>");
                 }
 
+                // Get the name of the course
                 $course = $_POST['courseNameName'];
-                print("<p>Course: " . $course . "</p>");
+
+                // Create a query to inser the course into the database
                 $query = "INSERT INTO courses (name) VALUES ('$course')";
                 if (!($result = mysql_query($query, $database))) 
                 {
+                    // Could not add the course, display the error message to the user
                     print( "<p>Could not add Course</p>" );
                     print( "<p><a href='CreateCourseContent.php'>Click Here</a> to continue.</p>" );
                     die("</body></html>");
                 }
 
+                // Get the auto incremented ID of the most recently inserted course
                 $courseID = mysql_insert_id($database);
 
-                print("<p>Course ID: " . $courseID . "</p>");
-
+                // Iterate through each unit that is created
                 for ($unitIndex = 0; $unitIndex < sizeOf($_POST['unit']); $unitIndex++) {
                     $unit = $_POST['unit'][$unitIndex];
 
+                    // Insert the unit into the units database
                     $query = "INSERT INTO units (course, name) VALUES ('$courseID', '$unit')";
                     if (!($result = mysql_query($query, $database))) 
                     {
+                        // Could not add the unit, display the error message to the user
                         print( "<p>Could not add Unit: " . $unit . " in Course ID: " . $courseID . "</p>" );
                         print( "<p><a href='CreateCourseContent.php'>Click Here</a> to continue.</p>" );
                         die("</body></html>");
                     }
 
+                    // Get the auto incremented ID of the most recently inserted unit
                     $unitID = mysql_insert_id($database);
-                    print("<p>Unit ID: " . $unitID . "</p>");
 
+                    // Iterate through each lesson that is created
                     $numberOfLessons = $_POST['numLessons'][$unitIndex];
-                    print("<p>Number of Children Lessons: " . $unitID . "</p>");
-                    
                     for ($lessonIndex = 0; $lessonIndex < $numberOfLessons; $lessonIndex++) {
+                        // Get the lesson name, lesson EML, and quiz EML
                         $lesson = $_POST['lesson'][$currentLesson];
                         $lessonEML = $_POST['lessonEML'][$currentLesson];
                         $quizEML = $_POST['quizEML'][$currentLesson];
 
+                        // Create an insert query to insert the lesson into the lessons table
                         $query = "INSERT INTO lessons (unit, name, content) VALUES ('$unitID', '$lesson', '$lessonEML')";
                         if (!($result = mysql_query($query, $database))) 
                         {
+                            // Could not add the lesson, display the error message to the user
                             print( "<p>Could not add Lesson: " . $lesson . "</p>" );
                             print( "<p><a href='CreateCourseContent.php'>Click Here</a> to continue.</p>" );
                             die("</body></html>");
                         }
 
-                        $query = "SELECT ID FROM lessons WHERE name='$lesson'";
-                        if (!($result = mysql_query($query, $database))) 
-                        {
-                            print( "<p>Could not retrieve Lesson ID</p>" );
-                            print( "<p><a href='CreateCourseContent.php'>Click Here</a> to continue.</p>" );
-                            die("</body></html>");
-                        }
+                        // Get the auto incremented ID of the most recently inserted lesson
+                        $lessonID = mysql_insert_id($database);
 
-                        $lessonID = mysql_fetch_assoc($result)["ID"];
-                        print("<p>Lesson ID: " . $lessonID . "</p>");
-
+                        // Insert the quiz into the quizzes table
                         $query = "INSERT INTO quizzes (lesson, content) VALUES ('$lessonID', '$quizEML')";
                         if (!($result = mysql_query($query, $database))) 
                         {
+                            // Could not add the quiz, display the error message to the user
                             print( "<p>Could not add Quiz to Lesson ID: " . $lessonID . "</p>" );
                             print( "<p><a href='CreateCourseContent.php'>Click Here</a> to continue.</p>" );
                             die("</body></html>");
                         }
+                        // Move to the next lesson
                         $currentLesson++;
                     }
                 }
 
+                // If there are lesson objects available
                 if (!empty($_FILES['lessonObjects'])) {
+                    // Get the number of lesson objects
                     $numObjects = count($_FILES['lessonObjects']['name']);
+                    // Create a specific directory for the course in the uploads folder on the server. Directory is 
+                    // composed of the course name and ID
                     $directory = "./uploads/" . $course . $courseID;
+                    // If the directory doesn't exist, then make one
                     if (!file_exists($directory)) {
                         mkdir($directory);
                     }
                     $path = $directory . "/";
+                    
+                    // Iterate through each of the lessonObjects
                     for ($i = 0; $i < $numObjects; $i++) {
+                        // 
                         if (isset($_FILES['lessonObjects']['name'][$i]) && !empty($_FILES['lessonObjects']['name'][$i])) {
                             $lessonObjectName = $_FILES['lessonObjects']['name'][$i];
                             $lessonObjectTmpName = $_FILES['lessonObjects']['tmp_name'][$i];
@@ -144,23 +131,10 @@
                                     print("</form>");
                                     die( mysql_error() . "</body></html>" );
                                 }
-                                echo 'Uploaded!';
                             }
-                            else {
-                                echo("Move object failed");
-                            }
-                        }
-                        else {
-                            echo("Object not set");            
                         }
                     }
                 }
-                else {
-                    echo("Lesson Objects Empty");
-                }
-
-                // query Products database
-                
                 mysql_close( $database );
             ?>
         </body>

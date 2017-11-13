@@ -19,8 +19,7 @@
                 header("Location:LearnatoriumLogin.php");
             }
 
-            // Create a query to the users table to get the admin status of the currently
-            // logged in user
+            // Create a query to the users table to get the admin status of the currently logged in user
             $query = "SELECT admin FROM users WHERE username='$_COOKIE[user]'";
             
             // Connect to MySQL
@@ -28,7 +27,7 @@
                 die("Could not connect to database </body></html>");
             }
 
-            // open users database
+            // open Learnatorium database
             if (!mysql_select_db( "Learnatorium", $database)) {
                 die("Could not open products database </body></html>");
             }

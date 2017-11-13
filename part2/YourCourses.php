@@ -12,6 +12,7 @@
                     header("Location:Learnatorium.php");
                 }
 
+                // Get the admin status of the user
                 $query = "SELECT admin FROM users WHERE username='$_COOKIE[user]'";
                 
                 // Connect to MySQL
@@ -19,7 +20,7 @@
                     die("Could not connect to database </body></html>");
                 }
     
-                // open users database
+                // Open Learnatorium database
                 if (!mysql_select_db( "Learnatorium", $database)) {
                     die("Could not open products database </body></html>");
                 }
@@ -54,7 +55,8 @@
                     <li>
                         <a href="YourCourses.php">Your Courses</a>
                     </li>
-                    <?php 
+                    <?php
+                        // Display the Create A Course tab if the user is an admin 
                         $adminRights = mysql_fetch_assoc($result);
                         if ($adminRights["admin"]) {
                             print('<li><a href="CreateCourseContent.php">Create A Course</a></li>');
@@ -73,28 +75,35 @@
                         die("Could not connect to database </body></html>");
                     }
 
-                    // open Products database
+                    // Open Learnatorium database
                     if (!mysql_select_db( "learnatorium", $database)) {
                         die("Could not open learnatorium database </body></html>");
                     }
 
-                    // $query = "SELECT courses FROM users";
+                    // Select the courses from  the courses database that the user has added from the available courses
                     $query = "SELECT ID, name FROM courses WHERE ID IN (SELECT courseID FROM usersCourses WHERE username = '$user')";
                     if (!($result = mysql_query($query, $database))) 
                     {
-                        print( "<p>Could not add Course</p>" );
-                        print( "<p><a href='CreateCourseContent.php'>Click Here</a> to continue.</p>" );
+                        // Could not retrieve user's courses, display error message to the user
+                        print( "<p>Could not retrieve Courses</p>" );
+                        print( "<p><a href='Learnatorium.php'>Click Here</a> to continue.</p>" );
                         die("</body></html>");
                     }
 
+                    // Iterate through the courses that the user has and display the courses as a button.
                     if (mysql_num_rows($result) > 0) {
                         print("<ul>");
                         while($row = mysql_fetch_assoc($result)) {
                             $val = $row['name'];
                             $courseID = $row['ID'];
-                            print("<li><input id='$courseID' type='submit' class='whiteButton' style='margin:0px' onclick='SelectACourse(this)' value='$val' /></li>");
+                            print("<li class='yourCoursesList'><input id='$courseID' type='submit' class='whiteButton' style='margin:0px' onclick='SelectACourse(this)' value='$val' /></li>");
                         }
                         print("</ul>");
+                    }
+                    else {
+                        // There are no courses, so display the temporary text
+                        print("<h1>You currently have no courses!</h1>");
+                        print("<h2>Go to the <a href='AvailableCourses.php'>Available Courses</a> Tab to add a course</h2>");
                     }
 
                     mysql_close( $database );
