@@ -1,4 +1,11 @@
 <?xml version="1.0"?>
+
+    Web Development
+
+    Unit 1 - HTML
+
+    HTML Part 1 - Page Structure Elements
+
     <Overview>
         This lesson is on the topic of HTML and provides a brief introduction to what HTML is, the purpose of HTML, 
         as well as some of the basic HTML elements that can be used to create simple webpages or web forms. By the 
@@ -50,70 +57,67 @@
     </Paragraph>
     <Section>1.2 Paragraph Element</Section>
     <Paragraph>
-        In HTML, there exists a paragraph element, which can be created by using the &lt;img src="../shared/1.2_1.png"&gt;&lt;/img&gt; tag. Paragraphs
-        are used to display text that the programmer wants the end-user to see. It helps with defining a structure for the document.
+        In HTML, there exists a paragraph element, which can be created by using the <Image filename="1.2_1.png" description="<p> tags"> tag. 
+        Paragraphs are used to display text that the programmer wants the end-user to see. It helps with defining a structure for the document.
     </Paragraph>
     <Paragraph>
         Here is an example of a couple of paragraph elements displayed over eachother.
     </Paragraph>
-    <Image src="../shared/paragraph.png">Two paragraphs, one ontop of the other saying &quot;This is a paragraph&quot; and &quot;This is another paragraph&quot; respectively</Image>
-    <Image src="../shared/paragraph_code.png">
-        &lt;p&gt;This is a paragraph&lt;/p&gt;
-        &lt;p&gt;This is another paragraph&lt;/p&gt;
-    </Image>
+    <Image filename="paragraph.png" description="Picture of two Paragraph elements">
+    <Image filename="paragraph_code.png" description="<p>This is a paragraph</p><p>This is another paragraph</p>">
     <Section>1.3 Table Element</Section>
     <Paragraph>
         A table element is very useful for formatting data output and displaying tabular data. Tables begin by using the
-        &lt;table&gt;&lt;/table&gt; tag. This will create the outer boundary that contains the table. The rows of the
-        table can be created using the &lt;tr&gt;&lt;/tr&gt; tags, which stands for "table row". Each of these tags that
-        are specified within a table element will create a new row. To create columns, the &lt;td&gt;&lt;/td&gt; tag
+        <table></table> tag. This will create the outer boundary that contains the table. The rows of the
+        table can be created using the <tr></tr> tags, which stands for "table row". Each of these tags that
+        are specified within a table element will create a new row. To create columns, the <td></td> tag
         can be used. The "td" tag stands for "table data"
     </Paragraph>
     <Paragraph>
         Here is an example of a table creation, with 3 rows and 4 columns
-            &lt;table&gt;
-            &lt;tr&gt;
-                &lt;td&gt;1&lt;/td&gt;
-                &lt;td&gt;2&lt;/td&gt;
-                &lt;td&gt;3&lt;/td&gt;
-                &lt;td&gt;4&lt;/td&gt;
-            &lt;/tr&gt;
-            &lt;tr&gt;
-                &lt;td&gt;5&lt;/td&gt;
-                &lt;td&gt;6&lt;/td&gt;
-                &lt;td&gt;7&lt;/td&gt;
-                &lt;td&gt;8&lt;/td&gt;
-            &lt;/tr&gt;
-            &lt;tr&gt;
-                &lt;td&gt;9&lt;/td&gt;
-                &lt;td&gt;10&lt;/td&gt;
-                &lt;td&gt;11&lt;/td&gt;
-                &lt;td&gt;12&lt;/td&gt;
-            &lt;/tr&gt;
-        &lt;/table&gt;
+            <table>
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>6</td>
+                <td>7</td>
+                <td>8</td>
+            </tr>
+            <tr>
+                <td>9</td>
+                <td>10</td>
+                <td>11</td>
+                <td>12</td>
+            </tr>
+        </table>
     </Paragraph>
-    <Image src="../shared/table_code.png">
-        &lt;table&gt;
-            &lt;tr&gt;
-                &lt;td&gt;1&lt;/td&gt;
-                &lt;td&gt;2&lt;/td&gt;
-                &lt;td&gt;3&lt;/td&gt;
-                &lt;td&gt;4&lt;/td&gt;
-            &lt;/tr&gt;
-            &lt;tr&gt;
-                &lt;td&gt;5&lt;/td&gt;
-                &lt;td&gt;6&lt;/td&gt;
-                &lt;td&gt;7&lt;/td&gt;
-                &lt;td&gt;8&lt;/td&gt;
-            &lt;/tr&gt;
-            &lt;tr&gt;
-                &lt;td&gt;9&lt;/td&gt;
-                &lt;td&gt;10&lt;/td&gt;
-                &lt;td&gt;11&lt;/td&gt;
-                &lt;td&gt;12&lt;/td&gt;
-            &lt;/tr&gt;
-        &lt;/table&gt;
-    </Image>
+    <Image filename="table_code.png" description="
+        <table>
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>6</td>
+                <td>7</td>
+                <td>8</td>
+            </tr>
+            <tr>
+                <td>9</td>
+                <td>10</td>
+                <td>11</td>
+                <td>12</td>
+            </tr>
+        </table>
+    ">
     <Section>1.4 Div Element</Section>
     <Paragraph>
         A div element can be used to separate portions of the web page. A div is block-level element, meaning it has its own
@@ -124,12 +128,13 @@
         Here's an example of a div element with a paragraph inside of it. The div will have a 1px padding on the left and a 10px
         padding on the right, with a blue dotted border.
     </Paragraph>
-        <Image src="../shared/div.png">A div with a paragraph that says "A paragraph inside a div", where the div has a 1px left padding, 10px right padding, a width of 100px, and a blue dotted border</Image> 
-    <Image src="../shared/div_code.png">
-        &lt;div style=&quot;padding-left:1px; padding-right:10px; border-style:dotted; border-color:blue; width:100px; height:100px;&quot;&gt;
-            &lt;p&gt;A paragraph inside a div&lt;/p&gt;
-        &lt;/div&gt;
-    </Image>
+        <Image filename="div.png" description="
+        A div with a paragraph, where the div has a 1px left padding, 10px right padding, a width of 100px, and a blue dotted border
+        "> 
+    <Image filename="div_code.png" description="
+        <div> with padding-left:1px, padding-right:10px, border-style:dotted, border-color:blue, width:100px, and height:100px properties
+        with a <p> element inside
+    ">
     <Section>1.5 Anchor Element</Section>
     <Paragraph>
         The anchor element can contain a link  that will redirect the user to the specified http address. The address can be
@@ -140,13 +145,13 @@
     </Paragraph>
     <Paragraph>
         Here's an example of an anchor element before and after it was clicked.
-        &lt;a href="#"&gt;Anchor Element&lt;/a&gt;
+        <a href="#">Anchor Element</a>
     </Paragraph>
-    <Image src="../shared/a_before.png">Anchor element with the text "Anchor Element" before it was clicked (text is blue)</Image>
-    <Image src="../shared/a_after.png">Anchor element with the text "Anchor Element" after it was clicked (text is purple)</Image>
-    <Image src="../shared/a_code.png">
-        &lt;a href="#"&gt;Anchor Element&lt;/a&gt;
-    </Image>
+    <Image filename="a_before.png" description="Anchor element before it was clicked (text is blue)">
+    <Image filename="a_after.png" description="Anchor element after it was clicked (text is purple)">
+    <Image filename="a_code.png" description="
+        <a> element with Anchor Element as the text
+    ">
     <Section>1.6 Lists</Section>
     <Paragraph>
         Lists are used to order and more neatly display information. There are two kinds of lists that are available in HTML. Lists can
@@ -156,34 +161,34 @@
     </Paragraph>
     <Paragraph>Here is an example of an ordered list using the ol element.</Paragraph>
     <Paragraph>
-        &lt;ol&gt;
-            &lt;li&gt;Element 1&lt;/li&gt;
-            &lt;li&gt;Element 2&lt;/li&gt;
-            &lt;li&gt;Element 3&lt;/li&gt;
-        &lt;/ol&gt;
+        <ol>
+            <li>Element 1</li>
+            <li>Element 2</li>
+            <li>Element 3</li>
+        </ol>
     </Paragraph>
-    <Image src="../shared/orderedlist_code.png">
-        &lt;ol&gt;
-            &lt;li&gt;Element 1&lt;/li&gt;
-            &lt;li&gt;Element 2&lt;/li&gt;
-            &lt;li&gt;Element 3&lt;/li&gt;
-        &lt;/ol&gt;
-    </Image>
+    <Image filename="orderedlist_code.png" description="
+        <ol>
+            <li>Element 1</li>
+            <li>Element 2</li>
+            <li>Element 3</li>
+        </ol>
+    ">
     <Paragraph>The same ordered list can be changed into an unordered list by replacing the ol element with a ul element, as shown below.</Paragraph>
     <Paragraph>
-        &lt;ul&gt;
-            &lt;li&gt;Element 1&lt;/li&gt;
-            &lt;li&gt;Element 2&lt;/li&gt;
-            &lt;li&gt;Element 3&lt;/li&gt;
-        &lt;/ul&gt;
+        <ul>
+            <li>Element 1</li>
+            <li>Element 2</li>
+            <li>Element 3</li>
+        </ul>
     </Paragraph>
-    <Image src="../shared/unorderedlist_code.png">
-        &lt;ul&gt;
-            &lt;li&gt;Element 1&lt;/li&gt;
-            &lt;li&gt;Element 2&lt;/li&gt;
-            &lt;li&gt;Element 3&lt;/li&gt;
-        &lt;/ul&gt;
-    </Image>
+    <Image filename="unorderedlist_code.png" description="
+        <ul>
+            <li>Element 1</li>
+            <li>Element 2</li>
+            <li>Element 3</li>
+        </ul>
+    ">
     <Paragraph>
         Lists can also be nested inside eachother, called a nested list. Different lists can be nested within eachother, such as having an
         ordered list nested inside an unordered list, and vice-versa. This is done the same way as creating a list, but ol and ul lists are
@@ -191,47 +196,47 @@
         ordered list, which is nested inside another unordered list.
     </Paragraph>
     <Paragraph>
-        &lt;ul&gt;
-            &lt;li&gt;Element 1&lt;/li&gt;
-            &lt;li&gt;Element 2&lt;/li&gt;
-            &lt;li&gt; Ordered Nested List
-                &lt;ol&gt;
-                    &lt;li&gt;Ordered Nested Element 1&lt;/li&gt;
-                    &lt;li&gt;Ordered Nested Element 2&lt;/li&gt;
-                    &lt;li&gt; Unordered Nested List
-                        &lt;ul&gt;
-                            &lt;li&gt;Unordered Nested Element 1&lt;/li&gt;
-                            &lt;li&gt;Unordered Nested Element 2&lt;/li&gt;
-                            &lt;li&gt;Unordered Nested Element 3&lt;/li&gt;
-                        &lt;/ul&gt;
-                    &lt;/li&gt;
-                    &lt;li&gt;Ordered Nested Element 3&lt;/li&gt;
-                &lt;/ol&gt;
-            &lt;/li&gt;
-            &lt;li&gt;Element 3&lt;/li&gt;
-        &lt;/ul&gt;
+        <ul>
+            <li>Element 1</li>
+            <li>Element 2</li>
+            <li> Ordered Nested List
+                <ol>
+                    <li>Ordered Nested Element 1</li>
+                    <li>Ordered Nested Element 2</li>
+                    <li> Unordered Nested List
+                        <ul>
+                            <li>Unordered Nested Element 1</li>
+                            <li>Unordered Nested Element 2</li>
+                            <li>Unordered Nested Element 3</li>
+                        </ul>
+                    </li>
+                    <li>Ordered Nested Element 3</li>
+                </ol>
+            </li>
+            <li>Element 3</li>
+        </ul>
     </Paragraph>
-    <Image src="../shared/nestedlist_code.png">
-        &lt;ul&gt;
-            &lt;li&gt;Element 1&lt;/li&gt;
-            &lt;li&gt;Element 2&lt;/li&gt;
-            &lt;li&gt; Ordered Nested List
-                &lt;ol&gt;
-                    &lt;li&gt;Ordered Nested Element 1&lt;/li&gt;
-                    &lt;li&gt;Ordered Nested Element 2&lt;/li&gt;
-                    &lt;li&gt; Unordered Nested List
-                        &lt;ul&gt;
-                            &lt;li&gt;Unordered Nested Element 1&lt;/li&gt;
-                            &lt;li&gt;Unordered Nested Element 2&lt;/li&gt;
-                            &lt;li&gt;Unordered Nested Element 3&lt;/li&gt;
-                        &lt;/ul&gt;
-                    &lt;/li&gt;
-                    &lt;li&gt;Ordered Nested Element 3&lt;/li&gt;
-                &lt;/ol&gt;
-            &lt;/li&gt;
-            &lt;li&gt;Element 3&lt;/li&gt;
-        &lt;/ul&gt;
-    </Image>
+    <Image filename="nestedlist_code.png" description="
+        <ul>
+            <li>Element 1</li>
+            <li>Element 2</li>
+            <li> Ordered Nested List
+                <ol>
+                    <li>Ordered Nested Element 1</li>
+                    <li>Ordered Nested Element 2</li>
+                    <li> Unordered Nested List
+                        <ul>
+                            <li>Unordered Nested Element 1</li>
+                            <li>Unordered Nested Element 2</li>
+                            <li>Unordered Nested Element 3</li>
+                        </ul>
+                    </li>
+                    <li>Ordered Nested Element 3</li>
+                </ol>
+            </li>
+            <li>Element 3</li>
+        </ul>
+    ">
     <Question name="Question1">Question 1. What kind of language is HTML?</Question>
         <Answer name="Question1" correct="">A. Scripting Language</Answer>
         <Answer name="Question1" correct="*">B. Markup Language</Answer>
@@ -259,169 +264,177 @@
         <Answer name="Question5" correct="">D. None of the Above</Answer>
 
 
-HTML Part 2
+    HTML Part 2 - Input Elements
 
-    <Section title="2.1 An Introduction to HTML Input Elements">
-        <Paragraph>
-            Now that you have some basic information on some HTML structure elements, it's time to investigate another important realm of
-            HTML, which are the input elements. These elements allow the user to provide data to the backend for processing. Generally, a
-            majority of input elements can be seen in forms, where the user enters some sensitive data that is used to query a database.
-            An example of this would be when someone is filling out registration information to sign up on a social media platform. Most
-            likely, you will be asked to fill in your First Name, Last Name, Date of Birth, Email Address, and Password. All of these inputs
-            use the HTML input elements that will be discussed. The inputs are also defined using the input tag
-        </Paragraph>
-        <Paragraph>
-            &lt;input type=&quot;&quot; /&gt;
-        </Paragraph>
-        <Paragraph>    
-            There are other forms of inputs that are different than text inputs, such as range, color, date, email, number, search, and tel.
-            These different input forms can be created by filling in the value of the type attribute, seen inside of the input tag.
-        </Paragraph>
-    </Section>
-    <Section title="2.2 Range Input">
-        <Paragraph>
-                The input of type range creates a slider control. The slider has a max, min, step, and initial value that can be modified using the
-                element's attributes (max, min, step, and value respectively). As well, the starting location of the slider can be specified with the value attribute. 
-                A slider is self-validating, as the only viable values are the ones in the range of the specified maximum and minimum.
-        </Paragraph>
-        <Paragraph>
-            Here's an example of a range input, where the maximum value is 100, the minimum value is 12, and the starting value is 51.
-            Note that in this example, the range input is enclosed by a label to define display the maximum and minimum values.
-        </Paragraph>
-        <Paragraph>
-            &lt;label&gt;
-                12&lt;input type="range" max="100" min="12" value="51" /&gt;100
-            &lt;/label&gt;
-        </Paragraph>
-        <Image src="../shared/rangeInput_code.png">
-            &lt;label&gt;
-                12&lt;input type="range" max="100" min="12" value="51" /&gt;100
-            &lt;/label&gt;
-        </Image>
-    </Section>
-    <Section title="2.3 Color Input">
-        <Paragraph>
-            The input of type color allows for the user to access a color picker dialog box. The dialog box is accessible by clicking
-            the "button" that the input element creates. This "button" also shows the color that the user has chosen (default to black)
-            The color picker dialog is the standard windows dialog that shows up if you were to use somthing like Microsoft Paint.
-            After the user selects a color and presses the "OK" button, the dialog will close and the user selected color will be
-            displayed in the input element.
-        </Paragraph>
-        <Paragraph>
-            Here's an example of how to create an HTML color picker.
-        </Paragraph>
-        <Image src="../shared/color_input_before.png">The  input of type color before a color is selected (default to black)</Image>
-        <Paragraph>
-            The above image shows the color input type before the user has specified a color
-        </Paragraph>
-        <Image src="../shared/color_input_dialog.png">The color picker dialog with the selected color as cyan</Image>
-        <Paragraph>
-            The above image shows the color picker dialog that is displayed when the input element is pressed
-        </Paragraph>
-        <Image src="../shared/color_input_after.png">The  input of type color after a color is selected (cyan)</Image>
-        <Paragraph>
-            The above image shows the color input type after the user has specified a color (color seen in the previous image) 
-        </Paragraph>
-        <Image src="../shared/color_input_code.png">
-            &lt;input type="color" /&gt;
-        </Image>
-    </Section>
-    <Section title="2.4 Date Input">
-        <Paragraph>
-            The input of type date creates an input textbox that allows the user to update the date values in multiple ways.
-            First, the user can directly update the date by typing into box in the respective fields (year, month, and day).
-            Another way is by clicking into a field and pressing the up and down arrows on the spinner controls.
-            The last way is by clicking an arrow next to the spinners that opens up a calendar, allowing the user to select the date
-            from there. Note that the last two ways are not shown in Firefox or IE12 or earlier browsers.
-        </Paragraph>
-        <Paragraph>
-            Here's an example of how to create a date input element.
-        </Paragraph>
-        <Paragraph>&lt;input type="date" /&gt;</Paragraph>
-        <Paragraph>
-            The above element shows the date input with not date inputted.
-        </Paragraph>
-        <Image src="../shared/date_input_code.png">
-            &lt;input type="date" /&gt;
-        </Image>
-    </Section>
-    <Section title="2.5 Email Input">
-        <Paragraph>
-            The input of type email creates an input text box that expects text in an email format. The input text box will verify 
-            if the input is in a correct email format when the form is submitted, but will not check if the email exists or not. It
-            is also possible for the input to accept multiple emails (separated by commas), if the multiple attribute is specified.
-        </Paragraph>
-        <Paragraph>
-            Here's an example of how to create an email input, and what it looks like if the form is to be submitted with an invalid
-            email format (or is submitted empty (the required attribute forces a value to be inputted into the input)).
-        </Paragraph>
-        <Paragraph>&lt;input type="email" multiple required/&gt;</Paragraph>
-        <Paragraph>
-            The above element is an email input. Entering an invalid format email hightlight the input box red, while
-            entering a valid email (ex. email@email.com) will not.</Paragraph>
-        <Image src="../shared/email_input_invalid.png">An invalid email being submitted</Image>
-        <Paragraph>
-            The above image shows an invalid popup message when an invalid email is trying to be submitted. The input box is
-            hightligted in red if the email is invalid
-        </Paragraph>
-        <Image src="../shared/email_input_code.png">
-            &lt;input type="email" multiple required/&gt;
-        </Image>
-    </Section>
-    <Section title="2.6 Number Input">
-        <Paragraph>
-            The number input allows the user to input a numeric value with type checking. It ensures that the user's input is a valid number.
-            As well, the input allows the developer to specify a minimum and maximum valid input range, which is useful for limiting the user's
-            valid inputs. This is done by setting the min attribute and the max attribute, respectively. There is also a spinner that is 
-            available to increase or decrease the user's value by a step amount, which can also be specified by the developer. Setting the
-            step attribute will change how much the spinner increments and decrements the numeric value. 
-        </Paragraph>
-        <Paragraph>Here is an example of a number input, with a minimum of 5, maximum of 25, and a step of 2.</Paragraph>
-        <Paragraph>&lt;input type="number" min="5" max="25" step="2" /&gt;</Paragraph>
-        <Image src="../shared/number_input_code.png">
-            &lt;input type="number" min="5" max="25" step="2" /&gt;
-        </Image>
-        <Paragraph>
-            If a number is submitted with a non-numeric value, or a value outside of the specified range, the user will be notified.
-            Here's an example, using the above example, when the user inputs a value outside of the valid range.
-        </Paragraph>
-        <Image src="../shared/number_input_invalid.png">
-            Inputting a value of 2566 when the maximum allowed numeric value is 25. User gets prompted by a message stating
-            "Please select a value that is no more than 25."
-        </Image>                    
-    </Section>
-    <Section title="2.7 Search Input">
-        <Paragraph>
-            The search input creates a text box search field that allows the user to input text for a query. There is also
-            an "x" that will clear the search box. As well, the placeholder attribute can be set to a text string to display
-            placeholder text within the search box.
-        </Paragraph>
-        <Paragraph>Here's an example of a search input.</Paragraph>
-        <Paragraph>&lt;input type="search" placeholder="Enter Query Here."/&gt;</Paragraph>
-        <Image src="../shared/search_input_code.png">
-            &lt;input type="search" placeholder="Enter Query Here."/&gt;
-        </Image>
-    </Section>
-    <Section title="2.8 Tel Input">
-        <Paragraph>
-            The tel input type is used for telephone number inputs. The tel input doesn't validate if the inputted telephone number is
-            a real, valid number, but it does provide a pattern attribute to allow the developer to specify regular expressions (regex)
-            to test for a correct telephone input format. This is done because different regions have different telephone number formats.
-            This allows the tel input to be modified to suit any region. Once again, there is also a placeholder attribute to display
-            the required telephone input format
-        </Paragraph>
-        <Paragraph>Here's an example of a tel input for a Canadian phone number format (###) ###-####.</Paragraph>
-        <Paragraph>
-            &lt;input type="tel" placeholder="(###) ###-####" pattern="\([0-9]{3}\) [0-9]{3}-[0-9]{4}"&gt;
-        </Paragraph>
-        <Image src="../shared/tel_input_code.png">
-            &lt;input type="tel" placeholder="(###) ###-####" pattern="\([0-9]{3}\) [0-9]{3}-[0-9]{4}"&gt;
-        </Image>
-        <Paragraph>The error message for trying to submit a tel input that doesn't match the regex patter will be similar to the image seen below.</Paragraph>
-        <Image src="../shared/tel_input_error.png">
-            Error message for inputting a telephone number of the incorrect format.
-        </Image>
-    </Section>
+    <Overview>
+        This lesson is on the topic of HTML and provides a brief introduction to some of the Input elements that are available in 
+        HTML. These elements are importatnt in creating interactive web pages and allowing the user to send inputs and interact 
+        with the server where the web page resides. By the end of this lesson, you should be able to:
+        <Outline>
+            <BulletPoint>
+                Define what a range input, color input, date input, email input, number input, and tel input are and how to use them.
+            </BulletPoint>
+            <BulletPoint>
+                Modify and configur the inputs to be properly match it's use in a web page
+            </BulletPoint>
+        </Outline>
+    </Overview>
+    <Introduction>
+        HTML web pages only become interactive once HTML input elements are involved. These elements are key in extracting data and processing 
+        things such as forms, user credentials for logging in, and performing searches on databases depending on your search topic.
+    </Introduction>
+    <Section>2.1 An Introduction to HTML Input Elements"</Section>
+    <Paragraph>
+        Now that you have some basic information on some HTML structure elements, it's time to investigate another important realm of
+        HTML, which are the input elements. These elements allow the user to provide data to the backend for processing. Generally, a
+        majority of input elements can be seen in forms, where the user enters some sensitive data that is used to query a database.
+        An example of this would be when someone is filling out registration information to sign up on a social media platform. Most
+        likely, you will be asked to fill in your First Name, Last Name, Date of Birth, Email Address, and Password. All of these inputs
+        use the HTML input elements that will be discussed. The inputs are also defined using the input tag
+    </Paragraph>
+    <Paragraph>
+        <input type=&quot;&quot; />
+    </Paragraph>
+    <Paragraph>    
+        There are other forms of inputs that are different than text inputs, such as range, color, date, email, number, search, and tel.
+        These different input forms can be created by filling in the value of the type attribute, seen inside of the input tag.
+    </Paragraph>
+    <Section>2.2 Range Input</Section>
+    <Paragraph>
+            The input of type range creates a slider control. The slider has a max, min, step, and initial value that can be modified using the
+            element's attributes (max, min, step, and value respectively). As well, the starting location of the slider can be specified with the value attribute. 
+            A slider is self-validating, as the only viable values are the ones in the range of the specified maximum and minimum.
+    </Paragraph>
+    <Paragraph>
+        Here's an example of a range input, where the maximum value is 100, the minimum value is 12, and the starting value is 51.
+        Note that in this example, the range input is enclosed by a label to define display the maximum and minimum values.
+    </Paragraph>
+    <Paragraph>
+        <label>
+            12<input type="range" max="100" min="12" value="51" />100
+        </label>
+    </Paragraph>
+    <Image filename="rangeInput_code.png" description="
+        An input element of type range with a max value of 100, min value of 12, and starting value of 51
+    ">
+    <Section>2.3 Color Input</Section>
+    <Paragraph>
+        The input of type color allows for the user to access a color picker dialog box. The dialog box is accessible by clicking
+        the "button" that the input element creates. This "button" also shows the color that the user has chosen (default to black)
+        The color picker dialog is the standard windows dialog that shows up if you were to use somthing like Microsoft Paint.
+        After the user selects a color and presses the "OK" button, the dialog will close and the user selected color will be
+        displayed in the input element.
+    </Paragraph>
+    <Paragraph>
+        Here's an example of how to create an HTML color picker.
+    </Paragraph>
+    <Image filename="color_input_before.png" description="The  input of type color before a color is selected (default to black)">
+    <Paragraph>
+        The above image shows the color input type before the user has specified a color
+    </Paragraph>
+    <Image filename="color_input_dialog.png" description="The color picker dialog with the selected color as cyan">
+    <Paragraph>
+        The above image shows the color picker dialog that is displayed when the input element is pressed
+    </Paragraph>
+    <Image filename="color_input_after.png" description="The  input of type color after a color is selected (cyan)">
+    <Paragraph>
+        The above image shows the color input type after the user has specified a color (color seen in the previous image) 
+    </Paragraph>
+    <Image filename="color_input_code.png" description="
+        An <input> tag of type color
+    ">
+    <Section>2.4 Date Input</Section>
+    <Paragraph>
+        The input of type date creates an input textbox that allows the user to update the date values in multiple ways.
+        First, the user can directly update the date by typing into box in the respective fields (year, month, and day).
+        Another way is by clicking into a field and pressing the up and down arrows on the spinner controls.
+        The last way is by clicking an arrow next to the spinners that opens up a calendar, allowing the user to select the date
+        from there. Note that the last two ways are not shown in Firefox or IE12 or earlier browsers.
+    </Paragraph>
+    <Paragraph>
+        Here's an example of how to create a date input element.
+    </Paragraph>
+    <Paragraph><input type="date" /></Paragraph>
+    <Paragraph>
+        The above element shows the date input with not date inputted.
+    </Paragraph>
+    <Image filename="date_input_code.png" description="
+        An <input> tag of type date
+    ">
+    <Section>2.5 Email Input</Section>
+    <Paragraph>
+        The input of type email creates an input text box that expects text in an email format. The input text box will verify 
+        if the input is in a correct email format when the form is submitted, but will not check if the email exists or not. It
+        is also possible for the input to accept multiple emails (separated by commas), if the multiple attribute is specified.
+    </Paragraph>
+    <Paragraph>
+        Here's an example of how to create an email input, and what it looks like if the form is to be submitted with an invalid
+        email format (or is submitted empty (the required attribute forces a value to be inputted into the input)).
+    </Paragraph>
+    <Paragraph><input type="email" multiple required/></Paragraph>
+    <Paragraph>
+        The above element is an email input. Entering an invalid format email hightlight the input box red, while
+        entering a valid email (ex. email@email.com) will not.</Paragraph>
+    <Image filename="email_input_invalid.png" description="An invalid email being submitted">
+    <Paragraph>
+        The above image shows an invalid popup message when an invalid email is trying to be submitted. The input box is
+        hightligted in red if the email is invalid
+    </Paragraph>
+    <Image filename="email_input_code.png" description="
+        An <input> tag of type email with the multiple and required attributes set
+    ">
+    <Section>2.6 Number Input</Section>
+    <Paragraph>
+        The number input allows the user to input a numeric value with type checking. It ensures that the user's input is a valid number.
+        As well, the input allows the developer to specify a minimum and maximum valid input range, which is useful for limiting the user's
+        valid inputs. This is done by setting the min attribute and the max attribute, respectively. There is also a spinner that is 
+        available to increase or decrease the user's value by a step amount, which can also be specified by the developer. Setting the
+        step attribute will change how much the spinner increments and decrements the numeric value. 
+    </Paragraph>
+    <Paragraph>Here is an example of a number input, with a minimum of 5, maximum of 25, and a step of 2.</Paragraph>
+    <Paragraph><input type="number" min="5" max="25" step="2" /></Paragraph>
+    <Image filename="number_input_code.png" description=" 
+        An <input> tage of type number, with a minimum value of 5, maximum value of 25, and step rate of 2
+    ">
+    <Paragraph>
+        If a number is submitted with a non-numeric value, or a value outside of the specified range, the user will be notified.
+        Here's an example, using the above example, when the user inputs a value outside of the valid range.
+    </Paragraph>
+    <Image filename="number_input_invalid.png" description="
+        Inputting a value of 2566 when the maximum allowed numeric value is 25. User gets prompted by a message stating
+        "Please select a value that is no more than 25."
+    ">                    
+    <Section>2.7 Search Input</Section>
+    <Paragraph>
+        The search input creates a text box search field that allows the user to input text for a query. There is also
+        an "x" that will clear the search box. As well, the placeholder attribute can be set to a text string to display
+        placeholder text within the search box.
+    </Paragraph>
+    <Paragraph>Here's an example of a search input.</Paragraph>
+    <Paragraph><input type="search" placeholder="Enter Query Here."/></Paragraph>
+    <Image filename="search_input_code.png" description="
+        A <search> tag with a placeholder attribute saying Enter Query Here.
+    ">
+    <Section>2.8 Tel Input</Section>
+    <Paragraph>
+        The tel input type is used for telephone number inputs. The tel input doesn't validate if the inputted telephone number is
+        a real, valid number, but it does provide a pattern attribute to allow the developer to specify regular expressions (regex)
+        to test for a correct telephone input format. This is done because different regions have different telephone number formats.
+        This allows the tel input to be modified to suit any region. Once again, there is also a placeholder attribute to display
+        the required telephone input format
+    </Paragraph>
+    <Paragraph>Here's an example of a tel input for a Canadian phone number format (###) ###-####.</Paragraph>
+    <Paragraph>
+        <input type="tel" placeholder="(###) ###-####" pattern="\([0-9]{3}\) [0-9]{3}-[0-9]{4}">
+    </Paragraph>
+    <Image filename="tel_input_code.png" description="
+        An <input> tag of type tel, with placeholder text showing a standard phone number format and a pattern for reading 
+        a proper telephone number format.
+    ">
+    <Paragraph>The error message for trying to submit a tel input that doesn't match the regex patter will be similar to the image seen below.</Paragraph>
+    <Image filename="tel_input_invalid.png" description="
+        Error message for inputting a telephone number of the incorrect format.
+    ">
 
 
     <Question name="Question1">Question 1. The starting value of a Range Input can be specified with the ___ attribute</Question>
@@ -452,69 +465,88 @@ HTML Part 2
         <Answer name="Question5" correct="">D. None of the Above</Answer>
 
 
-CSS
+    Unit 2 -CSS
 
-    <Section title="3.1 What is CSS?">
-        <Paragraph>
-            CSS (Cascading Style-sheet) is a style sheet language used to style HTML elements. CSS helps in creating aesthetically pleasing
-            web pages by allowing the developer to color structural elements, input elements, and just about anything else HTML related. It also
-            helps to layout the web application, as it can specify the sizes of of HTML elements. In turn, this means that CSS also helps
-            with the scalability of web applications on smaller and larger devices (such as scaling down from a desktop browser on a large screen,
-            to a mobile browser on a cellular device. Thus, it is obvious that CSS is an important aspect of web development.
-        </Paragraph>
-    </Section>
-    <Section title="3.2 Inline CSS vs. an External Stylesheet">
-        <Paragraph>
-            There are two ways to modify HTML elements using CSS. The first way is through the use of inline css in the HTML elements.
-            This is where the CSS styles are applied directly to the HTML element (the HTML style attributes are modified directly in the
-            creation of the HTML element). An example of what this would look like on a div element would be:
-        </Paragraph>
-        <Image src="../shared/css_3-2.png">A div with a blue background</Image>
-        <Image src="../shared/css_3-2_code.png">
-            &lt;div style="width:200px; height:200px; background-color:blue;"&gt;&lt;/div&gt;
-        </Image>
-        <Paragraph>
-            As shown here, there is an attribute in the HTML div starting tag called style, and when that attribute is in place, CSS code
-            can be written to directly modify this element.
-        </Paragraph>
-        <Paragraph>
-            Using inline HTML may not be of best practice, as it can cause a lot of duplicated code (if multiple elements want to be styled
-            the same way), leading to a lack in maintainability and consistancy. What I mean by maintainability and consistancy is, is if there
-            are multiple webpages in which the same theme needs to be applied to all of the pages, then it becomes a tedious and
-            inefficient to style each and every element with the same styles.
-        </Paragraph>
-        <Paragraph>
-            A more reasonable approach would be to use an external CSS stylesheet, which can be used to create a common style for certain
-            elements or certain groups of elements. This can be done in one of two ways. In the first method, a "style" element
-            (&lt;img src="../shared/3.2_2.png"&gt;&lt;/img&gt;) can be declared inside the HTML document that will allow for CSS styling
-            for a specific HTML file. This solution is better than the inline CSS, but still not the best, since the CSS code would need to
-            be duplicated in other HTML files as well. The best way is to use a separate CSS file (of type .css), where the stylesheet can be
-            referenced in each HTML file (using &lt;link rel="stylesheet" type="text/css" href="yourstylesheet.css" /&gt;). Discussing some of
-            the attributes in the link tag, rel describes the relationship between the current document and the linked document, type defines 
-            the MIME type as a text with CSS formatting, and the href is the direct reference to the stylesheet. Thus, any HTML files that have 
-            the reference can use the CSS rule-set specified in the CSS file.
-        </Paragraph>
+    Creating and Utilizing CSS
 
-        <style>...CSS code here...</style>
+    <Overview>
+        This lesson is on the topic of CSS and briefly discusses why CSS is important, along with the different ways that CSS can be 
+        integrated with an HTML webpage. By the end of this lesson, you should be able to: 
+        <Outline>
+            <BulletPoint>
+                Define what CSS stands for and what it's use is.
+            </BulletPoint>
+            <BulletPoint>
+                Understand what a CSS rule-set is and how to create one
+            </BulletPoint>
+            <BulletPoint>
+                Know the three different ways that CSS rule-sets can be applied to an HTML webpage
+            </BulletPoint>
+            <BulletPoint>
+                Know the drawbacks that come with the different ways to apply CSS rule-sets
+            </BulletPoint>
+        </Outline>
+    </Overview>
+    <Introduction>
+        CSS is a style sheet language that is used in the client-side, alongside the HTML markup language. CSS is important for formatting 
+        HTML elements to be in correct position on the webpage, as well as make the webpage more aesthetically pleasing for the users. It can 
+        allow the developer to change the colors and styles of just about any HTML elements!
+    </Introduction>
+    <Section>3.1 What is CSS?</Section>
+    <Paragraph>
+        CSS (Cascading Style-sheet) is a style sheet language used to style HTML elements. CSS helps in creating aesthetically pleasing
+        web pages by allowing the developer to color structural elements, input elements, and just about anything else HTML related. It also
+        helps to layout the web application, as it can specify the sizes of of HTML elements. In turn, this means that CSS also helps
+        with the scalability of web applications on smaller and larger devices (such as scaling down from a desktop browser on a large screen,
+        to a mobile browser on a cellular device. Thus, it is obvious that CSS is an important aspect of web development.
+    </Paragraph>
+    <Section>3.2 Inline CSS vs. an External Stylesheet</Section>
+    <Paragraph>
+        There are two ways to modify HTML elements using CSS. The first way is through the use of inline css in the HTML elements.
+        This is where the CSS styles are applied directly to the HTML element (the HTML style attributes are modified directly in the
+        creation of the HTML element). An example of what this would look like on a div element would be:
+    </Paragraph>
+    <Image filename="css_3-2.png" description="A div with a blue background">
+    <Image filename="css_3-2_code.png" description="
+        A <div> element with inline css styling making it have a width and height of 200px and a background color of blue
+    ">
+    <Paragraph>
+        As shown here, there is an attribute in the HTML div starting tag called style, and when that attribute is in place, CSS code
+        can be written to directly modify this element.
+    </Paragraph>
+    <Paragraph>
+        Using inline HTML may not be of best practice, as it can cause a lot of duplicated code (if multiple elements want to be styled
+        the same way), leading to a lack in maintainability and consistancy. What I mean by maintainability and consistancy is, is if there
+        are multiple webpages in which the same theme needs to be applied to all of the pages, then it becomes a tedious and
+        inefficient to style each and every element with the same styles.
+    </Paragraph>
+    <Paragraph>
+        A more reasonable approach would be to use an external CSS stylesheet, which can be used to create a common style for certain
+        elements or certain groups of elements. This can be done in one of two ways. In the first method, a "style" element
+        (<Image filename="3.2_2.png" description="<style> tags">) can be declared inside the HTML document that will allow for CSS styling
+        for a specific HTML file. This solution is better than the inline CSS, but still not the best, since the CSS code would need to
+        be duplicated in other HTML files as well. The best way is to use a separate CSS file (of type .css), where the stylesheet can be
+        referenced in each HTML file (using <link rel="stylesheet" type="text/css" href="yourstylesheet.css" />). Discussing some of
+        the attributes in the link tag, rel describes the relationship between the current document and the linked document, type defines 
+        the MIME type as a text with CSS formatting, and the href is the direct reference to the stylesheet. Thus, any HTML files that have 
+        the reference can use the CSS rule-set specified in the CSS file.
+    </Paragraph>
 
-
-    </Section>
-    <Section title="3.3 Using External CSS Stylesheets">
-        <Paragraph>
-            First, let's begin be defining a CSS rule-set for an HTML element. As stated in the previous unit, HTML elements can be given unique IDs. 
-            In CSS, styles can be applied directly to an HTML element with a specific ID. For example, if there is an element declared as
-            &lt;img src="../shared/3.3_1.png"&gt;&lt;/img&gt;
-            and we wanted to set the background color to red, it can be done in the CSS stylesheet as #myDiv { background-color:red; }. 
-            Notice how the div's ID was preceded by a '#'. The # symbol specifies that the CSS properties will be applied to an elements with that specific 
-            ID. Now let's say we wanted to apply the CSS properties to multiple HTML elements. A rule-set can be made similarly to how the rule-set 
-            was made for an ID, but replacing the '#' with a '.' (so using the above example, it would look like .myDiv { background-color:red; }). 
-            This rule-set can be applied to any HTML element by using the class attribute (so in the above div, it would be 
-            &lt;img src="../shared/3.3_2.png"&gt;&lt;/img&gt;.
-            Multiple CSS classes can be applied to an element. If you want CSS rule-sets to be applied to a certain HTML elements (such as applying the CSS 
-            rule-set to all div elements), then specify the HTML element name with nothing preceding it (so once again, for a div element it would look 
-            like div { background-color:red; } to apply a red background to all div's).
-        </Paragraph>
-    </Section>
+    <Section>3.3 Using External CSS Stylesheets</Section>
+    <Paragraph>
+        First, let's begin be defining a CSS rule-set for an HTML element. As stated in the previous unit, HTML elements can be given unique IDs. 
+        In CSS, styles can be applied directly to an HTML element with a specific ID. For example, if there is an element declared as
+        <Image filename="3.3_1.png" description="Using <div> tag with an id attribute">
+        and we wanted to set the background color to red, it can be done in the CSS stylesheet as #myDiv { background-color:red; }. 
+        Notice how the div's ID was preceded by a '#'. The # symbol specifies that the CSS properties will be applied to an elements with that specific 
+        ID. Now let's say we wanted to apply the CSS properties to multiple HTML elements. A rule-set can be made similarly to how the rule-set 
+        was made for an ID, but replacing the '#' with a '.' (so using the above example, it would look like .myDiv { background-color:red; }). 
+        This rule-set can be applied to any HTML element by using the class attribute (so in the above div, it would be 
+        <Image filename="3.3_2.png" description="Using <div> tag with a class attribute">.
+        Multiple CSS classes can be applied to an element. If you want CSS rule-sets to be applied to a certain HTML elements (such as applying the CSS 
+        rule-set to all div elements), then specify the HTML element name with nothing preceding it (so once again, for a div element it would look 
+        like div { background-color:red; } to apply a red background to all div's).
+    </Paragraph>
 
 
     <Question name="Question1">Question 1. CSS is used to</Question>
@@ -544,84 +576,91 @@ CSS
         <Answer name="Question5" correct="*">D. Both A and B</Answer>
 
 
-JavaScript and AJAX
+    Unit 3 - JavaScript and AJAX
 
-    <Section title="4.1 What is JavaScript?">
-        <paragraph>
-            JavaScript is a client-side scripting language that can be used to perform tasks to save time and data transfer between the server
-            and the client. For example, if there is a simple calculation, such as adding two inputs from the user, then it may be redundant
-            to have to send that data back to a server so it can return the result of such a simple calculation back. Just keep in mind that if
-            you are using JavaScript, do not store any sensitive data in JavaScript because anyone who has access to the website can use a console
-            viewer and view any of the data stored. JavaScript helps in making HTML more interactive, since it can create actions, effects, transitions,
-            etc when events occurs on an HTML element or page (such as clicking a button, typing into an input, etc.)
-        </paragraph>
-        <paragraph>
-            JavaScript can be used in similar ways as CSS can. Some JavaScript functions can be called for an event in an inline HTML element
-            (For example, &lt;img src="../shared/4.1_1.png"&gt;&lt;/img&gt; would create a button that would call the functions
-            "javascriptFunction" when it is clicked). For similar reasons as with CSS, it is not recommended to call JavaScript functions in this
-            manner, as it makes maintainability and scalability more difficult. JavaScript can be declared inside an HTML file by using the
-            &lt;script&gt;"...JavaScript Here"&lt;/script&gt;. The JavaScript decan be defined between the two script tags. As well, JavaScript can
-            be defined outside of an HTML file, as its own external JavaScript file (ending with .js). The JavaScript can be included into any
-            HTML file by using the same script tag, but with a src attribute that points to the location of the JavaScript file (ex.
-            &lt;script src="../shared/myJavascriptFile.js"&gt;&lt;/script&gt;).
-        </paragraph>
-    </Section>
-    <Section title="4.2 Brief Introduction to AJAX">
-        <paragraph>
-            In the discussions so far about web pages, the current way of communicating with a server is by using a form and refreshing the page
-            in order to send and receive data between the server and the client. This approach is fine, unless the user has to go through many
-            web pages, or is required to repeatedly input information. The reason why the the way we have been inputting information into the
-            web pages is bad for this type of application is because it takes too long. Refreshing the entire page to load data if whenever the
-            user wants to send in information can take a long time. This is especially true for validating inputs. For example, we don't want to
-            refresh the entire page just to check if one of the user's inputs is in the correct format. AJAX is a way around this, as it creates
-            a dynamic web page that is able to asynchronously send and receive data between the client and server and updating the webpage without
-            having to refresh the entire webpage.
-        </paragraph>
-        <paragraph>
-            One way of creating an AJAX application is through the use of XMLHttpRequests, which sends and recieves XML data between the
-            server and the client. Here's an example of how to open a connection to asynchronously request from a server XML document and display
-            the requested information back to the client.
-        </paragraph>
-        <Image src="../shared/4.2_1.png">
-            function readXML(url) {
-                var xhr = new XMLHttpRequest();
-                xhr.onreadystatechange = function () {
-                    if (this.readyState === 4 &amp;&amp; this.status === 200) {
-                        callbackFunction(this);
-                    }
-                }
-                xhr.open("get", url, false);
-                xhr.send(null);
-            }
-        </Image>
-        <paragraph>
-            Let's take a look at the above function, called readXML. This function will create an XMLHttpRequest to a URL, and when the request is
-            ready, then a callback function is called. First, this method takes in a url as an input, which is the path to the URL that the user will
-            be requesting from. The line &lt;img src="../shared/4.2_2.png"&gt;&lt;/img&gt; creates the XMLHttpRequest and assigns it to a variable called xhr.
-            This variable will be used to deal with the XMLHttpRequest. The next chunk of code,
-        </paragraph>
-        <Image src="../shared/4.2_3.png">
-            xhr.onreadystatechange = function () {
-                if (this.readyState === 4 &amp;&amp; this.status === 200) {
-                    callbackFunction(this);
-                }
-            }
-        </Image>
-        <paragraph>
-            sets an event handler for the xhr variable, which will call a function if the ready state of the request changes. The function that
-            is called will check if the request is complete (readyState === 4) and that the client has successfully received the request (status === 200).
-            If these two conditions are satisfied, then a callback function is called, passing in the request (callbackFunction(this)). "this" contains all
-            of the information from the request. Before the onreadystatechange is called, the request must be opened first, which occurs in the lines 
-        </paragraph>
-        <Image src="../shared/4.2_4.png">
-            xhr.open("get", url, false);
-            xhr.send(null);
-        </Image>
-        <paragraph>
-            The xhr is opened using a "get" request to the URL. The third parameter, which is set to false, specifies if the request is asynchronous or not.
-            Finally, in the send method (xhr.send(null)), this means that the request is not submitting data in the body of the request.
-        </paragraph>
-    </Section>
+    Improving Webpages with JavaScript and AJAX
+
+    <Overview>
+        In this lesson, we will be discussing what JavaScript and AJAX are, as well as their importance in creating dynamic and responsive 
+        webpages that improve usability and creates a better user experience. By the end of this lesson, you should be able to: 
+        <Outline>
+            <BulletPoint>
+                Define what Javascript is and understand it's uses 
+            </BulletPoint>
+            <BulletPoint>
+                Understand what AJAX is and how it plays a role in create dynamic web pages
+            </BulletPoint>
+            <BulletPoint>
+                Write code to Send and receive XML data to and from the server and the client 
+            </BulletPoint>
+        </Outline>
+    </Overview>
+    <Introduction>
+        JavaScript is a client-side scripting language that enables HTML elements to be interactive. JavaScript works directly with AJAX to 
+        create a better user experience by creating events upon user input and transferring data between the client and server without having 
+        to constantly refresh the entire page.
+    </Introduction>
+    <Section>4.1 What is JavaScript?</Section>
+    <paragraph>
+        JavaScript is a client-side scripting language that can be used to perform tasks to save time and data transfer between the server
+        and the client. For example, if there is a simple calculation, such as adding two inputs from the user, then it may be redundant
+        to have to send that data back to a server so it can return the result of such a simple calculation back. Just keep in mind that if
+        you are using JavaScript, do not store any sensitive data in JavaScript because anyone who has access to the website can use a console
+        viewer and view any of the data stored. JavaScript helps in making HTML more interactive, since it can create actions, effects, transitions,
+        etc when events occurs on an HTML element or page (such as clicking a button, typing into an input, etc.)
+    </paragraph>
+    <paragraph>
+        JavaScript can be used in similar ways as CSS can. Some JavaScript functions can be called for an event in an inline HTML element
+        (For example, <Image filename="4.1_1.png" description="a <button> element with an inline onclick listener"> would create a button that would 
+        call the functions "javascriptFunction" when it is clicked). For similar reasons as with CSS, it is not recommended to call JavaScript 
+        functions in this manner, as it makes maintainability and scalability more difficult. JavaScript can be declared inside an HTML file by 
+        using the <script>"...JavaScript Here"</script>. The JavaScript decan be defined between the two script tags. As well, JavaScript can
+        be defined outside of an HTML file, as its own external JavaScript file (ending with .js). The JavaScript can be included into any
+        HTML file by using the same script tag, but with a src attribute that points to the location of the JavaScript file (ex.
+        <script filename="myJavascriptFile.js"></script>).
+    </paragraph>
+    <Section>4.2 Brief Introduction to AJAX</Section>
+    <paragraph>
+        In the discussions so far about web pages, the current way of communicating with a server is by using a form and refreshing the page
+        in order to send and receive data between the server and the client. This approach is fine, unless the user has to go through many
+        web pages, or is required to repeatedly input information. The reason why the the way we have been inputting information into the
+        web pages is bad for this type of application is because it takes too long. Refreshing the entire page to load data if whenever the
+        user wants to send in information can take a long time. This is especially true for validating inputs. For example, we don't want to
+        refresh the entire page just to check if one of the user's inputs is in the correct format. AJAX is a way around this, as it creates
+        a dynamic web page that is able to asynchronously send and receive data between the client and server and updating the webpage without
+        having to refresh the entire webpage.
+    </paragraph>
+    <paragraph>
+        One way of creating an AJAX application is through the use of XMLHttpRequests, which sends and recieves XML data between the
+        server and the client. Here's an example of how to open a connection to asynchronously request from a server XML document and display
+        the requested information back to the client.
+    </paragraph>
+    <Image filename="4.2_1.png" description="
+        A function using XMLHttpRequest function and checking the ready state and status of the request before performing a callback function
+        call to use the read XML data
+    ">
+    <paragraph>
+        Let's take a look at the above function, called readXML. This function will create an XMLHttpRequest to a URL, and when the request is
+        ready, then a callback function is called. First, this method takes in a url as an input, which is the path to the URL that the user will
+        be requesting from. The line <Image filename="4.2_2.png" description="XMHttpRequest function"> creates the XMLHttpRequest and assigns it 
+        to a variable called xhr. This variable will be used to deal with the XMLHttpRequest. The next chunk of code,
+    </paragraph>
+    <Image filename="4.2_3.png" description="
+        The check for ready state and status of the request before calling the callback funciton
+    ">
+    <paragraph>
+        sets an event handler for the xhr variable, which will call a function if the ready state of the request changes. The function that
+        is called will check if the request is complete (readyState === 4) and that the client has successfully received the request (status === 200).
+        If these two conditions are satisfied, then a callback function is called, passing in the request (callbackFunction(this)). "this" contains all
+        of the information from the request. Before the onreadystatechange is called, the request must be opened first, which occurs in the lines 
+    </paragraph>
+    <Image filename="4.2_4.png" description="
+        Opening an XMLHttpRequest at a given URL using a get type of method.
+    ">
+    <paragraph>
+        The xhr is opened using a "get" request to the URL. The third parameter, which is set to false, specifies if the request is asynchronous or not.
+        Finally, in the send method (xhr.send(null)), this means that the request is not submitting data in the body of the request.
+    </paragraph>
 
 
     <Question name="Question1">Question 1. JavaScript is a scripting language that works on the </Question>

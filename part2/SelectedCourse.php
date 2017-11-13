@@ -118,9 +118,9 @@
                 
                 $lesson = preg_replace('/&lt;Image filename="/', '&lt;image src="./uploads/' . $course['name'] . $courseID . '/', $lesson);
                 $lesson = preg_replace('/&lt;\/Image&gt;/', '', $lesson);
-                echo("before: ". $lesson);
+                
                 $lesson = preg_replace('/(&lt;image src=".+?[\s\S]") description=(".+?[\s\S]"&gt;)/', '$1alt=$2', $lesson);
-                echo($lesson);
+                
                 $lesson = preg_replace('/&lt;Video filename="/', '&lt;video width="360" height="240" controls&gt; &lt;source type="video/mp4" src="./uploads/' . $course['name'] . $courseID . '/', $lesson);
                 $lesson = preg_replace('/&lt;\/Video&gt;/', 'Your Browser Does Not Support Video. &lt;/video&gt;', $lesson);
 
