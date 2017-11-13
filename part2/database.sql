@@ -60,6 +60,7 @@ CREATE TABLE lessonObjects (
     course int NOT NULL,
     type VARCHAR(32) NOT NULL,
 	filename VARCHAR(256) NOT NULL,
+    location VARCHAR(512) NOT NULL,
     PRIMARY KEY (course, filename),
     FOREIGN KEY (course) REFERENCES courses(ID)
 );

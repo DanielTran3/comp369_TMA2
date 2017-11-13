@@ -108,25 +108,32 @@
                     
                     // Iterate through each of the lessonObjects
                     for ($i = 0; $i < $numObjects; $i++) {
-                        // 
+                        // Check if the lessonObject is set and not empty
                         if (isset($_FILES['lessonObjects']['name'][$i]) && !empty($_FILES['lessonObjects']['name'][$i])) {
+                            // Get the name of the lessonObject and the tmp name
                             $lessonObjectName = $_FILES['lessonObjects']['name'][$i];
                             $lessonObjectTmpName = $_FILES['lessonObjects']['tmp_name'][$i];
-                            $dotPosition = strrpos($lessonObjectName, ".");
-                            $lessonObjectType = substr($lessonObjectName, $dotPosition + 1);
-                            if (move_uploaded_file($lessonObjectTmpName, $path.$lessonObjectName)) {
-                                // Create a query to the users table to get the admin status of the currently
-                                // logged in user
-                                echo("<p>Name: " . $lessonObjectName . "</p>");
-                                $query = "INSERT INTO lessonObjects (course, type, filename) VALUES ('$courseID', '$lessonObjectType','$lessonObjectName') " . 
-                                         "ON DUPLICATE KEY UPDATE type='$lessonObjectType', filename='$lessonObjectName'";
 
-                                // Execute the to retrieve the user's admin status
+                            // Get the position of the last period, denoting the beginning of the file type
+                            $dotPosition = strrpos($lessonObjectName, ".");
+                            // Get the file type (ignoring the period)
+                            $lessonObjectType = substr($lessonObjectName, $dotPosition + 1);
+
+                            $lessonFileLocation = $path.$lessonObjectName;
+                            // Movve the file to the correct location (uploads folder + course name + course ID)
+                            if (move_uploaded_file($lessonObjectTmpName, $lessonFileLocation)) {
+                                // Create a query to insert the lessonObject into the lessonObjects table with the objects type and name. 
+                                // If there is a duplicate, then update the table's columns with the new data
+                                $query = "INSERT INTO lessonObjects (course, type, filename, location)" . 
+                                         "VALUES ('$courseID', '$lessonObjectType', '$lessonObjectName', '$lessonFileLocation') " . 
+                                         "ON DUPLICATE KEY UPDATE type='$lessonObjectType', filename='$lessonObjectName', location='$lessonFileLocation'";
+
+                                // Execute the to insert the lesson object into the table
                                 if (!($result = mysql_query( $query, $database))) 
                                 {
                                     // If the select query failed, notify the user
-                                    print( "<p>Failed to retrieve your user status</p>" );
-                                    print("<form method='post' action='WelcomeToSiteMark.php'>");
+                                    print( "<p>Failed to add Lesson Object</p>" );
+                                    print("<form method='post' action='Learnatorium.php'>");
                                     print("<button class='whiteButton' type='submit' style='margin-top:0px;'>Continue</button>");
                                     print("</form>");
                                     die( mysql_error() . "</body></html>" );
@@ -137,6 +144,13 @@
                 }
                 mysql_close( $database );
             ?>
+            <form method="post" action="AvailableCourses.php">
+                <div class="welcomeText">
+                    <span class="title1 titleFont">The course has been successfully created!</span>
+                    <span class="title4">Click the button below to continue</span>
+                    <button class="whiteButton" type="submit">Continue</button>
+                </div>
+            </form>
         </body>
     </head>
 </html>

@@ -106,36 +106,46 @@
             // Parse the learning objectives, where the program currently supports images, videos, and audio files
             function parseLearningObjects($lesson, $courseID, $database) {
                 // Query for the current course
-                $query = "SELECT name FROM courses where ID='$courseID'";
-                if (!($result = mysql_query($query, $database))) 
-                {
-                    print( "<p>Could not retrieve course ID</p>" );
-                    die("</body></html>");
-                }
-                // Retrieve the current course name
-                $course = mysql_fetch_assoc($result);
-                $courseDirectory = $course['name'] . $courseID . '/';
                 
-                // Parse the Image tag to replace it with an image tag and replace the filename attribute with a src attribute, 
-                // pointing to the designated file location.
-                $lesson = preg_replace('/&lt;Image filename="/', '&lt;image src="./uploads/' . $courseDirectory, $lesson);
-                $lesson = preg_replace('/&lt;\/Image&gt;/', '', $lesson);
-                
-                // Parse the description tag and replace it with an alt tag. This is done by matching the image tag with the source attribute as 
-                // a group and the value of the description attribute as another group. Afterwards, the description tag is replaced with an alt 
-                // tag and the saved groups are unaffected.
-                $lesson = preg_replace('/(&lt;image src=".+?[\s\S]") description=(".+?[\s\S]"&gt;)/', '$1alt=$2', $lesson);
-                
-                // Replace the Video tag with a video tag set the width and height of the video to 360px by 240px. Also set controls for the video.
-                // Currently, the only supported source type is mp4. Set the filename attribute to be a src attribute with a value set to the 
-                // respective file location
-                $lesson = preg_replace('/&lt;Video filename="/', '&lt;video width="360" height="240" controls&gt; &lt;source type="video/mp4" src="./uploads/' . $courseDirectory, $lesson);
-                $lesson = preg_replace('/&lt;\/Video&gt;/', 'Your Browser Does Not Support Video. &lt;/video&gt;', $lesson);
+                // Match for all <Image filename= and get the value of the filename
+                $allFilenames = preg_match_all('/&lt;Image filename="(.+?[\s\S])"/', $lesson, $match);
 
-                // Replace the Audio tag with a audio tag and set the controls for the audio input. Currently, the only supported source type 
-                // is mp3 (or mpeg). Set the filename attribute to be a src attribute with a value set to the respective file location
-                $lesson = preg_replace('/&lt;Audio filename="/', '&lt;audio controls&gt; &lt;source type="audio/mpeg" src="./uploads/' . $courseDirectory, $lesson);
-                $lesson = preg_replace('/&lt;\/Audio&gt;/', 'Your Browser Does Not Support Audio. &lt;/audio&gt;', $lesson);
+                // Iterate through each matched filename
+                foreach ($match[1] as $nameOfFile) {
+
+                    // Get the location of the lesson object based on the course ID and the name of the file
+                    $query = "SELECT location FROM lessonObjects WHERE course = '$courseID' AND filename = '$nameOfFile'";
+                    if (!($result = mysql_query($query, $database))) 
+                    {
+                        print( "<p>Could not retrieve Lesson Object Location</p>" );
+                        die("</body></html>");
+                    }
+
+                    // Retrieve the current Lesson Object file location
+                    $lessonObjectLocation = mysql_fetch_assoc($result);
+                    $lessonObjectLocation = $lessonObjectLocation['location'];
+                    
+                    // Parse the Image tag to replace it with an image tag and replace the filename attribute with a src attribute, 
+                    // pointing to the designated file location.
+                    $lesson = preg_replace('/&lt;Image filename="' . $nameOfFile . '/', '&lt;image src="' . $lessonObjectLocation, $lesson);
+                    $lesson = preg_replace('/&lt;\/Image&gt;/', '', $lesson);
+                    
+                    // Parse the description tag and replace it with an alt tag. This is done by matching the image tag with the source attribute as 
+                    // a group and the value of the description attribute as another group. Afterwards, the description tag is replaced with an alt 
+                    // tag and the saved groups are unaffected.
+                    $lesson = preg_replace('/(&lt;image src=".+?[\s\S]") description=(".+?[\s\S]"&gt;)/', '$1alt=$2', $lesson);
+                    
+                    // Replace the Video tag with a video tag set the width and height of the video to 360px by 240px. Also set controls for the video.
+                    // Currently, the only supported source type is mp4. Set the filename attribute to be a src attribute with a value set to the 
+                    // respective file location
+                    $lesson = preg_replace('/&lt;Video filename="' . $nameOfFile . '/', '&lt;video width="360" height="240" controls&gt; &lt;source type="video/mp4" src="' . $lessonObjectLocation, $lesson);
+                    $lesson = preg_replace('/&lt;\/Video&gt;/', 'Your Browser Does Not Support Video. &lt;/video&gt;', $lesson);
+
+                    // Replace the Audio tag with a audio tag and set the controls for the audio input. Currently, the only supported source type 
+                    // is mp3 (or mpeg). Set the filename attribute to be a src attribute with a value set to the respective file location
+                    $lesson = preg_replace('/&lt;Audio filename="' . $nameOfFile . '/', '&lt;audio controls&gt; &lt;source type="audio/mpeg" src="' . $lessonObjectLocation, $lesson);
+                    $lesson = preg_replace('/&lt;\/Audio&gt;/', 'Your Browser Does Not Support Audio. &lt;/audio&gt;', $lesson);
+                }
 
                 return $lesson;
             }
