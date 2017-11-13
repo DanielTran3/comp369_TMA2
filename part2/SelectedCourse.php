@@ -44,13 +44,14 @@
         <?php
             // PHP parser for Lesson EMLs. Returns a string that is HTML decoded and
             // is ready to be displayed in a browser
-            function lessonEMLParser($lesson) {
+            function lessonEMLParser($lesson, $courseID, $database) {
                 $lesson = parseOverview($lesson);
                 $lesson = parseOutline($lesson);
                 $lesson = parseIntroduction($lesson);
                 $lesson = parseSection($lesson);
                 $lesson = parseParagraph($lesson);
-
+                $lesson = parseLearningObjects($lesson, $courseID, $database);
+                
                 return htmlspecialchars_decode($lesson);
             }
 
@@ -102,6 +103,29 @@
             function parseParagraph($lesson) {
                 $lesson = preg_replace('/&lt;Paragraph&gt;/', '&lt;p&gt;', $lesson);
                 $lesson = preg_replace('/&lt;\/Paragraph&gt;/', '&lt;/p&gt;', $lesson);
+
+                return $lesson;
+            }
+
+            function parseLearningObjects($lesson, $courseID, $database) {
+                $query = "SELECT name FROM courses where ID='$courseID'";
+                if (!($result = mysql_query($query, $database))) 
+                {
+                    print( "<p>Could not retrieve course ID</p>" );
+                    die("</body></html>");
+                }
+                $course = mysql_fetch_assoc($result);
+                
+                $lesson = preg_replace('/&lt;Image filename="/', '&lt;image src="./uploads/' . $course['name'] . $courseID . '/', $lesson);
+                $lesson = preg_replace('/&lt;\/Image&gt;/', '', $lesson);
+                echo("before: ". $lesson);
+                $lesson = preg_replace('/(&lt;image src=".+?[\s\S]") description=(".+?[\s\S]"&gt;)/', '$1alt=$2', $lesson);
+                echo($lesson);
+                $lesson = preg_replace('/&lt;Video filename="/', '&lt;video width="360" height="240" controls&gt; &lt;source type="video/mp4" src="./uploads/' . $course['name'] . $courseID . '/', $lesson);
+                $lesson = preg_replace('/&lt;\/Video&gt;/', 'Your Browser Does Not Support Video. &lt;/video&gt;', $lesson);
+
+                $lesson = preg_replace('/&lt;Audio filename="/', '&lt;audio controls&gt; &lt;source type="audio/mpeg" src="./uploads/' . $course['name'] . $courseID . '/', $lesson);
+                $lesson = preg_replace('/&lt;\/Audio&gt;/', 'Your Browser Does Not Support Audio. &lt;/audio&gt;', $lesson);
 
                 return $lesson;
             }
@@ -215,7 +239,7 @@
                     
                             print("<h2>" . $lessonRow["name"] . "</h2>");
                             $lessonContent = $lessonRow["content"];
-                            $lessonContent = lessonEMLParser($lessonContent);
+                            $lessonContent = lessonEMLParser($lessonContent, $courseID, $database);
                             print($lessonContent);
                         
                             $quizQuery = "SELECT content FROM quizzes where lesson='$lessonID'";
