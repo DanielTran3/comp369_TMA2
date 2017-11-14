@@ -464,6 +464,76 @@
         <Answer name="Question5" correct="">C. The slider can only move within the min and max range exclusively (never reach the min or max value)</Answer>
         <Answer name="Question5" correct="">D. None of the Above</Answer>
 
+    HTML Part 3 - Image, Video and Audio files
+
+    <Overview>
+        This lesson will discuss how to create image, video, and audio files in HTML, as well as display some examples of each.
+        By the end of this lesson, you should be able to: 
+        <Outline>
+            <BulletPoint>
+                Create an image and display it on the web page
+            </BulletPoint>
+            <BulletPoint>
+                Create an audio element with controls and be able to hear audio
+            </BulletPoint>
+            <BulletPoint>
+                Create a video element with controls and be able to watch the video
+            </BulletPoint>
+        </Outline>
+    </Overview>
+    <Introduction>
+        It is important to be able to create image, video, and audio elements in HTML because it adds to the interactive experience of a webpage. 
+        It allows for more interactive webpages and adds to the visual aspect of the page.
+    </Introduction>
+    <Section>3.1 General Attribute</Section>
+    <Paragraph>
+        Each of these elements have an src attribute that despecifies which location of the image, video, or audio files. This attribute specifies
+        the location of the file, which is required to displa the image, video, or audio file properly.
+    </Paragraph>
+    <Section>3.2 How to Create an Image File</Section>
+    <Paragraph>
+        An image file displays a simple image on the webpage. Web browsers support various image types, such as jpeg, png, and more. 
+        Creating an image file is done with the image tag. There is an optional alt attribute that specifies the text that is displayed if the 
+        file is not available. This attribute is important as a backup in case the image is not available.
+    </Paragraph>
+    <Paragraph>
+        An example of an image file being displayed is the one below
+    </Paragraph>
+    <Image filename="bobcat.jpg" description="A picture of a baby bobcat in a tree">
+    <Section>3.3 How to Create Video and Audio Files</Section>
+    <Paragraph>
+        Video and Audio elements are created in a similar way. The Video element is created with the video tag and the audio element is created with 
+        the audio tag. Both elements require a source tag within their tags. The source tag contains a type attribute specifying what type the 
+        video or audio file is. For a video, it can have an attribute type="video/mp4" and audio can have a type attribute type="audio/mpeg". 
+        The video tag can also take in a width and height attribute that specify the width and height of the video file. Both the video and audio 
+        files can have a control attribute set to add control elements to the video or audio element that allows for stopping and playing of the 
+        elements. 
+    </Paragraph>
+    <Paragraph>
+        Here's an example of a video file
+    </Paragraph>
+    <Video filename="video.mp4">
+
+    <Paragraph>
+        Here's an example of an audio file
+    </Paragraph>
+    <Audio filename="sound.mp3">
+
+    <Question name="Question1">Question 1. What is used to display a video?</Question>
+        <Answer name="Question1" correct="*">A. video tag with a source tag inside</Answer>
+        <Answer name="Question1" correct="">B. Video tag with a src tag inside</Answer>
+        <Answer name="Question1" correct="">C. movie tag with a source tag inside</Answer>
+        <Answer name="Question1" correct="">D. Movie tag with a src tag inside</Answer>
+    <Question name="Question2">Question 2. Which element has src attribute within its main tag (ie. not a child tag)?</Question>
+        <Answer name="Question2" correct="">A. video</Answer>
+        <Answer name="Question2" correct="">B. audio</Answer>
+        <Answer name="Question2" correct="*">C. image</Answer>
+        <Answer name="Question2" correct="">D. All of the Above</Answer>
+    <Question name="Question3">Question 3. The alt attribute is used in which element tag?</Question>
+        <Answer name="Question3" correct="*">A. image</Answer>
+        <Answer name="Question3" correct="">B. video</Answer>
+        <Answer name="Question3" correct="">C. audio</Answer>
+        <Answer name="Question3" correct="">D. source</Answer>
 
     Unit 2 -CSS
 
@@ -492,7 +562,7 @@
         HTML elements to be in correct position on the webpage, as well as make the webpage more aesthetically pleasing for the users. It can 
         allow the developer to change the colors and styles of just about any HTML elements!
     </Introduction>
-    <Section>3.1 What is CSS?</Section>
+    <Section>4.1 What is CSS?</Section>
     <Paragraph>
         CSS (Cascading Style-sheet) is a style sheet language used to style HTML elements. CSS helps in creating aesthetically pleasing
         web pages by allowing the developer to color structural elements, input elements, and just about anything else HTML related. It also
@@ -500,7 +570,7 @@
         with the scalability of web applications on smaller and larger devices (such as scaling down from a desktop browser on a large screen,
         to a mobile browser on a cellular device. Thus, it is obvious that CSS is an important aspect of web development.
     </Paragraph>
-    <Section>3.2 Inline CSS vs. an External Stylesheet</Section>
+    <Section>4.2 Inline CSS vs. an External Stylesheet</Section>
     <Paragraph>
         There are two ways to modify HTML elements using CSS. The first way is through the use of inline css in the HTML elements.
         This is where the CSS styles are applied directly to the HTML element (the HTML style attributes are modified directly in the
@@ -532,7 +602,7 @@
         the reference can use the CSS rule-set specified in the CSS file.
     </Paragraph>
 
-    <Section>3.3 Using External CSS Stylesheets</Section>
+    <Section>4.3 Using External CSS Stylesheets</Section>
     <Paragraph>
         First, let's begin be defining a CSS rule-set for an HTML element. As stated in the previous unit, HTML elements can be given unique IDs. 
         In CSS, styles can be applied directly to an HTML element with a specific ID. For example, if there is an element declared as
@@ -600,7 +670,7 @@
         create a better user experience by creating events upon user input and transferring data between the client and server without having 
         to constantly refresh the entire page.
     </Introduction>
-    <Section>4.1 What is JavaScript?</Section>
+    <Section>5.1 What is JavaScript?</Section>
     <paragraph>
         JavaScript is a client-side scripting language that can be used to perform tasks to save time and data transfer between the server
         and the client. For example, if there is a simple calculation, such as adding two inputs from the user, then it may be redundant
@@ -619,7 +689,7 @@
         HTML file by using the same script tag, but with a src attribute that points to the location of the JavaScript file (ex.
         <script filename="myJavascriptFile.js"></script>).
     </paragraph>
-    <Section>4.2 Brief Introduction to AJAX</Section>
+    <Section>5.2 Brief Introduction to AJAX</Section>
     <paragraph>
         In the discussions so far about web pages, the current way of communicating with a server is by using a form and refreshing the page
         in order to send and receive data between the server and the client. This approach is fine, unless the user has to go through many

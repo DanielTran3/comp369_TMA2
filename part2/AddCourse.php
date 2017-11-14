@@ -43,7 +43,7 @@
                 mysql_close( $database );
             ?>
 
-            <form method="post" action="Learnatorium.php">
+            <form method="post" action="YourCourses.php">
                 <div class="welcomeText">
                     <h1 class="title1 titleFont">The course has been added!</h1>
 
