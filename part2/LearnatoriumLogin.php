@@ -19,6 +19,26 @@
                 header("Location:Learnatorium.php");
             }
         ?>
+        <div class="linksBar">
+            <h1 class="banner">Learnatorium</h1>
+            <ul>
+                <li>
+                    <a href="../tma2.htm">Home</a>
+                </li>
+                <li>
+                    <a href="../part1/WelcomeToSiteMark.php">SiteMark</a>
+                </li>
+                <li>
+                    <a href="../part2/WelcomeToLearnatorium.php">Learnatorium</a>
+                </li>
+                <li>
+                    <a href="../part2/AvailableCourses.php">Available Courses</a>
+                </li>
+                <li>
+                    <a href="../part2/YourCourses.php">Your Courses</a>
+                </li>
+            </ul>
+        </div>
         <!-- If there is no currently logged in user, display the login page, allowing for a user 
              to enter their credentials to login-->
         <form method="post" action="login.php">

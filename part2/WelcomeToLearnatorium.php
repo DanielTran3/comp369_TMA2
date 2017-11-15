@@ -9,6 +9,20 @@
         <title>Welcome To Learnatorium</title>
     </head>
     <body>
+        <div class="linksBar">
+            <h1 class="banner">Learnatorium</h1>
+            <ul>
+                <li>
+                    <a href="../tma2.htm">Home</a>
+                </li>
+                <li>
+                    <a href="../part1/WelcomeToSiteMark.php">SiteMark</a>
+                </li>
+                <li>
+                    <a href="../part2/WelcomeToLearnatorium.php">Learnatorium</a>
+                </li>
+            </ul>
+        </div>
         <div class="welcomeText">
             <span class="title1">Welcome To Learnatorium</span>
             <span class="title2">Learnatorium is a place for you to quickly learn the basics for a variety of courses!</span>

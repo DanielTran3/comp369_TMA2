@@ -247,7 +247,7 @@
                 </ul>
             </div>
             <div class="titleDiv" hidden>
-                <span class="title1">__________ Documentation</span>
+                <span class="title1">Learnatorium Documentation</span>
                 <span class="title2">Original Description and Requirements (Part 2 - 70 marks)</span>
                 <p class="title4">
                     In this part of the assignment, you are required to develop a small-scale online learning management 
@@ -372,28 +372,50 @@
                 
                 <span class="title2">Interpretation of Description and Requirements</span>
                 <p class="title4">
-                    My interpretation of the requirements is that a web application is created to teach 
-                    users about the basics of the technologies discussed in Units 1 through 3, using the
-                    knowledge gained from these units (HTML, CSS, JavaScript, XML, and Ajax). I understand the
-                    "banner to show off your work" as a bar on the webpage that will show the rest of the
-                    applications in the network of web applications, including this web application. As well,
-                    the banner should contain buttons or some sort of access to different sections of the tutorial 
-                    information, as well as the quizzes. The welcome page to greet the users just displays what the
-                    web application is about, and leads the user to the tutorials web application. Next, it looks
-                    like what is expected from the application is that there are different sections that cover 
-                    different units in the text, where there are at least 3 tutorials, covering some of the material
-                    from Units 1, 2, and 3. As well, there should be a minimum of five page-structured elements and
-                    six input types. These should be taught in the tutorials. As well, each tutorial should have a
-                    quiz at the end of the quiz. The quiz should also be accessible on through navigation buttons,
-                    so the same quiz should be accessible through either the end of the quiz or through the 
-                    navigation menu. As well, the quiz system should be able to output the number of correct answers,
-                    as well as the percentage correct. It doesn't talk about things such as showing the correct answer
-                    and incorrect answer if the user selected the wrong answer, or randomizing the questions or
-                    multiple choice questions, although these are definitely good enhancements for the future. Finally,
-                    the quiz system should be created so questions could be easily added, removed, or edited, which
-                    tells me that they want the place containing the information of the questions/answers to be
-                    separate from the code. As well, all of the styling should be external for ease of CSS reuse and
-                    having a consistent UI.
+                    My interpretation of the of the assignment is that it a small-scale learning management system is to be 
+                    developed to deliver course materials to users who want to learn the course material. I understand this 
+                    as a system where a teacher can create courses easily and the users would be able to view available 
+                    courses (that are developed in the system) easily.
+                </p>
+
+                <p class="title4">
+                    The courses should also be developed and stored in a web server. This means that development of courses can 
+                    happen on the users side, but the information should be stored in a database that makes retrieving and 
+                    displaying of courses easy. The information should be easily translateable and rendered in HTML in the 
+                    browser.
+                </p>
+
+                <p class="title4">
+                    Next, my understanding of an SME is someone who has expertise knowledge in a particular subject, but does not 
+                    have the programming capabilities to create a full-blown webpage to display their course. Thus, it is up to 
+                    the experts in computing and web technologies. It is also assumed that the SME is able to follow the format 
+                    of writing XML code (meaning that given a template for XML tags and their meanings, the SME should be able 
+                    to format their information into the EML tags and formatting), making it easier for them to work with the 
+                    EML language that is to be created in this part of the assignment. The format for the EML can differ, where 
+                    there are many possibilities, such as creating one large EML for the entire course, or splitting the EML into 
+                    smaller EMLs for different components of the course, such as for a lesson, quiz, or more. For this assignment, 
+                    the focus seems directed more towards the lessons and quiz aspect of the EML.
+                </p>
+
+                <p class="title4">
+                    In this assignment, it is assumed that the SME (which is me) has already written the course in the EML language 
+                    that I created. The documents should be stored on a server and when a user selects a course to wwork on, the data 
+                    loaded from the server should be directly convertable to a formatted HTML web page. This is done to keep the 
+                    information about courses, lessons, quizzes, etc. more neat than having them stored in text files, since the 
+                    management of a large number of text files can be difficult in comparison to a database.
+                </p>
+
+                <p class="title4">
+                    Next, there is some discussion about the structure of the database. There are many ways to format the tables 
+                    in the database. One of the suggested ways is having all of the information in one table. This is generally 
+                    not a good option because there can be lots of duplicate data in each row, especially if a row's column has all 
+                    of the same values except for a slight difference in one column's value, for example. Thus, it is better to 
+                    create and utilize multiple tables, especially for a small-scale learning management system. This also leads to 
+                    better maintainability and scalability for future improvements to the design of the database and management system.
+                </p>
+
+                <p class="title4">
+
                 </p>
 
                 <hr />

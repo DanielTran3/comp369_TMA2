@@ -43,10 +43,10 @@
                     <a href="../tma2.htm">Home</a>
                 </li>
                 <li>
-                    <a href="../part1/WelcomeToSiteMark.html">SiteMark</a>
+                    <a href="../part1/WelcomeToSiteMark.php">SiteMark</a>
                 </li>
                 <li>
-                    <a href="WelcomeToLearnatorium.php">Available Courses</a>
+                    <a href="../part2/WelcomeToLearnatorium.php">Learnatorium</a>
                 </li>
             </ul>
         </div>

@@ -48,19 +48,23 @@
         ?>
         <div class="linksBar">
             <h1 class="banner">Learnatorium</h1>
+            <!-- Print the user's name along with a link to log out -->
             <span class="title4 floatRight" style="color:white"> Welcome <?php print($_COOKIE["user"]) ?>, <a href="Logout.php">Logout?</a></span>
             <ul>
                 <li>
-                    <a href="../tma1.htm">Home</a>
+                    <a href="../tma2.htm">Home</a>
                 </li>
                 <li>
-                    <a href="../part1/WelcomeToResume.html">Resume</a>
+                    <a href="../part1/WelcomeToSiteMark.php">SiteMark</a>
                 </li>
                 <li>
-                    <a href="AvailableCourses.php">Available Courses</a>
+                    <a href="../part2/WelcomeToLearnatorium.php">Learnatorium</a>
                 </li>
                 <li>
-                    <a href="YourCourses.php">Your Courses</a>
+                    <a href="../part2/AvailableCourses.php">Available Courses</a>
+                </li>
+                <li>
+                    <a href="../part2/YourCourses.php">Your Courses</a>
                 </li>
                 <?php 
                     // Retrieve the user's satatus and check if they are an admin or not. If they are,
