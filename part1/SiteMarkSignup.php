@@ -14,8 +14,6 @@
     </head>
     <body>
         <?php
-            echo $_COOKIE["user"];
-            echo $_COOKIE["pass"];
             // Check for valid user login, if there is one, redirect the user to the main page
             if (isset($_COOKIE["user"]) && isset($_COOKIE["pass"])) {
                 header("Location:SiteMark.php");

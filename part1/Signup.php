@@ -31,7 +31,7 @@
                     print("<form method='post' action='SiteMarkSignup.php'>");
                     print("<button class='whiteButton' type='submit' style='margin-top:0px;'>Continue</button>");
                     print("</form>");
-                    die( mysql_error() . "</body></html>" );
+                    die("</body></html>");
                 }
 
                 // Query was successful. Close the database and display the rest of the page
