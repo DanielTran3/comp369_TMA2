@@ -90,9 +90,10 @@
                     A person entering the website can login or create a new user. Once logged in, each of the user's bookmarks 
                     should be displayed. When thinking about a bookmarking system, there is usually a way to name the bookmark so that 
                     it is not just the URL that the user sees. This can be done for easier tracking of URLs and so that a long URL does not 
-                    take the entire list element. The user can click on one of the bookmarks to open a new tab to the specified URL. On this page, 
-                    the user can add, edit, or delete any bookmarks. As well, any added URLS must be valid, in which they must be a proper 
-                    URL and they must be valid before adding or editing a URL.
+                    span the entire list element. The user can click on one of the bookmarks to open a new tab to the specified URL. On this page, 
+                    the user can add, edit, or delete any bookmarks. This also means that there should also be a way to select a 
+                    bookmark for editing and deleting without being able to open the link. As well, any added URLS must be valid, 
+                    in which they must be a proper URL and they must be valid before adding or editing a URL.
                 </p>
 
                 <hr />
@@ -105,83 +106,50 @@
                     signup buttons. When pressing the signup button, the user should be able to create an account as long as the username is not already 
                     existing. For logging in, the correct username and password must be entered. Once logged in, there should be a list of all of the 
                     user's bookmarks. These bookmark links should be able to open the url in a tab when the bookmark url is pressed. Otherwise, clicking 
-                    on the URL list element will select the bookmark. This will allow the bookmark to be edited or deleted. There are also two  
+                    on the URL list element will select the bookmark. This will allow the bookmark to be edited or deleted without being able to open 
+                    the actual URL. There are also two textboxes alongside the three buttons (Add, Edit, and Delete), which are the name and URL textboxes. 
+                    The name textbox allows the user to specify an alternative name for their bookmark, while the URL textbox allows the user to input 
+                    the actual website URL. Since these links must be verified before being added in, this will require javascript on the front-end to 
+                    verify before sending the data back to be stored in the MySQL database.   
                 </p>
 
                 <hr />
 
                 <span class="title2">Documentation of Implementation</span>                
                 <p class="title4">
+                    The MySQL data server is set up to contain two tables. The first table is a credentials table, which stores the information for all 
+                    users in the system. There are two columns for this table, which are the username and password for the account. The second table is 
+                    the bookmarks table, which stores information about the bookmark that the user has created. There are four columns, which are username, 
+                    url, name, and hits. The username column contains the username of the user who created the bookmark. The url of the website that is 
+                    accessible through the bookmark, the name is an alternative name given to the bookmark, and hits is the number of times that particular 
+                    bookmark (created by that specific user) is pressed. Every page in the assignment has the same navigation header bar containing links to 
+                    navigate throughout the application, with the logo displayed at the top left in a CSS modified h1 tag, and the logout option to the bottom 
+                    right of the naviation bar. On the main page, the login and signup buttons redirect the user to the SiteMarkLogin.php and SiteMarkSignup.php 
+                    files respectively. The top 10 hits list is created and displayed using an HTML ordered list element that's populated using the information 
+                    read in from the MySQL database. The sql command that the PHP script runs is a select statement on the bookmarks table that orders the 
+                    table in descending order by hits. The first 10 results are then retrieved. The hits are updated whenever a bookmark link is pressed, 
+                    where a JavaScript function will create an async AJAX call to the UpdateHit.php file. This call will run a php script to call a SQL query 
+                    which takes the url and username of the bookmark that was pressed and increment the hits column. When signing up for an account, in the 
+                    SiteMarkSignup.php page, the user enters a username and password. When the signup button is pressed, the inputs are sent to the Signup.php 
+                    file, which runs a SQL command to first check if the username exists, and if it doesn't then insert the inputted values into the credentials 
+                    table. If the username does exist, then a message stating that the username already exists is displayed and the new account is not added to 
+                    the credentials table. A similar process is done with logging in, where the user enters their username and password, presses the login 
+                    button, and gets transfered to the Login.php file. This file will take the entered credentials, query the credentials table to see if the 
+                    username exists and if it doesn't, then display that the username doesn't exist and do not login the user. Otherwise, a select query is 
+                    run on the credentials table with the username and password used in the WHERE clause to filter search for a user with those credentials. 
+                    If an account is found, it is returned and the username is saved into the session, otherwise, the user gets prompted that their username 
+                    or password is incorrect. In the main page of the application, which is the Learnatorium.php page, the heart of the code exists. There is 
+                    an unordered list that contains the bookmarks that the user created. Clicking on a bookmark will run JavaScript code to open the URL in a 
+                    separate tab (and also run the AJAX function to update the hits for that bookmark, which was specified above). There are two HTML input 
+                    elements that are used to receive the name of the bookmark and the URL. There are also three buttons to control adding, editing, and deleting 
+                    of bookmarks. When the Add button is pressed, it runs some JavaScript code to check if the URL is valid and existing before storing it 
+                    into the database. There are multiple steps to this confirmation, the first being is a regex expression that is used to check if the URL is 
+                    in a correct format first of all (has http, www, and some sort of .com ending). Afterwards, an script calls an async AJAX function to the 
+                    website calling a POST request. If the post request comes back successfully, then an AJAX request calls the AddBookmark.php file to store 
+                    the bookmark into the bookmarks database 
                     
-
-                    There are two different EMLs for this assignment; one EML is used for describing the lessons, 
-                    while the other lesson is an EML to describe the quizzes associated with each lesson. The EML
-                    for the lessons is described using the following tags:
+                    opens the AddBookmark.php file and retrieves the name and url inputs from the user.
                 </p>
-                
-                <ul class="title4">
-                    <li>
-                        <b>&lt;Overview&gt;&lt;/Overview&gt;</b> Describes the overview of the lesson, similar to 
-                        an abstract for a technical document.
-                    </li>
-                    <li>
-                        <b>&lt;Outline&gt;&lt;/Outline&gt;</b> A container inside the outline of topics associated with. 
-                        Each Outline tag contains BulletPoint tags inside to specify each point for the outline.
-                    </li>
-                    <li>
-                        <b>&lt;BulletPoint&gt;&lt;/BulletPoint&gt;</b> A bullet point inside of the outline.
-                    </li>
-                    <li>
-                        <b>&lt;Introduction&gt;&lt;/Introduction&gt;</b> Is a brief paragraph providing some insight 
-                        on what the lesson is about.
-                    </li>
-                    <li>
-                        <b>&lt;SectionHeader&gt;&lt;/SectionHeader&gt;</b> The name of the section.
-                    </li>
-                    <li>
-                        <b>&lt;Section&gt;&lt;/Section&gt;</b> A portion of the lesson describing a specific topic.
-                    </li>
-                    <li>
-                        <b>&lt;Paragraph&gt;</b> Used to split the text of a section into different paragraphs for 
-                        easier readability.
-                    </li>
-                    <li>
-                        <b>&lt;Conclusion&gt;&lt;/Conclusion&gt;</b> The conclusion, or closing section of the lesson.
-                    </li>
-                    <li>
-                        <b>&lt;Keyword&gt;&lt;/Keyword&gt;</b> A keyword tag is used to enclose a word or phrase, adding 
-                        emphasis to the word or phrase by bolding the text.
-                    </li>
-                    <li>
-                        <b>&lt;Image&gt;&lt;/Image&gt;</b> Used to define an image.
-                    </li>
-                    <li>
-                        <b>&lt;Video&gt;&lt;/Video&gt;</b> Used to define a video.
-                    </li>
-                    <li>
-                        <b>&lt;Audio&gt;&lt;/Audio&gt;</b> Used to define an audio file.
-                    </li>
-                </ul>
-
-                <p class="title4">
-                    Following the EML for lessons, there is also an EML for quizzes, which is used to define a question, 
-                    possible multiple choice answers, and the correct answer. The tags are described as follows:
-                </p>
-
-                <ul class="title4">
-                    <li>
-                        <b>&lt;Question&gt;&lt;/Question&gt;</b> Defines the question for the quiz. Include the question
-                        number within the tags
-                    </li>
-                    <li>
-                        <b>&lt;Answer&gt;&lt;/Answer&gt;</b>Defines an incorrect answer to the question. Each answer 
-                        is following a question is associated with the question.
-                    </li>
-                    <li>
-                        <b>&lt;CorrectAnswer&gt;&lt;/CorrectAnswer&gt;</b> Similar to an answer, but specifies the correct 
-                        answer to the question
-                    </li>
-                </ul>
 
                 <hr />
 

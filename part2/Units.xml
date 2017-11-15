@@ -507,17 +507,17 @@
         video or audio file is. For a video, it can have an attribute type="video/mp4" and audio can have a type attribute type="audio/mpeg". 
         The video tag can also take in a width and height attribute that specify the width and height of the video file. Both the video and audio 
         files can have a control attribute set to add control elements to the video or audio element that allows for stopping and playing of the 
-        elements. 
+        elements.
     </Paragraph>
     <Paragraph>
         Here's an example of a video file
     </Paragraph>
-    <Video filename="video.mp4">
+    <Video filename="video.mp4"></Video>
 
     <Paragraph>
         Here's an example of an audio file
     </Paragraph>
-    <Audio filename="sound.mp3">
+    <Audio filename="sound.mp3"></Audio>
 
     <Question name="Question1">Question 1. What is used to display a video?</Question>
         <Answer name="Question1" correct="*">A. video tag with a source tag inside</Answer>
