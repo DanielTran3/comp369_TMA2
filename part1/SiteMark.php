@@ -19,7 +19,6 @@
     </head>
     <body>
         <div id="mainDiv">
-        <span class="title4"> Welcome <?php print($_COOKIE["user"]) ?>, <a href="Logout.php">Logout?</a></span>
         <?php
             // Check for valid user login, otherwise redirect to login screen
             if (!isset($_COOKIE["user"]) || !isset($_COOKIE["pass"])) {
@@ -50,20 +49,25 @@
                 die( mysql_error() . "</body></html>" );
             }
 
-                // // If no rows were selected, display an invalid username/password error message and a button to 
-                // // redirect the user back to the login page
-                // if (mysql_num_rows($result) == 0) {
-                //     print("<span class='title4' style='margin-top: 100px'>Invalid Username and/or Password</span>");
-                //     print("<form method='post' action='SiteMarkLogin.php'>");
-                //     print("<button class='whiteButton' type='submit' style='margin-top:0px;'>Try Again</button>");
-                //     print("</form>");
-                //     die("</body></html>");                    
-                // }
-
             // Query was valid, close the database and display the main page
             mysql_close( $database );
         ?>
-        <h1 class="title1">SiteMark</h1>
+        <div class="linksBar">
+            <h1 class="banner">SiteMark</h1>
+            <!-- Print the user's name along with a link to log out -->
+            <span class="title4 floatRight" style="color:white"> Welcome <?php print($_COOKIE["user"]) ?>, <a href="Logout.php">Logout?</a></span>
+            <ul>
+                <li>
+                    <a href="../tma2.htm">Home</a>
+                </li>
+                <li>
+                    <a href="../part1/WelcomeToSiteMark.html">SiteMark</a>
+                </li>
+                <li>
+                    <a href="WelcomeToLearnatorium.php">Available Courses</a>
+                </li>
+            </ul>
+        </div>
         <div id="bookmarkDiv">
             <ol>
                 <?php

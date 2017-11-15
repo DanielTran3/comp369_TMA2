@@ -19,6 +19,21 @@
                 header("Location:SiteMark.php");
             }
         ?>
+        <div class="linksBar">
+            <h1 class="banner">SiteMark</h1>
+            <!-- Print the user's name along with a link to log out -->
+            <ul>
+                <li>
+                    <a href="../tma2.htm">Home</a>
+                </li>
+                <li>
+                    <a href="../part1/WelcomeToSiteMark.html">SiteMark</a>
+                </li>
+                <li>
+                    <a href="WelcomeToLearnatorium.php">Available Courses</a>
+                </li>
+            </ul>
+        </div>
         <!-- If there is no currently logged in user, display the login page, allowing for a user 
              to enter their credentials to login-->
         <form method="post" action="login.php">
