@@ -144,11 +144,21 @@
                     elements that are used to receive the name of the bookmark and the URL. There are also three buttons to control adding, editing, and deleting 
                     of bookmarks. When the Add button is pressed, it runs some JavaScript code to check if the URL is valid and existing before storing it 
                     into the database. There are multiple steps to this confirmation, the first being is a regex expression that is used to check if the URL is 
-                    in a correct format first of all (has http, www, and some sort of .com ending). Afterwards, an script calls an async AJAX function to the 
+                    in a correct format first of all (has http, www, and some sort of .com ending). Afterwards, a script calls an async AJAX function to the 
                     website calling a POST request. If the post request comes back successfully, then an AJAX request calls the AddBookmark.php file to store 
-                    the bookmark into the bookmarks database 
-                    
-                    opens the AddBookmark.php file and retrieves the name and url inputs from the user.
+                    the bookmark into the bookmarks table using an insert into command and inserting the inputted values. In order to use the Edit and Delete 
+                    functions, a bookmark must be selected first. Selecting a bookmark can be done by clicking on the bookmark list element, but not the link 
+                    itself. A JavaScript function will give the selected element a css class to show that the element is highlighted. When a bookmark is selected, 
+                    it's name and URL and loaded into the respective name and url textboxes and these values are also stored in duplicate hidden input boxes 
+                    as a way of storing the old value in the case of an edit. If a bookmark is going to be edited, the values in the textbox can 
+                    be modified and the edit bookmark button can be pressed. Pressing this button will check the URL to ensure that it is still valid (the same 
+                    way that creating a bookmark validates the URL) and it opens the EditBookmark.php file. This file will perform an update command in the 
+                    bookmarks table, using the old values from the hidden input boxes to get the row that needs to be updated and updates these values with the 
+                    new values from the origin input boxes. Finally, there is the delete button. The delete button takes the currently selected list element and 
+                    opens the DeleteBookmark.php file, which calls the DELETE command using two hidden input field that contain the name and URL to delete. This 
+                    is done so only the selected item will be deleted and not a modified name or URL from the original unhidden input box. When the user logs out 
+                    of SiteMark by pressing the Logout link, the session that contains the username of the currently logged in user is reset by making the session 
+                    time out.
                 </p>
 
                 <hr />
