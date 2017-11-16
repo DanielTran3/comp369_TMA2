@@ -15,16 +15,13 @@
         <div class="linksBar">
             <ul>
                 <li>
-                    <a href="part1/resume.xml">Resume</a>
+                    <a href="tma2.htm">Home</a>
                 </li>
                 <li>
-                    <a href="part2/WelcomeToLearnTheWeb.html">Learn The Web</a>
+                    <a href="part1/WelcomeToSiteMark.php">SiteMark</a>
                 </li>
                 <li>
-                    <a href="part3/photoSlideshow.html">Photo Slideshow</a>
-                </li>
-                <li>
-                    <a href="part4/UtilityTools.html">Utility Tools</a>
+                    <a href="part2/WelcomeToLearnatorium.php">Learn The Web</a>
                 </li>
             </ul>
         </div>
@@ -458,76 +455,89 @@
                     and add those courses to their list of courses. This allows different users to have their own list of courses they can take and work 
                     on. One of the core components of this system is the EMLs (educational markup langugages), which makes course creation more simple. 
                     It allows SMEs (Subject Matter Experts) to create courses without having to know programming knowledge to create a web page for 
-                    their courses. The only thing the SME needs to know is how to write XML tags, which is the format that the EML is in.
-                    
-                    
-                    
-                    The educational markup language should 
-                    be consise to the development of a course. This means that the EML tags should have terminology that occurs often in course development. 
-                    As well, each of the terms should be explained thoroughly in their use and how they should be used. This is to educate the SME on 
-                    how to create a course using the EML. Next, the database design is important. The database should be able to store lots of information 
-                    including courses, units, lessons, quizzes, learner information, images, videos, and audio files. For things such as images, videos, 
-                    and audio files, it was not specified how these files should be stored in the database, meaning that they could be stored directly 
-                    into the database as a blob object, or the URL to these learning objects could be stored, as long as a copy of these objects are 
-                    stored at a known location on the database. After these technologies are developed for the application, the PHP parser should be 
-                    created. This parser will take the EML data stored in the database and parse it into HTML elements that will be displayed to the 
-                    users. The PHP parser can take the XML structures and replace the text inside the tags with HTML elements as a simple parser. For 
-                    example, a &lt;Paragraph&gt; tag can be replaced by &lt;p&gt; in the parser to conver the Paragraph tag into an acutal HTML p tag.
-                    In terms of data inside the EML, there will be information about learning content and quizzes. The learning content can come from 
-                    the first assignment's part 2, where a education system was developed, as long as the data is rewritten in the EML structure. Along 
-                    with each lesson, there should be a quiz that follows. Here, I am assuming that it is alright for the quiz to be similar to the 
-                    quizzes that were implemented in assignment 1 part 2. Finally, the implementatin portion should have the system deployed onto a 
-                    web server for someone to evalutate the system. The system should look and feel like a learning management system, with funcitonalities 
-                    of an online learning management system.
+                    their courses. The only thing the SME needs to know is how to write XML tags, which is the format that the EML is in. The system will 
+                    contain two different EMLs, one EML is used for describing the lessons, while the other lesson is an EML to describe the quizzes 
+                    associated with each lesson. The EML for the lessons is described using the following tags:
                 </p>
 
-                <p class="title4">
-                    
-
-                    There are two different EMLs for this assignment; one EML is used for describing the lessons, 
-                    while the other lesson is an EML to describe the quizzes associated with each lesson. The EML
-                    for the lessons is described using the following tags:
-                </p>
-                
                 <ul class="title4">
                     <li>
                         <b>&lt;Overview&gt;&lt;/Overview&gt;</b> Describes the overview of the lesson, similar to 
-                        an abstract for a technical document.
+                        an abstract for a technical document. Text for the overview is placed within the Overview Tags
                     </li>
                     <li>
-                        <b>&lt;Outline&gt;&lt;/Outline&gt;</b> A container inside the outline of topics associated with. 
-                        Each Outline tag contains BulletPoint tags inside to specify each point for the outline.
+                        <b>&lt;Outline&gt;&lt;/Outline&gt;</b> A container for the outline topics, where the outline tag is placed 
+                        inside the Overview Tags, after the text inside the Overview Tags. Each Outline tag contains BulletPoint 
+                        tags inside to specify each point for the outline.
                     </li>
                     <li>
-                        <b>&lt;BulletPoint&gt;&lt;/BulletPoint&gt;</b> A bullet point inside of the outline.
+                        <b>&lt;BulletPoint&gt;&lt;/BulletPoint&gt;</b> A bullet point inside of the outline. The BulletPoint tag resides 
+                        inside the Outline tags, and the text for the bullet point is inputted between the BulletPoint tags.
+                    </li>
+                    <li>
+                        Here's an example of an Overview, Outline, and multiple BulletPoint elements The Overview Tag creates 
+                        the title and the information below the title. The Outline and BulletPoint tags create the list.
+                        <img src="../shared/part2_EML_overview.png" alt="Picture of the code containing an Overview, Outline, 
+                        and three BulletPoint EML tags. There is also a picture of the rendered HTML."></img>
                     </li>
                     <li>
                         <b>&lt;Introduction&gt;&lt;/Introduction&gt;</b> Is a brief paragraph providing some insight 
-                        on what the lesson is about.
+                        on what the lesson is about. The text for the introduction is entered between the Introduction tags
                     </li>
                     <li>
-                        <b>&lt;Section&gt;&lt;/Section&gt;</b> Contains the section name inside the tag. The section 
-                        contains a portion of the lesson describing a specific topic.
+                        Here's an example of a lesson element and the EML code to create the sesson element.
+                        <img src="../shared/part2_EML_introduction.png" alt="Picture of the code containing an introduction EML tag. 
+                        There is also a picture of the rendered HTML."></img>
                     </li>
                     <li>
-                        <b>&lt;Paragraph&gt;</b> Used to split the text of a section into different paragraphs for 
-                        easier readability.
+                        <b>&lt;SectionHeader&gt;&lt;/SectionHeader&gt;</b> Contains the name of the section inside the tag. The 
+                        text for the section header is placed between the SectionHeader tags.
+                    </li>
+                    <li>
+                        <b>&lt;Section&gt;&lt;/Section&gt;</b> Contains the information for a section which is described by the 
+                        section header. The section can contain information such as paragraphs, images, videos, or audio information. 
+                        The Section tag is placed after the SectionHeader tags, where other EML tags can be placed between the Section tags.
+                    </li>
+                    <li>
+                        <b>&lt;Paragraph&gt;</b> Used to split the text of a section into different paragraphs for easier readability. The 
+                        text for the paragraph is placed between the Paragraph tags.
+                    </li>
+                    <li>
+                        Here's an example of a SectionHeader and Section element with a Paragraph element inside, along with the EML code to 
+                        create the section and paragraph elements.
+                        <img src="../shared/part2_EML_section.png" alt="Picture of the code containing a SectionHeader, Section, and 
+                        Paragraph EML tag. There is also a picture of the rendered HTML."></img>
                     </li>
                     <li>
                         <b>&lt;Conclusion&gt;&lt;/Conclusion&gt;</b> The conclusion, or closing section of the lesson.
                     </li>
                     <li>
-                        <b>&lt;Keyword&gt;&lt;/Keyword&gt;</b> A keyword tag is used to enclose a word or phrase, adding 
-                        emphasis to the word or phrase by bolding the text.
+                        <b>&lt;Image filename=&quot;&quot; description=&quot;&quot;&gt;&lt;/Image&gt;</b> Used to create an image element. The filename 
+                        attribute defines the name of the image file, and the description attribute is the alternative value if the image doesn't 
+                        show. Nothing is placed between the Image tags.
                     </li>
                     <li>
-                        <b>&lt;Image&gt;&lt;/Image&gt;</b> Used to define an image.
+                        Here's an example of an image displayed through the EML code.
+                        <img src="../shared/part2_EML_image.png" alt="Picture of the code containing an image EML tag with bobcat.jpg as the 
+                        filename. There is also a text definition for the bobcat image. There is also a picture of the image rendered HTML."></img>
                     </li>
                     <li>
-                        <b>&lt;Video&gt;&lt;/Video&gt;</b> Used to define a video.
+                        <b>&lt;Video filename=&quot;&quot;&gt;&lt;/Video&gt;</b> Used to create a video element. The filename attribute defines the name of 
+                        the image file. Nothing is placed between the Video tags.
                     </li>
                     <li>
-                        <b>&lt;Audio&gt;&lt;/Audio&gt;</b> Used to define an audio file.
+                        Here's an example of an video displayed through the EML code.
+                        <img src="../shared/part2_EML_video.png" alt="Picture of the code containing a video EML tag with video.jpg as the filename.
+                         There is also a picture of the a part of the video rendered HTML."></img>
+                    </li>
+                    <li>
+                        <b>&lt;Audio filename=&quot;&quot;&gt;&lt;/Audio&gt;</b> Used to create an audio element. The filename attribute defines the name 
+                        of the audio file. Nothing is placed between the Audio tags.
+                    </li>
+                    <li>
+                        Here's an example of an image displayed through the EML code.
+                        <img src="../shared/part2_EML_sound.png" alt="Picture of the code containing an image EML tag with bobcat.jpg as the 
+                        filename. There is also a text definition for the bobcat image. There is also a picture of the image rendered HTML."></img>
                     </li>
                 </ul>
 
@@ -538,18 +548,86 @@
 
                 <ul class="title4">
                     <li>
-                        <b>&lt;Question&gt;&lt;/Question&gt;</b> Defines the question for the quiz. Include the question
-                        number within the tags
+                        <b>&lt;Question name=&quot;&quot;&gt;&lt;/Question&gt;</b> Defines the title of the question. The text for the question is inside 
+                        the Question Tags and the name attribute specifies which question the question is on (ie. name=&quot;Question1&quot; for question 1).
                     </li>
                     <li>
-                        <b>&lt;Answer&gt;&lt;/Answer&gt;</b>Defines an incorrect answer to the question. Each answer 
-                        is following a question is associated with the question.
+                        <b>&lt;Answer name=&quot;&quot; correct=&quot;&quot;&gt;&lt;/Answer&gt;</b>Defines a possible answer for the question. The text for the 
+                        question goes between the Answer Tags. The name attribute specifies which question the possible answer belongs to (should match the 
+                        name attribute of the Question Tag) and the correct attribute specifies if the answer is correct or not. For a correct answer, the 
+                        value of the correct attribute should be * (ie. correct=&quot;*&quot;). For an incorrect answer, the value of the correct attribute 
+                        should be left blank (ie. correct=&quot;&quot;).
                     </li>
                     <li>
-                        <b>&lt;CorrectAnswer&gt;&lt;/CorrectAnswer&gt;</b> Similar to an answer, but specifies the correct 
-                        answer to the question
+                        Here's an example of a multiple choice question displayed through the EML code. In this example, the correct answer is the first answer, 
+                        denoted by the astericks in the correct attribute's value.
+                        <img src="../shared/part2_EML_question.png" alt="Picture of a multiple choice question with four possible answers. There is also an 
+                        image of the code that creates the questions and answers"></img>
                     </li>
                 </ul>
+
+                <p class="title4">
+                    The educational markup language should be consise to the development of a course. This means that the EML tags should have terminology 
+                    that occurs often in course development, which is modeled in the EML tags explained above. The explanations for the EML tags help to educate 
+                    the SME on how to create a course using the EML. 
+                </p>
+                    
+                <p class="title4">
+                    Next, the database design is important. The database should be able to store lots of information including courses, units, lessons, 
+                    quizzes, learner information, images, videos, and audio files. For things such as images, videos, and audio files, it was not specified 
+                    how these files should be stored in the database, meaning that they could be stored directly into the database as a blob object, 
+                    or the URL to these learning objects could be stored, as long as a copy of these objects are stored at a known location on the database. 
+                    The format for the database is that there will be multiple tables. In total, there will be seven tables, which will be described below:
+                </p>
+
+                <ul class="title4">
+                    <li>
+                        A <b>users</b> table containing three columns: username, password, and admin, with the primary key of the table being the username. This means 
+                        that the usernames in the system must be unique. The admin column defines whether the user is an admin or a regular user, where an admin 
+                        has the priviledge of creating courses.
+                    </li>
+                    <li>
+                        A <b>usersCourses</b> table, containing two columns: username and courseID, where the primary key is a combination of the username and courseID. 
+                        There is also a foreign key on usernames to the username column in the users table. The combination of username and courseID for the primary 
+                        key makes it so that each user cannot have duplicate courses with the same courseID.
+                    </li>
+                    <li>
+                        A <b>units</b> table, containing three columns: ID, course, and name, where the ID is an auto incremented primary key, making each unit unique. 
+                        There is also a foreign key to the course column, referring to the ID column in the courses table. This links the unit to the course. The name 
+                        column is the name of the unit
+                    </li>
+                    <li>
+                        A <b>lessons</b> table, containing four columns: ID, unit, name, and content, where the ID is an auto incremented primary key, making each 
+                        lesson unique. There is also a foreign key on the unit column, referring to the ID column in the units table. This links the lesson to a unit 
+                        in a course. The name column is the name of the lesson and the content column contains the information about the lesson EML.
+                    </li>
+                    <li>
+                        A <b>quizzes</b> table, containing three columns: ID, lesson, and content, where the ID is an auto incremented primary key, making each 
+                        lesson unique. There is also a foreign key on the lesson column, referring to the ID column in the lessons table. This links the quiz to a 
+                        lesson in a unit contained in a course. The reason why the quiz is linked to a lesson is because each lesson should have a quiz after it. The 
+                        content column contains the information about hte quiz EML.
+                    </li>
+                    <li>
+                        A <b>lessonObjects</b> table, containing four columns: course, type, filename, location, where a combination of the course and filename creates 
+                        a primary key. This means that each course can only contain one lesson object with the same name. There is also a foreign key on the course 
+                        column, referring to the ID column in the courses table. The type attribute contains the type of the lesson object, which is the extension of 
+                        the file (excluding the period, ie. png for a .png image file). The filename column contains the name of the lesson object (ie. image.png). The 
+                        location column contains the location on the server where the lesson object is stored. 
+                    </li>
+                </ul>
+
+                <p class="title4">
+                    After these technologies are developed for the application, the PHP parser should be 
+                    created. This parser will take the EML data stored in the database and parse it into HTML elements that will be displayed to the 
+                    users. The PHP parser can take the XML structures and replace the text inside the tags with HTML elements as a simple parser. For 
+                    example, a &lt;Paragraph&gt; tag can be replaced by &lt;p&gt; in the parser to conver the Paragraph tag into an acutal HTML p tag.
+                    In terms of data inside the EML, there will be information about learning content and quizzes. The learning content can come from 
+                    the first assignment's part 2, where a education system was developed, as long as the data is rewritten in the EML structure. Along 
+                    with each lesson, there should be a quiz that follows. Here, I am assuming that it is alright for the quiz to be similar to the 
+                    quizzes that were implemented in assignment 1 part 2. Finally, the implementatin portion should have the system deployed onto a 
+                    web server for someone to evalutate the system. The system should look and feel like a learning management system, with funcitonalities 
+                    of an online learning management system.
+                </p>
 
                 <hr />
 
