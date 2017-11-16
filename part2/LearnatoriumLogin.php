@@ -31,12 +31,6 @@
                 <li>
                     <a href="../part2/WelcomeToLearnatorium.php">Learnatorium</a>
                 </li>
-                <li>
-                    <a href="../part2/AvailableCourses.php">Available Courses</a>
-                </li>
-                <li>
-                    <a href="../part2/YourCourses.php">Your Courses</a>
-                </li>
             </ul>
         </div>
         <!-- If there is no currently logged in user, display the login page, allowing for a user 
