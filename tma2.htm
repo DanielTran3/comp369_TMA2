@@ -421,42 +421,57 @@
                 </p>
 
                 <p class="title4">
-                    Finally, taking a system approach, in my understanding, is....
+                    Finally, taking a system approach, in my understanding, is where the system to be developed requires a detailed development 
+                    plan of what the application might look like, what the different pages' UI and what happens in the backend in terms of 
+                    algorithms.
                 </p>
 
                 <p class="title4">
-                    Takng a look at the distribution marks, the system analysis and design section describes how it is important to be able 
+                    Taking a look at the distribution marks, the system analysis and design section describes how it is important to be able 
                     to create documentation for the analysis and design of the system while including details such as the analysis of requirements, 
                     data flow, functional modules of learning management, the relationships of these modules, and system layout within browser’s window. 
-                    This information will be presented in the Analysis and Design of the Web Application section.
+                    This information will be presented in the Analysis and Design of the Web Application section. Next, the EML should be in the 
+                    assignment report where the tags and their purpose are explained. My interpretation of the assignment report is this documentation. 
+                    The explanation of the tags and their purposes will be explained in the Analysis and Design of the Web Application section of the 
+                    assignment report. Next, the database design should include one or more tables that store information about courses, units, lessons, 
+                    quizzes, learners, and learning objects such as images, videos, audio, and more. My interpretation of how this information is stored 
+                    is that everything but information about the learning objects can be stored, such as their type and URL. It doesn't seem like it 
+                    has to be the file itself that is stored in the database. A PHP parser is also required, there something as simple as matching 
+                    patterns for the EML tags and replacing the tag information with the expected HTML element information. The learning content can be 
+                    taken from the first assignment and rewritten in EML. As well, the quizzes from the first assignment can also be used and they should 
+                    be displayed after each lesson. Finally, the implementation section describes that the system should be implemented and deployed on a 
+                    web server for the tutor to evaluate. The system should be developed to look and feel like a real online learning management system, 
+                    with some of the funcitonalities of a real online learning management system.
                 </p>
 
                 <hr />
 
                 <span class="title2">Analysis and Design of the Web Application</span>
                 <p class="title4">
-                    The analysis of this web application is that the code should be able to display different sections
-                    of information for different units. The &quot;banner&quot; will be split into two sections, where
-                    one banner that spans the top of the page will provide links to the other applications in the network.
-                    There will be a vertical section of the banner that spans the left side of the screen, which will
-                    display navigation buttons related to the specific web application. In this case, the web application
-                    is Learn The Web. Thus, there will be buttons on the side banner to navigate to different
-                    units and to access different quizzes. The welcome page of the application will be the page that is
-                    accessed first whenever a user tries to navigate to the Learn The Web application. This page will
-                    contain some general information about the application including the purpose and what the users should 
-                    be getting out of the application. This web page allow the users to access the application, which will 
-                    be done using a button. Since there are tutorial sections and quiz sections, and that the quizzes should 
-                    be accessible through the quizzes, then the same quiz should be accessed through a button on the navigation 
-                    menu and from the bottom of the quiz. The button at the bottom of the quiz should link to the same spot 
-                    as the navigation button. As well, it seems that the quiz system should be easily modified, which seems 
-                    most easily done through containing all of the tutorial information and quiz information in XML. The different 
-                    units will be contained in XML tags, which will then be converted into the appropriate HTML elements through 
-                    the use of JavaScript. This is designed to make both the tutorials and quizzes easy to modify.
+                    The analysis and design of the web application will consist of the System Analysis and Design section of the distribution of marks. 
+                    Starting off will be a discussion of the analysis of requirements. 
+                    
+                    
+                    
+                    The educational markup language should 
+                    be consise to the development of a course. This means that the EML tags should have terminology that occurs often in course development. 
+                    As well, each of the terms should be explained thoroughly in their use and how they should be used. This is to educate the SME on 
+                    how to create a course using the EML. Next, the database design is important. The database should be able to store lots of information 
+                    including courses, units, lessons, quizzes, learner information, images, videos, and audio files. For things such as images, videos, 
+                    and audio files, it was not specified how these files should be stored in the database, meaning that they could be stored directly 
+                    into the database as a blob object, or the URL to these learning objects could be stored, as long as a copy of these objects are 
+                    stored at a known location on the database. After these technologies are developed for the application, the PHP parser should be 
+                    created. This parser will take the EML data stored in the database and parse it into HTML elements that will be displayed to the 
+                    users. The PHP parser can take the XML structures and replace the text inside the tags with HTML elements as a simple parser. For 
+                    example, a &lt;Paragraph&gt; tag can be replaced by &lt;p&gt; in the parser to conver the Paragraph tag into an acutal HTML p tag.
+                    In terms of data inside the EML, there will be information about learning content and quizzes. The learning content can come from 
+                    the first assignment's part 2, where a education system was developed, as long as the data is rewritten in the EML structure. Along 
+                    with each lesson, there should be a quiz that follows. Here, I am assuming that it is alright for the quiz to be similar to the 
+                    quizzes that were implemented in assignment 1 part 2. Finally, the implementatin portion should have the system deployed onto a 
+                    web server for someone to evalutate the system. The system should look and feel like a learning management system, with funcitonalities 
+                    of an online learning management system.
                 </p>
 
-                <hr />
-
-                <span class="title2">Documentation of Implementation</span>                
                 <p class="title4">
                     
 
@@ -526,6 +541,11 @@
                         answer to the question
                     </li>
                 </ul>
+
+                <hr />
+
+                <span class="title2">Documentation of Implementation</span>                
+                
 
                 <hr />
 
