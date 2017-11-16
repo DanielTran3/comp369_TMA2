@@ -509,9 +509,6 @@
                         Paragraph EML tag. There is also a picture of the rendered HTML."></img>
                     </li>
                     <li>
-                        <b>&lt;Conclusion&gt;&lt;/Conclusion&gt;</b> The conclusion, or closing section of the lesson.
-                    </li>
-                    <li>
                         <b>&lt;Image filename=&quot;&quot; description=&quot;&quot;&gt;&lt;/Image&gt;</b> Used to create an image element. The filename 
                         attribute defines the name of the image file, and the description attribute is the alternative value if the image doesn't 
                         show. Nothing is placed between the Image tags.
@@ -615,24 +612,22 @@
                         location column contains the location on the server where the lesson object is stored. 
                     </li>
                 </ul>
-
                 <p class="title4">
-                    After these technologies are developed for the application, the PHP parser should be 
-                    created. This parser will take the EML data stored in the database and parse it into HTML elements that will be displayed to the 
-                    users. The PHP parser can take the XML structures and replace the text inside the tags with HTML elements as a simple parser. For 
-                    example, a &lt;Paragraph&gt; tag can be replaced by &lt;p&gt; in the parser to conver the Paragraph tag into an acutal HTML p tag.
-                    In terms of data inside the EML, there will be information about learning content and quizzes. The learning content can come from 
-                    the first assignment's part 2, where a education system was developed, as long as the data is rewritten in the EML structure. Along 
-                    with each lesson, there should be a quiz that follows. Here, I am assuming that it is alright for the quiz to be similar to the 
-                    quizzes that were implemented in assignment 1 part 2. Finally, the implementatin portion should have the system deployed onto a 
-                    web server for someone to evalutate the system. The system should look and feel like a learning management system, with funcitonalities 
-                    of an online learning management system.
+                    The structure of the SQL tables creates a connection between each table for the courses, and separate tables for the user. A structure designed 
+                    this way will help in reducing redundant information that would be present in using a single table schema, for instance.
+                </p>                        
+                <p class="title4">
+                    After these technologies are developed for the application, the PHP parser should be created. This parser will take the EML data stored in the 
+                    database and parse it into HTML elements that will be displayed to the users. The PHP parser can take the XML structures and replace the text 
+                    inside the tags with HTML elements as a simple parser. For example, a &lt;Paragraph&gt; tag can be replaced by &lt;p&gt; in the parser to convert 
+                    the Paragraph tag into an acutal HTML p tag. The PHP parser will work off of PHP's ability to utilize regex syntax for easy pattern matching and 
+                    replacement of strings using the preg_replace function. 
                 </p>
 
                 <hr />
 
                 <span class="title2">Documentation of Implementation</span>                
-                
+                    The implementation of the software
 
                 <hr />
 
