@@ -58,6 +58,7 @@ function AddLessonButton_Click(unitDiv) {
 
     lessonDiv.appendChild(lessonLabel);
     lessonDiv.appendChild(lessonInput);
+    lessonDiv.appendChild(document.createElement("br"));
     lessonDiv.appendChild(lessonContentLabel);
     lessonDiv.appendChild(lessonTextArea);
     lessonDiv.appendChild(quizLabel);

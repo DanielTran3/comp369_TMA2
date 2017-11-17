@@ -2,7 +2,7 @@
 <html>
    <head>
         <meta charset = "utf-8">
-        <link rel = "stylesheet" type="text/css" href="../shared/tma3_stylesheet.css" />
+        <link rel = "stylesheet" type="text/css" href="../shared/tma2_stylesheet.css" />
         <body>
             <?php
                 // The current lesson that is being uploaded to the server

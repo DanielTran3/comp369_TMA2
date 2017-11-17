@@ -82,14 +82,14 @@
         <div id="mainDiv">
             <h1 class="title1">Create A Course</h1>
             <form id="addCourse" method="post" action="UploadCourse.php" enctype="multipart/form-data">    
-                <div id="courseDiv" class="innerDiv">
+                <div id="courseDiv" class="largerInnerDiv">
                     <span>Course Name: </span>
                     <input id="courseNameInput" name="courseNameName" type="text" class="largeInputBox"></input>        
                     <button type="button" id="addUnitButton" class="whiteButton" Value="AddUnit">Add Unit</button>
+                    <button type="submit" id="createCourseButton" class="whiteButton" Value="CreateCourse">Create Course</button>   
                     <br />  
                     <label>Add Learning Objects: </label>
                     <input id="uploadFile" name="learningObjects[]" class="whiteButton" type="file" multiple></input>        
-                    <button type="submit" id="createCourseButton" class="whiteButton" Value="CreateCourse">Create Course</button>   
                 </div>
             </form>
         </div>
