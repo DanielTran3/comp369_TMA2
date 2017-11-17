@@ -87,7 +87,10 @@
                     <input id="courseNameInput" name="courseNameName" type="text" class="largeInputBox"></input>        
                     <button type="button" id="addUnitButton" class="whiteButton" Value="AddUnit">Add Unit</button>
                     <button type="submit" id="createCourseButton" class="whiteButton" Value="CreateCourse">Create Course</button>                
-                    <input id="uploadFile" name="lessonObjects[]" type="file" multiple></input>        
+                    <br />  
+                    <label>Add Lesson Objects: </label>
+                    <input id="uploadFile" name="lessonObjects[]" class="whiteButton" type="file" multiple></input>        
+                    <button type="submit" id="createCourseButton" class="whiteButton" Value="CreateCourse">Create Course</button>   
                 </div>
             </form>
         </div>

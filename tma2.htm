@@ -628,8 +628,9 @@
 
                 <hr />
 
-                <span class="title2">Documentation of Implementation</span>                
-                    The implementation of the software begins with the user management system. When a user chooses to sign up, they have to enter a username and 
+                <span class="title2">Documentation of Implementation</span>
+                <p class="title4">
+                    The implementation of the software begins with the user management module. When a user chooses to sign up, they have to enter a username and 
                     password. The username must not be in the database already. This is checked after the user enters their credentials in the LearnatoriumSignup.php 
                     file and clicks the signup button. This creates a post request to the server and calls the Signup.php file. This file will perform a query on the 
                     users table, where it tries to select a row with the entered username. If there is a row returned, then the username already exists so the user is 
@@ -641,7 +642,12 @@
                     and is defined by having it's admin column set to True. In the main navigation bar at the top of the web pages, the admin will have a button 
                     called &quot;Create A Course&quot; which is not present in a regular user's options. To check for the admin status, a query on the username stored 
                     in a session is used to query the database and return the admin column. If the column is true, then display the button. Next, the implementation of 
-                    the ability for an admin user to create courses is important. When the &quot;Create A Course&quot; button is pressed, the CreateCourseContent.php 
+                    the ability for an admin user to create courses is important.
+                </p>             
+                     
+                <p class="title4">
+                    This leads into the next module in the learning management system, which is the module that allows an administrator to create courses.
+                    When the &quot;Create A Course&quot; button is pressed, the CreateCourseContent.php 
                     file is opened. On this page, there is an input for a course name, which defines the name of the course. There is also a button to add a unit. 
                     Pressing this button creates several HTML input elements. The first is a textbox for the unit's name, followed by four children elements of the 
                     textbox. The first is an &quot;Add Lesson&quot; button, which allows the user to create and add another lesson to the unit. There is also an input 
@@ -654,10 +660,34 @@
                     pressing the &quot;Add Lesson Objects&quot; button, opening a dialog for the user to select one or more image, audio (mp3) or video (mp4) files to 
                     add to their course. The names of the added files should match the filename attribute in their respective tags (Image, Audio, and Video). Once the 
                     SME has filled in this page with their course details they can press the &quot;Create Course&quot; button to create the course. This button first 
-                    uses JavaScript to convert all Angled brackets into the _______&lt; and &gt;___________ codes and escapes each of the single quotes with SQL's 
-                    escape character, which is also a single quote. This allows the EML to be stored inside the MySQL database correctly. After the JavaScript function 
-                    runs, the inputs are posted to the UploadCourse.php file. In this file, the Course Name, any Unit Names, any Lesson Names, any Lesson EML, any Quiz 
-                    EML, and any Lesson Objects are posted to the page. 
+                    uses JavaScript to convert all Angled brackets into the escape sequence for the less than and greater than symbols codes and escapes each of the single 
+                    quotes with SQL's escape character, which is also a single quote. This allows the EML to be stored inside the MySQL database correctly. After the 
+                    JavaScript function runs, the inputs are posted to the UploadCourse.php file. In this file, the Course Name, any Unit Names, any Lesson Names, 
+                    any Lesson EML, any Quiz EML, and any Lesson Objects are posted to the page. The program checks to ensure that there is at least one unit and lesson in 
+                    the course, and that there are names for the course, units, and lessons. Next, the course name is inserted into the courses database. The ID of the 
+                    newly inserted course is retrieved to be used as reference for other tables. Next, there is a loop through each unit in the course. The unit name and 
+                    course ID is inserted into the units table. The ID of the newly inserted unit is retrieved to be used for reference in the lessons table. Next, the 
+                    program iterates through each lesson in the unit. It inserts the lesson name, lesson EML, and unit ID into the lessons table. The ID of the newly 
+                    added lesson is retrieved to be used for reference by the Quiz table. Next the lesson ID and quiz EML are inserted into the quiz table. This process
+                    repeats for all units, lessons, and quizzes in the course. After all of this information is inserted into the database, the lesson objects are dealt 
+                    with. The program ensures there are lesson objects that were posted. It creates a directory in the server's main uploads folder, where the folder name 
+                    consists of the courrse name followed by the course ID, so each folder has a unique name. Now the program iterates through each uploaded file and moves 
+                    the file to the newly created folder. From here, we can retrieve the filename, the new location of the file, and the type of the file. These details, 
+                    preceded by the course ID, is inserted into the lessonObjects table in the database. Each lesson object is specific to a course. This concludes the 
+                    implementation of creating a course from EML.
+                </p>
+                <p class="title4">
+                    The next module is a module that allows the user to select courses from a list of available courses and a list of courses that the user has added. 
+                    Alongside this, the user is able to access and view any of their added courses and begin their learning! After a course is added, the program relocates 
+                    the user to the AvailableCourses.php web page. All of the courses that a user has not taken yet is displayed in the AvailableCourses.php web page. This 
+                    file simply performs a select query for the ID and name of courses that are not added by the user in the usersCourses table and displays the result as a 
+                    list of h2 text elements. JavaScript is used to allow the user to select a course by clicking on the list. Clicking the &quot;Add Course&quot; button will 
+                    post the selected course to the AddCourse.php file. This file will perform an insert query into the usersCourses table, inserting the course ID of the 
+                    selected course, along with the currently logged in username. Once the course is added, the program relocates the user to the YourCourses.php file. This 
+                    file displays all of the user's added courses. The web page executes a select query on the ID and name of courses where the ID of the course is dependent 
+                    on the courses that are retrieved from the usersCourses table, where the username matches the currently logged in user. The retrieved rows are displayed 
+                    as a list of buttons. When a button for a course is pressed, the ID of the course is posted to the SelectedCourse.php file.
+                </p>    
 
                 <hr />
 

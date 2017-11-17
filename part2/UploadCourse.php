@@ -15,6 +15,28 @@
                         die("</body></html>");
                 }
 
+                if (empty($_POST['courseNameName'])) {
+                    print("<p>Please include a name for the course");
+                    print( "<p><a href='CreateCourseContent.php'>Click Here</a> to continue.</p>" );
+                    die("</body></html>");
+                }
+
+                foreach ($_POST['unit'] as $postedUnit) {
+                    if (empty($postedUnit)) {
+                        print("<p>Please include a name for all units");
+                        print( "<p><a href='CreateCourseContent.php'>Click Here</a> to continue.</p>" );
+                        die("</body></html>");
+                    }
+                }
+
+                foreach ($_POST['lesson'] as $postedUnit) {
+                    if (empty($postedUnit)) {
+                        print("<p>Please include a name for all lessons");
+                        print( "<p><a href='CreateCourseContent.php'>Click Here</a> to continue.</p>" );
+                        die("</body></html>");
+                    }
+                }
+                
                 // Connect to MySQL
                 if (!($database = mysql_connect("localhost", "iw3htp", "password"))) {
                     die("Could not connect to database </body></html>");
