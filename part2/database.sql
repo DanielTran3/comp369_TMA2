@@ -56,7 +56,7 @@ CREATE TABLE quizzes (
     FOREIGN KEY (lesson) REFERENCES lessons(ID)
 );
 
-CREATE TABLE lessonObjects (
+CREATE TABLE learningObjects (
     course int NOT NULL,
     type VARCHAR(32) NOT NULL,
 	filename VARCHAR(256) NOT NULL,

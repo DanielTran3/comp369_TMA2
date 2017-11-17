@@ -115,10 +115,10 @@
                     }
                 }
 
-                // If there are lesson objects available
-                if (!empty($_FILES['lessonObjects'])) {
-                    // Get the number of lesson objects
-                    $numObjects = count($_FILES['lessonObjects']['name']);
+                // If there are learning objects available
+                if (!empty($_FILES['learningObjects'])) {
+                    // Get the number of learning objects
+                    $numObjects = count($_FILES['learningObjects']['name']);
                     // Create a specific directory for the course in the uploads folder on the server. Directory is 
                     // composed of the course name and ID
                     $directory = "./uploads/" . $course . $courseID;
@@ -128,33 +128,33 @@
                     }
                     $path = $directory . "/";
                     
-                    // Iterate through each of the lessonObjects
+                    // Iterate through each of the learningObjects
                     for ($i = 0; $i < $numObjects; $i++) {
-                        // Check if the lessonObject is set and not empty
-                        if (isset($_FILES['lessonObjects']['name'][$i]) && !empty($_FILES['lessonObjects']['name'][$i])) {
-                            // Get the name of the lessonObject and the tmp name
-                            $lessonObjectName = $_FILES['lessonObjects']['name'][$i];
-                            $lessonObjectTmpName = $_FILES['lessonObjects']['tmp_name'][$i];
+                        // Check if the learningObject is set and not empty
+                        if (isset($_FILES['learningObjects']['name'][$i]) && !empty($_FILES['learningObjects']['name'][$i])) {
+                            // Get the name of the learningObject and the tmp name
+                            $learningObjectName = $_FILES['learningObjects']['name'][$i];
+                            $learningObjectTmpName = $_FILES['learningObjects']['tmp_name'][$i];
 
                             // Get the position of the last period, denoting the beginning of the file type
-                            $dotPosition = strrpos($lessonObjectName, ".");
+                            $dotPosition = strrpos($learningObjectName, ".");
                             // Get the file type (ignoring the period)
-                            $lessonObjectType = substr($lessonObjectName, $dotPosition + 1);
+                            $learningObjectType = substr($learningObjectName, $dotPosition + 1);
 
-                            $lessonFileLocation = $path.$lessonObjectName;
+                            $lessonFileLocation = $path.$learningObjectName;
                             // Movve the file to the correct location (uploads folder + course name + course ID)
-                            if (move_uploaded_file($lessonObjectTmpName, $lessonFileLocation)) {
-                                // Create a query to insert the lessonObject into the lessonObjects table with the objects type and name. 
+                            if (move_uploaded_file($learningObjectTmpName, $lessonFileLocation)) {
+                                // Create a query to insert the learningObject into the learningObjects table with the objects type and name. 
                                 // If there is a duplicate, then update the table's columns with the new data
-                                $query = "INSERT INTO lessonObjects (course, type, filename, location)" . 
-                                         "VALUES ('$courseID', '$lessonObjectType', '$lessonObjectName', '$lessonFileLocation') " . 
-                                         "ON DUPLICATE KEY UPDATE type='$lessonObjectType', filename='$lessonObjectName', location='$lessonFileLocation'";
+                                $query = "INSERT INTO learningObjects (course, type, filename, location)" . 
+                                         "VALUES ('$courseID', '$learningObjectType', '$learningObjectName', '$lessonFileLocation') " . 
+                                         "ON DUPLICATE KEY UPDATE type='$learningObjectType', filename='$learningObjectName', location='$lessonFileLocation'";
 
-                                // Execute the to insert the lesson object into the table
+                                // Execute the to insert the learning object into the table
                                 if (!($result = mysql_query( $query, $database))) 
                                 {
                                     // If the select query failed, notify the user
-                                    print( "<p>Failed to add Lesson Object</p>" );
+                                    print( "<p>Failed to add Learning Object</p>" );
                                     print("<form method='post' action='Learnatorium.php'>");
                                     print("<button class='whiteButton' type='submit' style='margin-top:0px;'>Continue</button>");
                                     print("</form>");

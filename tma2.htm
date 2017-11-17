@@ -164,7 +164,8 @@
                 <p class="title4">
                     Ensure that the AddBookmark.php, DeleteBookmark.php, EditBookmark.php, Login.php, Logout.php, 
                     Signup.php, SiteMark.php, SiteMarkLogin.php, SiteMarkSignup.php, UpdateHit.php, and 
-                    WelcomeToSiteMark.php are all within the part1 folders. The configuration for this project is 
+                    WelcomeToSiteMark.php are all within the part1 folder. Also ensure that the tma2_stylesheet.css 
+                    file resides in the shared folder. The configuration for this project is 
                     using a MySQL database along with XAMPP for connecting the database and allowing PHP scripts 
                     to run. To run the PHP programs, start by opening XAMPP and start the Apache and MySQL modules. 
                     Afterwards, click the config button for Apache and find the &quot;DocuementRoot&quot; path. 
@@ -455,11 +456,12 @@
                     management system should be stored on the server. This would include both course related information and user related information. 
                     Since there is a user login/logout system, each user should be able to select and add the courses they want from the available courses 
                     and add those courses to their list of courses. This allows different users to have their own list of courses they can take and work 
-                    on. One of the core components of this system is the EMLs (educational markup langugages), which makes course creation more simple. 
-                    It allows SMEs (Subject Matter Experts) to create courses without having to know programming knowledge to create a web page for 
-                    their courses. The only thing the SME needs to know is how to write XML tags, which is the format that the EML is in. The system will 
-                    contain two different EMLs, one EML is used for describing the lessons, while the other lesson is an EML to describe the quizzes 
-                    associated with each lesson. The EML for the lessons is described using the following tags:
+                    on. This is a module that will be discussed in more detail later on. Another important module in the system is the EMLs 
+                    (educational markup langugages), which makes course creation more simple. It allows SMEs (Subject Matter Experts) to create courses 
+                    without having to know programming knowledge to create a web page for their courses. The only thing the SME needs to know is how to 
+                    write XML tags, which is the format that the EML is in. The system will contain two different EMLs, one EML is used for describing 
+                    the lessons, while the other lesson is an EML to describe the quizzes associated with each lesson. The EML for the lessons is 
+                    described using the following tags:
                 </p>
 
                 <ul class="title4">
@@ -602,11 +604,11 @@
                         content column contains the information about hte quiz EML.
                     </li>
                     <li>
-                        A <b>lessonObjects</b> table, containing four columns: course, type, filename, location, where a combination of the course and filename creates 
-                        a primary key. This means that each course can only contain one lesson object with the same name. There is also a foreign key on the course 
-                        column, referring to the ID column in the courses table. The type attribute contains the type of the lesson object, which is the extension of 
-                        the file (excluding the period, ie. png for a .png image file). The filename column contains the name of the lesson object (ie. image.png). The 
-                        location column contains the location on the server where the lesson object is stored. 
+                        A <b>learningObjects</b> table, containing four columns: course, type, filename, location, where a combination of the course and filename creates 
+                        a primary key. This means that each course can only contain one learning object with the same name. There is also a foreign key on the course 
+                        column, referring to the ID column in the courses table. The type attribute contains the type of the learning object, which is the extension of 
+                        the file (excluding the period, ie. png for a .png image file). The filename column contains the name of the learning object (ie. image.png). The 
+                        location column contains the location on the server where the learning object is stored. 
                     </li>
                 </ul>
                 <p class="title4">
@@ -619,6 +621,25 @@
                     inside the tags with HTML elements as a simple parser. For example, a &lt;Paragraph&gt; tag can be replaced by &lt;p&gt; in the parser to convert 
                     the Paragraph tag into an acutal HTML p tag. The PHP parser will work off of PHP's ability to utilize regex syntax for easy pattern matching and 
                     replacement of strings using the preg_replace function. 
+                </p>
+
+                <p class="title4">
+                    There are many functional modules that make up this learning management system. In this section, we will briefly discuss what each of the modules 
+                    are, where a more detailed explanation of how each module works can be found in the <b>Document of Implementation</b> section. The first module under 
+                    discussion is the user management module, which was already discuessed above. To re-iterate, this module allows users to create a new account or 
+                    login to an existing account. This is important as it provides users with the ability to have their own accounts to save and view the courses that 
+                    interest them. As well, this management system allows there to be a separation between regular users and administrative accounts, where administrative 
+                    accounts allow for the creation of new courses. The next module is the course development system. This is where the administrator can create a course 
+                    using the above defined Lesson and Quiz EML. The system allows for a user to create a course with any number of units and lessons that they desire. 
+                    This is important for the customizability of the course, where different courses of different lengths can be created. As well, different learning 
+                    objects can be added into the course, which includes images, audio, and video files. The next functional module is the access to available and added 
+                    courses. This is module has deep relationship to the user management module because it depends on what courses the user has added to their list of 
+                    courses. There is a list of available courses that the user has not added yet, and a list of courses that the user added already. This separation of 
+                    courses varies on a user to user basis and the separation helps users in filtering for what courses they haven't taken yet and are able to see what 
+                    they already have. As well, included in this module is the ability for users to view the courses. The PHP parser lives in this module, where a user 
+                    can select a course they have added and see the converted EML language parsed and displayed as HTML elements. This has a deep and intertwined 
+                    relationship with the course development system, since the course development system directly creates the EML that will be displayed, parsed, and 
+                    rendered as HTML elements to the user.
                 </p>
 
                 <hr />
@@ -653,24 +674,24 @@
                     contain inputs for the lesson name, lesson EML, and quiz EML, the same as the lesson and quiz elements produced from pressing the &quot;Add Unit&quot; 
                     button). For each course that is created, there must be a course name, at least one unit (with a unit name), and at least one lesson (with a lesson 
                     name, lesson EML, and quiz EML) filled in. This page uses JavaScript to dynamically create the inputs for each course. This allows a course to have 
-                    as many or as little units and lessons as the SME desires. Aside from this, there is a button to add Lesson Objects to the course. This is done by 
-                    pressing the &quot;Add Lesson Objects&quot; button, opening a dialog for the user to select one or more image, audio (mp3) or video (mp4) files to 
+                    as many or as little units and lessons as the SME desires. Aside from this, there is a button to add learning objects to the course. This is done by 
+                    pressing the &quot;Add learning objects&quot; button, opening a dialog for the user to select one or more image, audio (mp3) or video (mp4) files to 
                     add to their course. The names of the added files should match the filename attribute in their respective tags (Image, Audio, and Video). Once the 
                     SME has filled in this page with their course details they can press the &quot;Create Course&quot; button to create the course. This button first 
                     uses JavaScript to convert all Angled brackets into the escape sequence for the less than and greater than symbols codes and escapes each of the single 
                     quotes with SQL's escape character, which is also a single quote. This allows the EML to be stored inside the MySQL database correctly. After the 
                     JavaScript function runs, the inputs are posted to the UploadCourse.php file. In this file, the Course Name, any Unit Names, any Lesson Names, 
-                    any Lesson EML, any Quiz EML, and any Lesson Objects are posted to the page. The program checks to ensure that there is at least one unit and lesson in 
+                    any Lesson EML, any Quiz EML, and any learning objects are posted to the page. The program checks to ensure that there is at least one unit and lesson in 
                     the course, and that there are names for the course, units, and lessons. Next, the course name is inserted into the courses database. The ID of the 
                     newly inserted course is retrieved to be used as reference for other tables. Next, there is a loop through each unit in the course. The unit name and 
                     course ID is inserted into the units table. The ID of the newly inserted unit is retrieved to be used for reference in the lessons table. Next, the 
                     program iterates through each lesson in the unit. It inserts the lesson name, lesson EML, and unit ID into the lessons table. The ID of the newly 
                     added lesson is retrieved to be used for reference by the Quiz table. Next the lesson ID and quiz EML are inserted into the quiz table. This process
-                    repeats for all units, lessons, and quizzes in the course. After all of this information is inserted into the database, the lesson objects are dealt 
-                    with. The program ensures there are lesson objects that were posted. It creates a directory in the server's main uploads folder, where the folder name 
+                    repeats for all units, lessons, and quizzes in the course. After all of this information is inserted into the database, the learning objects are dealt 
+                    with. The program ensures there are learning objects that were posted. It creates a directory in the server's main uploads folder, where the folder name 
                     consists of the courrse name followed by the course ID, so each folder has a unique name. Now the program iterates through each uploaded file and moves 
                     the file to the newly created folder. From here, we can retrieve the filename, the new location of the file, and the type of the file. These details, 
-                    preceded by the course ID, is inserted into the lessonObjects table in the database. Each lesson object is specific to a course. This concludes the 
+                    preceded by the course ID, is inserted into the learningObjects table in the database. Each learning object is specific to a course. This concludes the 
                     implementation of creating a course from EML.
                 </p>
 
@@ -717,7 +738,7 @@
                     <li>
                         The Image starting tag and filename attribute is replaced with an img tag and an src attribute. The value of the filename attribute is not removed, so 
                         the replacement text occurs for everything up to the value of the filename attribute's value. The replacement string is an img tag with an src attribute 
-                        that points to the directory where the lesson objects are stored (remember that this folder is in the current folder's upload folder and the folder's name 
+                        that points to the directory where the learning objects are stored (remember that this folder is in the current folder's upload folder and the folder's name 
                         is the course name with the course ID appended at the end). The closing Image tag is replaced with a closing img tag. Next, the description attribute
                         (which comes after the filename attribute), is replaced with an alt attribute. This is done using two capture groups, one for the img tag and src attribute and 
                         another for the description attribute's value and closing tag.
@@ -726,7 +747,7 @@
                         The Video starting tag and filename attribute is replaced with an video tag and an src attribute. The value of the filename attribute is not removed, so 
                         the replacement text occurs for everything up to the value of the filename attribute's value. The replacement string is an video tag with a width attribute 
                         equal to 360 and a height value equal to 240, along with controls set. Inside the video tag, a source tag is created with a type attribute set to video/mp4 and 
-                        a src attribute that points to the directory where the lesson objects are stored (remember that this folder is in the current folder's upload folder and the 
+                        a src attribute that points to the directory where the learning objects are stored (remember that this folder is in the current folder's upload folder and the 
                         folder's name is the course name with the course ID appended at the end). The closing Video tag is replaced with text saying &quot;Your Browser Does Not Support 
                         Video.&quot; in case the video file cannot be loaded, and is ended with a closing video tag.
                     </li>
@@ -734,7 +755,7 @@
                         The Audio starting tag and filename attribute is replaced with an audio tag and an src attribute. The value of the filename attribute is not removed, so 
                         the replacement text occurs for everything up to the value of the filename attribute's value. The replacement string is an audio tag with controls set. 
                         Inside the contents of the audio element, a source tag is created with a type attribute set to audio/mpeg and a src attribute that points to the directory where 
-                        the lesson objects are stored (remember that this folder is in the current folder's upload folder and the folder's name is the course name with the course ID 
+                        the learning objects are stored (remember that this folder is in the current folder's upload folder and the folder's name is the course name with the course ID 
                         appended at the end). The closing audio tag is replaced with text saying &quot;Your Browser Does Not Support Audio.&quot; in case the audio file cannot be 
                         loaded, and is ended with a closing audio tag.
                     </li>
@@ -772,13 +793,19 @@
                 <p class="title4">
                     The setup required for this application requires the AddCourse.php, AvailableCourses.php, CreateCourseContent.php, Learnatorium.js, Learnatorium.php, 
                     LearnatoriumLogin.php, LearnatoriumSignup.php, Login.php, Logout.php, SelectedCourse.php, Signup.php, UploadCourse.php, WelcomeToLearnatorium.php, and 
-                    YourCourses.php are the files 
-                    The setup required for this application requires that the WelcomeToLearnTheWeb.html, LearnTheWeb.html, LearnTheWeb.js, 
-                    and Units.xml files exist in the part2 folder. As well, ensure that there are .png images within the part2 folder, as they are 
-                    used to display some images throughout the tutorial. To run the program, simply access the WelcomeToLearnTheWeb.html file directly 
-                    or through the network of web applications. Proceed into the application and read the material in each unit. When the user 
-                    has read the information, they can choose to take the quiz at the bottom of the unit, or move on and access the quiz at anytime 
-                    on the side navigation menu or at the bottom of the quiz. In the quiz, answer each question and press submit to see the final score.
+                    YourCourses.php are the files that exist in the part 2 folder. As well, there should be the tma2_stylesheet.css that resides in the shared folder. 
+                    Along with this, ensure there is an folder named <b>uploads</b> already created in the part2 folder. This is where the learning objects for each course 
+                    will reside. 
+                    The configuration for this project is using a MySQL database along with XAMPP for connecting the database and allowing PHP scripts to run. To run the 
+                    system, start by opening XAMPP and start the Apache and MySQL modules. Afterwards, click the config button for Apache and find the 
+                    &quot;DocuementRoot&quot; path. Change that path to the path where the project is located (these instructions can be found in the resources). The 
+                    default path is &quot;C:/xampp/htdocs&quot;. Next, in the Apache module, press the config button and open the php.ini file, located the 
+                    &quot;upload_max_filesize&quot; parameter and max_file_uploads parameter located under the File Uplodas section. Set the value of 
+                    &quot;upload_max_filesize&quot; to 2M and the value of max_file_uploads to 100. This will allow for a larger number of files to be uploaded, as well as 
+                    allow more files to be uploaded at one time, which is important if there are a lot of learning objects After performing this change, restart the Apache service by stopping and starting it again. After, type 
+                    localhost in the browser and access the tma2.htm folder. All operations now operate on localhost instead of file:///. Do not open the tma2.htm file 
+                    directly, or else the PHP files will not work correctly. They must be accessed through localhost. Another alternative is to put the project folder into 
+                    the xampp/htdocs folder and change the index file so that you can access the file directory. From there, you can access the tma2.htm file.
                 </p>
 
                 <span class="title2">Resources</span>
@@ -786,6 +813,11 @@
                     
                 </p>
                 <ul class="title4">
+                    <li>
+                        <a href="https://stackoverflow.com/questions/18902887/how-to-configuring-a-xampp-web-server-for-different-root-directory">
+                            Changing XAMPP config folder (answer: insCode)
+                        </a>
+                    </li>
                     <li>
                         <a href="https://www.w3schools.com/php/php_mysql_select.asp">
                             Get a result from a select query using mysql_fetch_assoc

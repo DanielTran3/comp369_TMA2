@@ -88,8 +88,8 @@
                     <button type="button" id="addUnitButton" class="whiteButton" Value="AddUnit">Add Unit</button>
                     <button type="submit" id="createCourseButton" class="whiteButton" Value="CreateCourse">Create Course</button>                
                     <br />  
-                    <label>Add Lesson Objects: </label>
-                    <input id="uploadFile" name="lessonObjects[]" class="whiteButton" type="file" multiple></input>        
+                    <label>Add Learning Objects: </label>
+                    <input id="uploadFile" name="learningObjects[]" class="whiteButton" type="file" multiple></input>        
                     <button type="submit" id="createCourseButton" class="whiteButton" Value="CreateCourse">Create Course</button>   
                 </div>
             </form>
