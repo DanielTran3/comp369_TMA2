@@ -492,13 +492,8 @@
                         There is also a picture of the rendered HTML."></img>
                     </li>
                     <li>
-                        <b>&lt;SectionHeader&gt;&lt;/SectionHeader&gt;</b> Contains the name of the section inside the tag. The 
-                        text for the section header is placed between the SectionHeader tags.
-                    </li>
-                    <li>
-                        <b>&lt;Section&gt;&lt;/Section&gt;</b> Contains the information for a section which is described by the 
-                        section header. The section can contain information such as paragraphs, images, videos, or audio information. 
-                        The Section tag is placed after the SectionHeader tags, where other EML tags can be placed between the Section tags.
+                        <b>&lt;Section&gt;&lt;/Section&gt;</b> Contains the title of the next section. The text for the section is placed 
+                        between the Section tags.
                     </li>
                     <li>
                         <b>&lt;Paragraph&gt;</b> Used to split the text of a section into different paragraphs for easier readability. The 
@@ -641,8 +636,10 @@
                     and password. Alongside this, there is also an admin user that is initially stored in the database. The admin has the ability to create courses, 
                     and is defined by having it's admin column set to True. In the main navigation bar at the top of the web pages, the admin will have a button 
                     called &quot;Create A Course&quot; which is not present in a regular user's options. To check for the admin status, a query on the username stored 
-                    in a session is used to query the database and return the admin column. If the column is true, then display the button. Next, the implementation of 
-                    the ability for an admin user to create courses is important.
+                    in a session is used to query the database and return the admin column. If the column is true, then display the button. The implementation of 
+                    the ability for an admin user to create courses is important. The user can also logout by pressing the logout link, which should appear in the 
+                    navigation bar once the user has logged in. This will take the user to the Logout.php page, which will essentially timeout the current user's 
+                    session. 
                 </p>             
                      
                 <p class="title4">
@@ -676,6 +673,7 @@
                     preceded by the course ID, is inserted into the lessonObjects table in the database. Each lesson object is specific to a course. This concludes the 
                     implementation of creating a course from EML.
                 </p>
+
                 <p class="title4">
                     The next module is a module that allows the user to select courses from a list of available courses and a list of courses that the user has added. 
                     Alongside this, the user is able to access and view any of their added courses and begin their learning! After a course is added, the program relocates 
@@ -686,8 +684,87 @@
                     selected course, along with the currently logged in username. Once the course is added, the program relocates the user to the YourCourses.php file. This 
                     file displays all of the user's added courses. The web page executes a select query on the ID and name of courses where the ID of the course is dependent 
                     on the courses that are retrieved from the usersCourses table, where the username matches the currently logged in user. The retrieved rows are displayed 
-                    as a list of buttons. When a button for a course is pressed, the ID of the course is posted to the SelectedCourse.php file.
+                    as a list of buttons. When a button for a course is pressed, the ID and name of the course is posted to the SelectedCourse.php file. The SelectedCourse.php 
+                    file is one of the most important files, because its purpose is to parse and display the Lesson and Quiz EMLs. First, the program retrieves the posted 
+                    course name and course ID. The course name is rendered as a h1 element, with a css class to center, underline, increase the font-size, and change the 
+                    font family to make the name more distinct looking. The course name and ID are used to retrieve the units that belong to the course. Next, the program 
+                    iterates through each of the units that was retrieved and obtains the unit's name and ID. The unit's name is rendered as a h1 element, with a CSS rule that 
+                    centers and underlines the unit. This unit ID is used to query the lessons table to get the name, ID, and content of the lesson. The lesson's name is rendered 
+                    as a h2 element with a CSS rule that underlines and centers the text. The content is taken and passed through the lesson EML parser. Here are the steps that 
+                    occur for the lesson EML parsing:
                 </p>    
+
+                <ul class="title4">
+                    <li> 
+                        The Overview tag is replaced with an h2 tag containing the text &quot;Overview&quot;, then creates a p (paragraph) element to contain the text of the 
+                        overview. The Overview closing tag is replaced with a closing p tag.
+                    </li>
+                    <li>
+                        The Outline starting and closing tag is replaced with an unordered list (ul) starting and closing tag, respectively. As well, the BulletPoint starting 
+                        and closing tag are replaced with a list (li) starting and closing tag.
+                    </li>
+                    <li>
+                        The Introduction starting tag is replaced with an h2 tag containing the text &quot;Introdution&quot;, then creates a paragraph (p) starting tag. The 
+                        rest of the text inside the Introduction tag becomes the contents of the paragraph element. The closing Introduction tag is replaced with a closing 
+                        paragraph tag.
+                    </li>
+                    <li>
+                        The Section starting and ending tag is replaced with h2 starting and ending tags. The section text becomes the content of the h2 tags
+                    </li>
+                    <li>
+                        The Paragraph starting and ending tag is replaced with p starting and ending tags. The paragraph text becomes the content of the p tags.
+                    </li>
+                    <li>
+                        The Image starting tag and filename attribute is replaced with an img tag and an src attribute. The value of the filename attribute is not removed, so 
+                        the replacement text occurs for everything up to the value of the filename attribute's value. The replacement string is an img tag with an src attribute 
+                        that points to the directory where the lesson objects are stored (remember that this folder is in the current folder's upload folder and the folder's name 
+                        is the course name with the course ID appended at the end). The closing Image tag is replaced with a closing img tag. Next, the description attribute
+                        (which comes after the filename attribute), is replaced with an alt attribute. This is done using two capture groups, one for the img tag and src attribute and 
+                        another for the description attribute's value and closing tag.
+                    </li>
+                    <li>
+                        The Video starting tag and filename attribute is replaced with an video tag and an src attribute. The value of the filename attribute is not removed, so 
+                        the replacement text occurs for everything up to the value of the filename attribute's value. The replacement string is an video tag with a width attribute 
+                        equal to 360 and a height value equal to 240, along with controls set. Inside the video tag, a source tag is created with a type attribute set to video/mp4 and 
+                        a src attribute that points to the directory where the lesson objects are stored (remember that this folder is in the current folder's upload folder and the 
+                        folder's name is the course name with the course ID appended at the end). The closing Video tag is replaced with text saying &quot;Your Browser Does Not Support 
+                        Video.&quot; in case the video file cannot be loaded, and is ended with a closing video tag.
+                    </li>
+                    <li>
+                        The Audio starting tag and filename attribute is replaced with an audio tag and an src attribute. The value of the filename attribute is not removed, so 
+                        the replacement text occurs for everything up to the value of the filename attribute's value. The replacement string is an audio tag with controls set. 
+                        Inside the contents of the audio element, a source tag is created with a type attribute set to audio/mpeg and a src attribute that points to the directory where 
+                        the lesson objects are stored (remember that this folder is in the current folder's upload folder and the folder's name is the course name with the course ID 
+                        appended at the end). The closing audio tag is replaced with text saying &quot;Your Browser Does Not Support Audio.&quot; in case the audio file cannot be 
+                        loaded, and is ended with a closing audio tag.
+                    </li>
+                </ul>
+
+                <p class="title4">
+                    Next, the lesson's ID is used to retrieve the associated quiz. There is also text denoting the start of the quiz, which is a h2 element that has a CSS rule to center 
+                    and underline the text. The text is the lesson's name with &quot; - Quiz&quot; appended at the end. The content of the quiz is taken and passed through the quiz EML 
+                    parser. Here are the steps that occur for the quiz EML parsing:
+                </p>
+
+                <ul class="title4">
+                    <li>
+                        The Question starting and ending tag is replaced with a h3 starting and ending tag, respectively. The Question's text becomes the text of the h3 element.
+                    </li>
+                    <li>
+                        The Answer starting tag is replaced with an input tag and a type attribute with the value &quot;radio&quot; and the Answer closing tag is replaced with 
+                        a closing input tag. After the closing tag, there is a br element to put each radio button on a new line. The text inside the Answer tag becomes the 
+                        content within the input tag.
+                    </li>
+                </ul>
+
+                <p class="title4">
+                    The last module in the learning management system is the quiz module. Above, we discussed how the quiz is generated from EML, but now we will briefly discuss how the 
+                    quiz works. In the Quiz EML, there is a name attribute that is used to group the answers to a question. The EML requires that there is a name attribute associated with 
+                    each Answer tag. As well, there is a correct attribute in the answer tag, that becomes an attribute in the radio button input after parsing. The value of this attribute 
+                    can be a * for the correct answer, or empty for an incorrect answer. When the user presses the Submit Quiz button, the answers that the user puts is compared with the 
+                    correct answer for each question grouping. The number of correct answer that the user has is divided for the total number of questions for that lesson and the score is 
+                    displayed to the user.
+                </p>
 
                 <hr />
 
