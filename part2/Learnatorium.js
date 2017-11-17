@@ -45,17 +45,20 @@ function AddLessonButton_Click(unitDiv) {
     lessonLabel.innerHTML = "Lesson Name: ";
     var lessonInput = document.createElement("input");
     lessonInput.name = "lesson[]";
+    var lessonContentLabel = document.createElement("span");
+    lessonContentLabel.innerHTML = "Lesson EML Content";
     var lessonTextArea = document.createElement("textarea");
     lessonTextArea.name = "lessonEML[]";
     var numLessons = GetChildElementBasedOnName(unitDiv, "numLessons[]");
     numLessons.value = parseInt(numLessons.value) + 1;
     var quizLabel = document.createElement("span");
-    quizLabel.innerHTML = "Quiz"
+    quizLabel.innerHTML = "Quiz EML Content";
     var quizTextArea = document.createElement("textarea");
     quizTextArea.name = "quizEML[]";
 
     lessonDiv.appendChild(lessonLabel);
     lessonDiv.appendChild(lessonInput);
+    lessonDiv.appendChild(lessonContentLabel);
     lessonDiv.appendChild(lessonTextArea);
     lessonDiv.appendChild(quizLabel);
     lessonDiv.appendChild(quizTextArea);

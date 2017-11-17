@@ -77,9 +77,9 @@
                 ?>
             </ul>
         </div>
-        <div>
-            <h1>Welcome to Learnatorium! </h1>
-            <h4>Here at Learnatorium, you can search for a course you want in the Available Courses tab and add it to your list of courses!
+        <div class="mainPage">
+            <h1 class="title">Welcome to Learnatorium! </h1>
+            <h3>Here at Learnatorium, you can search for a course you want in the Available Courses tab and add it to your list of courses!
                  Look in the Your Courses tab to see what courses you have available.</h4>
             <p>Each course will have at least one unit and at least one lesson. Each lesson also has an associated quiz.</p> 
         </div>

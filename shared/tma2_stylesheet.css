@@ -312,3 +312,8 @@ a:visited {
 .yourCoursesList>input {
     width: 100%; 
 }
+
+.mainPage {
+    margin: 10%;
+    text-align: center;
+}

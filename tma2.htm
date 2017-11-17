@@ -21,7 +21,7 @@
                     <a href="part1/WelcomeToSiteMark.php">SiteMark</a>
                 </li>
                 <li>
-                    <a href="part2/WelcomeToLearnatorium.php">Learn The Web</a>
+                    <a href="part2/WelcomeToLearnatorium.php">Learnatorium</a>
                 </li>
             </ul>
         </div>
@@ -802,10 +802,38 @@
                     default path is &quot;C:/xampp/htdocs&quot;. Next, in the Apache module, press the config button and open the php.ini file, located the 
                     &quot;upload_max_filesize&quot; parameter and max_file_uploads parameter located under the File Uplodas section. Set the value of 
                     &quot;upload_max_filesize&quot; to 2M and the value of max_file_uploads to 100. This will allow for a larger number of files to be uploaded, as well as 
-                    allow more files to be uploaded at one time, which is important if there are a lot of learning objects After performing this change, restart the Apache service by stopping and starting it again. After, type 
-                    localhost in the browser and access the tma2.htm folder. All operations now operate on localhost instead of file:///. Do not open the tma2.htm file 
-                    directly, or else the PHP files will not work correctly. They must be accessed through localhost. Another alternative is to put the project folder into 
-                    the xampp/htdocs folder and change the index file so that you can access the file directory. From there, you can access the tma2.htm file.
+                    allow more files to be uploaded at one time, which is important if there are a lot of learning objects that the user wants to add to their course. 
+                    After performing this change, restart the Apache service by stopping and starting it again. Afterwards, type localhost in the browser and access the 
+                    tma2.htm folder. All operations now operate on localhost instead of file:///. Do not open the tma2.htm file directly, or else the PHP files will not 
+                    work correctly. They must be accessed through localhost. Another alternative is to put the project folder into the xampp/htdocs folder and change the 
+                    index file so that you can access the file directory. From there, you can access the tma2.htm file.
+                </p>
+                <p class="title4">
+                    To use the application as an administrator, start by clicking the Login button on the WelcomeToLearnatorium.php page. Enter the credentials: 
+                    username: admin, password: password. This should bring you to the Learnatorium.php main page. You can view the current available courses by pressing the 
+                    <b>Available Courses</b> button, view your courses by pressing the<b> Your Courses</b> button, or create a course by pressing the <b>Create A Course</b> 
+                    button. The first two buttons simulate the experience of being a regular user, but the <b>Create A Course button</b> is exclusive the the administrator 
+                    account. To begin creating a course, press the <b>Create A Course</b> button. Thisd will bring you to the CreateCourseContent.php file. Begin by 
+                    entering a course name. Afterwards, you can add one or more units by pressing the <b>Add Unit</b> button. For each unit you add, ensure you have a 
+                    unit name filled in. You can add one more more lessons to each unit by pressing the <b>Add Lesson</b> button that's associated with the unit. Everytime 
+                    a lesson is added, ensure a lesson name is given to the lesson. As well the lesson EML and quiz EML can be entered into their respective text boxes, 
+                    where the EML follows the guide described in the documentation above. You can also add lesson objects by pressing the <b>Browse...</b> button next to the 
+                    Add Lesson Objects label. Once your course is created, press the <b>Create Course</b> button. If everything has been filed out correctly, the browser will 
+                    display a successful creation of a web page and redirect you to the AvailableCourses.php file, where the newly created course should appear.
+                </p>
+                <p class="title4">
+                    To use the application as a regular user, first create an account by pressing the signup button, if you do not already have an account (where you would 
+                    press the Login button instead and enter your credentials there). Enter a username and password into the available input text boxes. Press signup after 
+                    and if the username you entered is unique (ie. does not exist in the database), then your account will be created, otherwise you need to try again with 
+                    a new username. After your account is successfully created, you will be redirected to the Learnatorium.php page. To view the courses that are currently 
+                    available, press the <b>Available Courses</b> button. To add a course, click on any of the courses that are available and press the <b>Add Course</b> 
+                    button. This will redirect you to the <b>YourCourses.php</b> file, which can also be accesssed by pressing the <b>Your Courses</b> button on the 
+                    navigation bar. Here you will be able to view all of the courses that you added. To access a course, press the button that is labeled with the course 
+                    name that you want to view. This will redirect you to the SelectedCourse.php page, where your course information will be rendered in HTML. Read through 
+                    and learn about the material in the course. At the end of each lesson, you can take the quiz by checking the correct multiple choice answer associated 
+                    with each question. After you finish answering each question, press the <b>Submit Quiz</b> button to see which questions you got correct. That's all 
+                    there is to it! Once you finish with everything you want to do, you can logout by pressing the logout link in the navigation bar. Also, note that the 
+                    user's session only lasts for one hour and the user will be automatically logged out after an hour from login time.
                 </p>
 
                 <span class="title2">Resources</span>
