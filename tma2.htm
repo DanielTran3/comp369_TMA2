@@ -629,7 +629,35 @@
                 <hr />
 
                 <span class="title2">Documentation of Implementation</span>                
-                    The implementation of the software begins with the 
+                    The implementation of the software begins with the user management system. When a user chooses to sign up, they have to enter a username and 
+                    password. The username must not be in the database already. This is checked after the user enters their credentials in the LearnatoriumSignup.php 
+                    file and clicks the signup button. This creates a post request to the server and calls the Signup.php file. This file will perform a query on the 
+                    users table, where it tries to select a row with the entered username. If there is a row returned, then the username already exists so the user is 
+                    prompted to re-enter a new username and password. Otherwise, an INSERT INTO query inserts the username and password into the users database. This 
+                    is similar to how the login functionality works. On the LearnatoriumLogin.php page, the user enters their username and pasword and presses the 
+                    login button. This posts their credentials to the Login.php file, which uses a SELECT query, trying to match the username and password with a row 
+                    in the database. If no row is returned, then the username and password combination doesn't exist, so the user is prompted to re-enter a username 
+                    and password. Alongside this, there is also an admin user that is initially stored in the database. The admin has the ability to create courses, 
+                    and is defined by having it's admin column set to True. In the main navigation bar at the top of the web pages, the admin will have a button 
+                    called &quot;Create A Course&quot; which is not present in a regular user's options. To check for the admin status, a query on the username stored 
+                    in a session is used to query the database and return the admin column. If the column is true, then display the button. Next, the implementation of 
+                    the ability for an admin user to create courses is important. When the &quot;Create A Course&quot; button is pressed, the CreateCourseContent.php 
+                    file is opened. On this page, there is an input for a course name, which defines the name of the course. There is also a button to add a unit. 
+                    Pressing this button creates several HTML input elements. The first is a textbox for the unit's name, followed by four children elements of the 
+                    textbox. The first is an &quot;Add Lesson&quot; button, which allows the user to create and add another lesson to the unit. There is also an input 
+                    the Lesson's name, followed by a large textbox input for the lesson's EML. Following this textbox is another large textbox input for the quizze's EML 
+                    that follows the lesson. When the &quot;Add Lesson&quot; button is pressed, it creates another lesson and adds it to the unit (the lesson will 
+                    contain inputs for the lesson name, lesson EML, and quiz EML, the same as the lesson and quiz elements produced from pressing the &quot;Add Unit&quot; 
+                    button). For each course that is created, there must be a course name, at least one unit (with a unit name), and at least one lesson (with a lesson 
+                    name, lesson EML, and quiz EML) filled in. This page uses JavaScript to dynamically create the inputs for each course. This allows a course to have 
+                    as many or as little units and lessons as the SME desires. Aside from this, there is a button to add Lesson Objects to the course. This is done by 
+                    pressing the &quot;Add Lesson Objects&quot; button, opening a dialog for the user to select one or more image, audio (mp3) or video (mp4) files to 
+                    add to their course. The names of the added files should match the filename attribute in their respective tags (Image, Audio, and Video). Once the 
+                    SME has filled in this page with their course details they can press the &quot;Create Course&quot; button to create the course. This button first 
+                    uses JavaScript to convert all Angled brackets into the _______&lt; and &gt;___________ codes and escapes each of the single quotes with SQL's 
+                    escape character, which is also a single quote. This allows the EML to be stored inside the MySQL database correctly. After the JavaScript function 
+                    runs, the inputs are posted to the UploadCourse.php file. In this file, the Course Name, any Unit Names, any Lesson Names, any Lesson EML, any Quiz 
+                    EML, and any Lesson Objects are posted to the page. 
 
                 <hr />
 
